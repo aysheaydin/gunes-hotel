@@ -14,7 +14,7 @@ const AboutPage = () => {
         <title>Hakkımızda - Nemrut Dağı'na 2 km | 30+ Yıl Deneyim | Güneş Hotel</title>
         <meta 
           name="description" 
-          content="1980'den beri Nemrut Dağı'nda hizmet veren aile oteli. Malatya Pütürge'de, UNESCO Dünya Mirası'na en yakın konaklama. 13 oda, 32 yatak kapasitesi, samimi ortam." 
+          content="1980'den beri Nemrut Dağı'nda hizmet veren aile oteli. Malatya Pütürge'de, UNESCO Dünya Mirası'na en yakın konaklama. 10 oda, 25 yatak kapasitesi, samimi ortam." 
         />
         <meta
           name="keywords"

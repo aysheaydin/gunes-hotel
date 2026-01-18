@@ -11,14 +11,14 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Nemrut Dağı Oteli - Güneş Hotel (2 km) | Malatya Pütürge Konaklama</title>
+        <title>Nemrut Dağı Oteli - Güneş Hotel (2 km) | €85'den Başlayan Fiyatlar</title>
         <meta
           name="description"
-          content="Nemrut Dağı'na sadece 2 km mesafede Güneş Hotel. UNESCO Dünya Mirası gün doğumu turları, 30+ yıl deneyim, konforlu odalar, 24 saat sıcak su. Hemen rezervasyon yapın!"
+          content="⭐ Nemrut Dağı'na EN YAKIN otel! (2 km) 🏞️ UNESCO gün doğumu turları, 10 konforlu oda, 30+ yıl deneyim. Kahvaltı & akşam yemeği dahil €85'den. ☎ +90 543 876 7271 - Hemen rezervasyon!"
         />
         <meta
           name="keywords"
-          content="Nemrut Dağı oteli, Nemrut otel, Nemrut konaklama, Nemrut Dağı'na en yakın otel, Malatya Pütürge otel, gün doğumu turu, UNESCO Dünya Mirası, Kommagene, Kahta otel"
+          content="nemrut dağı oteli, nemrut otel, nemrut konaklama, nemrut dağı'na en yakın otel, malatya pütürge otel, gün doğumu turu, unesco dünya mirası, kommagene, kahta otel, nemrut güneş hotel, nemrut motel, nemrut pansiyon, nemrut rezervasyon"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/" />
         

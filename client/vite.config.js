@@ -189,18 +189,38 @@ export default defineConfig({
         drop_console: true, // console.log'ları kaldır
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 2 // İki geçişli optimizasyon
+        passes: 2, // İki geçişli optimizasyon
+        ecma: 2020
       },
       format: {
         comments: false // Yorumları kaldır
+      },
+      mangle: {
+        safari10: true
       }
     },
     
     // Rollup options
     rollupOptions: {
       output: {
-        // Otomatik chunk splitting - Vite'a bırak
-        manualChunks: undefined,
+        // Manuel chunk splitting - Core Web Vitals için optimize
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor'
+            }
+            if (id.includes('bootstrap') || id.includes('react-bootstrap')) {
+              return 'bootstrap'
+            }
+            if (id.includes('i18next') || id.includes('react-i18next')) {
+              return 'i18n'
+            }
+            if (id.includes('aos') || id.includes('axios')) {
+              return 'utils'
+            }
+            return 'vendor'
+          }
+        },
         
         // Asset isimlendirme
         assetFileNames: (assetInfo) => {
@@ -208,7 +228,7 @@ export default defineConfig({
           
           // Görseller
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(extType)) {
-            return `assets/images/[name]-[hash][extname]`
+            return `assets/img/[name]-[hash][extname]`
           }
           
           // Fontlar
@@ -231,10 +251,13 @@ export default defineConfig({
     },
     
     // Reporting
-    reportCompressedSize: true,
+    reportCompressedSize: false, // Build hızını artırmak için
     
     // CSS options
-    cssMinify: true
+    cssMinify: true,
+    
+    // Asset inline limit
+    assetsInlineLimit: 4096 // 4KB altı assetler inline olacak
   },
   
   // Esbuild optimizasyonları

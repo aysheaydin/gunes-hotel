@@ -30,6 +30,14 @@
     <priority>0.95</priority>
   </url>
   
+  <!-- Nemrut Dağı Gün Doğumu Turu -->
+  <url>
+    <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-gun-dogumu-turu</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- Odalar Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/rooms</loc>

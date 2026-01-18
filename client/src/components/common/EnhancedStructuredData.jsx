@@ -59,7 +59,7 @@ const EnhancedStructuredData = ({ page = 'home', roomData = null }) => {
     "checkinTime": "14:00",
     "checkoutTime": "12:00",
     "petsAllowed": "True",
-    "numberOfRooms": 13,
+    "numberOfRooms": 10,
     "amenityFeature": [
       {
         "@type": "LocationFeatureSpecification",
@@ -84,6 +84,11 @@ const EnhancedStructuredData = ({ page = 'home', roomData = null }) => {
       {
         "@type": "LocationFeatureSpecification",
         "name": "Kahvaltı Dahil",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Akşam Yemeği Dahil",
         "value": true
       },
       {

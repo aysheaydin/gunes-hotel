@@ -12,6 +12,8 @@ const RoomsPage = lazy(() => import(/* webpackChunkName: "rooms" */ '@pages/Room
 const GalleryPage = lazy(() => import(/* webpackChunkName: "gallery" */ '@pages/GalleryPage'))
 const ContactPage = lazy(() => import(/* webpackChunkName: "contact" */ '@pages/ContactPage'))
 const NemrutDagiOteli = lazy(() => import(/* webpackChunkName: "nemrut-hotel" */ '@pages/NemrutDagiOteli'))
+const NemrutDagiKonaklama = lazy(() => import(/* webpackChunkName: "nemrut-konaklama" */ '@pages/NemrutDagiKonaklama'))
+const NemrutDagiGunDogumuTuru = lazy(() => import(/* webpackChunkName: "nemrut-gundogumu" */ '@pages/NemrutDagiGunDogumuTuru'))
 const FAQ = lazy(() => import(/* webpackChunkName: "faq" */ '@pages/FAQ'))
 const NotFound = lazy(() => import(/* webpackChunkName: "notfound" */ '@pages/NotFound'))
 
@@ -115,6 +117,8 @@ function App() {
             <Route path="/rooms" element={<RoomsPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/nemrut-dagi-oteli" element={<NemrutDagiOteli />} />
+            <Route path="/nemrut-dagi-konaklama" element={<NemrutDagiKonaklama />} />
+            <Route path="/nemrut-dagi-gun-dogumu-turu" element={<NemrutDagiGunDogumuTuru />} />
             <Route path="/sss" element={<FAQ />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />

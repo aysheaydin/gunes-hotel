@@ -10,7 +10,7 @@ const FAQ = () => {
 
   const faqData = [
     {
-      category: "Konaklama ve Rezervasyon",
+      category: "🏨 Konaklama ve Rezervasyon",
       questions: [
         {
           question: "Nemrut Dağı'na mesafeniz kaç km?",
@@ -30,16 +30,20 @@ const FAQ = () => {
         },
         {
           question: "Kaç otel odası var? Kapasiteniz nedir?",
-          answer: "Otelimizde toplam 13 oda bulunmaktadır. 32 yatak kapasitemiz ile çift kişilik, üçlü ve aile odaları (5 kişilik) seçeneklerimiz mevcuttur. Tüm odalarımız dağ manzaralıdır."
+          answer: "Otelimizde toplam 10 oda bulunmaktadır. 25 yatak kapasitemiz ile çift kişilik, üçlü ve aile odaları (5 kişilik) seçeneklerimiz mevcuttur. Tüm odalarımız dağ manzaralıdır."
+        },
+        {
+          question: "Oda fiyatları ne kadar?",
+          answer: "2026 sezon fiyatlarımız: Standart/Çift kişilik oda €85/gece, Üçlü oda €115/gece, Aile odası (5 kişi) €145/gece. Fiyatlarımıza kahvaltı ve akşam yemeği dahildir. Yaz sezonu ve bayramlarda fiyatlar değişkenlik gösterebilir."
         }
       ]
     },
     {
-      category: "Nemrut Dağı ve Turlar",
+      category: "🌄 Nemrut Dağı ve Turlar",
       questions: [
         {
           question: "Gün doğumu turu için hangi saatte kalkılmalı?",
-          answer: "Gün doğumu turları için yaz aylarında (Mayıs-Eylül) saat 04:00-04:30, kış aylarında (Ekim-Nisan) 05:00-05:30 arası hareket edilir. Mevsime göre güneş doğuş saatleri değiştiği için güncel bilgi için resepsiyonumuzu arayabilirsiniz."
+          answer: "Gün doğumu turları için yaz aylarında (Mayıs-Eylül) saat 04:00-04:30, kış aylarında (Ekim-Nisan) 05:00-05:30 arası hareket edilir. Mevsime göre güneş doğuş saatleri değiştiği için güncel bilgi için resepsiyonumuzu arayabilirsiniz. Güneş Hotel'den zirveye sadece 10 dakika mesafe!"
         },
         {
           question: "Nemrut Dağı giriş ücreti ne kadar?",
@@ -47,20 +51,24 @@ const FAQ = () => {
         },
         {
           question: "Nemrut Dağı'na ne zaman gidilir? En iyi mevsim hangisi?",
-          answer: "Nemrut Dağı'nı yıl boyunca ziyaret edebilirsiniz. En popüler dönem Mayıs-Ekim arasıdır. Haziran-Eylül arası en sıcak dönemdir. Kış aylarında kar manzarası eşsiz güzellikte ancak yollar zorlu olabilir. Bahar (Nisan-Mayıs) ve sonbahar (Eylül-Ekim) ideal dönemlerdir."
+          answer: "Nemrut Dağı'nı yıl boyunca ziyaret edebilirsiniz. En popüler dönem Mayıs-Ekim arasıdır. Haziran-Eylül arası en sıcak dönemdir (açık hava, net görüş). Kış aylarında kar manzarası eşsiz güzellikte ancak yollar zorlu olabilir. Bahar (Nisan-Mayıs) ve sonbahar (Eylül-Ekim) ideal dönemlerdir."
         },
         {
           question: "Gün batımı turu da var mı?",
-          answer: "Evet, gün batımı turları da düzenliyoruz. Genellikle günbatımından 1.5-2 saat önce hareket edilir. Gün batımı turları daha az kalabalık olur ve fotoğraf için harika fırsatlar sunar."
+          answer: "Evet, gün batımı turları da düzenliyoruz. Genellikle günbatımından 1.5-2 saat önce hareket edilir. Gün batımı turları daha az kalabalık olur ve fotoğraf için harika fırsatlar sunar. İdeal plan: Akşam gün batımı + ertesi sabah gün doğumu."
         },
         {
           question: "Nemrut'a çıkış yolu nasıl? Zorlu mu?",
-          answer: "Otelimizden Nemrut zirvesine kadar asfalt yol bulunmaktadır. Son 1 km tırmanma gerektiren bir yoldur ancak orta zorlukta bir yürüyüştür. Rahat ayakkabı ve su getirilmesi önerilir. Yaz aylarında güneş kremi şarttır."
+          answer: "Otelimizden Nemrut zirvesine kadar asfalt yol bulunmaktadır. Otopark alanından zirveye 400 metre taş merdivenle (15-20 dakika) çıkılır. Orta zorlukta bir yürüyüştür. Rahat ayakkabı, su ve yaz aylarında güneş kremi şarttır."
+        },
+        {
+          question: "Nemrut'ta çadırla konaklama yapılabilir mi?",
+          answer: "Resmi olarak Nemrut Dağı Milli Parkı içinde çadırla konaklama yasaktır. Güvenlik ve konfor açısından otel konaklaması önerilir. Güneş Hotel zirveye en yakın otel olarak 2 km mesafededir."
         }
       ]
     },
     {
-      category: "Otel Olanakları",
+      category: "🏡 Otel Olanakları",
       questions: [
         {
           question: "Odalarda WiFi var mı?",
@@ -72,7 +80,7 @@ const FAQ = () => {
         },
         {
           question: "Restoran var mı? Akşam yemeği servisi var mı?",
-          answer: "Evet, 40 kişilik restoranımızda Türk mutfağından yemekler sunuyoruz. Akşam yemeği servisi mevcuttur (yarım pansiyon opsiyonu). Yöresel lezzetler ve ev yemekleri deneyebilirsiniz. Önceden haber vermeniz tavsiye edilir."
+          answer: "Evet, 30 kişilik restoranımızda Türk mutfağından yemekler sunuyoruz. Akşam yemeği servisi mevcuttur (yarım pansiyon opsiyonu). Yöresel lezzetler ve ev yemekleri deneyebilirsiniz. Önceden haber vermeniz tavsiye edilir."
         },
         {
           question: "Otopark var mı?",
@@ -80,24 +88,28 @@ const FAQ = () => {
         },
         {
           question: "Odalarda klima var mı?",
-          answer: "Odalarımızda merkezi ısıtma sistemi bulunmaktadır. Yaz aylarında bölge iklimi serin olduğu için klima genellikle gerekli olmamaktadır. Gece sıcaklığı 15-20°C civarındadır."
+          answer: "Odalarımızda merkezi ısıtma sistemi bulunmaktadır. Yaz aylarında bölge iklimi serin olduğu için klima genellikle gerekli olmamaktadır. Gece sıcaklığı 15-20°C civarındadır. Kış aylarında ısıtma sistemi aktif olarak çalışır."
         },
         {
           question: "24 saat sıcak su var mı?",
           answer: "Evet, tüm odalarımızda 24 saat kesintisiz sıcak su hizmeti bulunmaktadır. Konfor ve temizlik önceliğimizdir."
+        },
+        {
+          question: "Evcil hayvan kabul ediyor musunuz?",
+          answer: "Evet, küçük ve orta boy evcil hayvanlarınızı (köpek, kedi) kabul ediyoruz. Önceden bildirim yapmanız ve evcil hayvanınızın tasmalı olması gerekmektedir."
         }
       ]
     },
     {
-      category: "Ulaşım",
+      category: "🚗 Ulaşım",
       questions: [
         {
           question: "Havalimanından transfer hizmeti var mı?",
-          answer: "Evet, Malatya Havalimanı (145 km - 2 saat) ve Adıyaman Havalimanı (85 km - 1.5 saat)'ndan otelimize transfer hizmeti sunuyoruz. Ücretli transfer hizmetimiz için rezervasyon sırasında talebinizi bildirmeniz gerekmektedir."
+          answer: "Evet, Malatya Havalimanı (145 km - 2 saat) ve Adıyaman Havalimanı (85 km - 1.5 saat)'ndan otelimize transfer hizmeti sunuyoruz. Transfer hizmetimiz ücretsizdir ve rezervasyon sırasında talebinizi bildirmeniz gerekmektedir."
         },
         {
           question: "Nemrut Dağı'na nasıl ulaşılır?",
-          answer: "Nemrut'a ulaşım için üç ana rota vardır: 1) Malatya üzerinden (Pütürge - Güneş Hotel), 2) Adıyaman üzerinden (Kahta), 3) Şanlıurfa üzerinden. Otelimiz Malatya rotasında, zirveye en yakın noktadadır."
+          answer: "Nemrut'a ulaşım için üç ana rota vardır: 1) Malatya üzerinden (Pütürge - Güneş Hotel) - ÖNERİLEN, 2) Adıyaman üzerinden (Kahta - 85 km), 3) Şanlıurfa üzerinden. Otelimiz Malatya rotasında, zirveye en yakın noktadadır (2 km)."
         },
         {
           question: "Malatya'dan otele nasıl gidilir?",

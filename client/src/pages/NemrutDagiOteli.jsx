@@ -141,8 +141,8 @@ const NemrutDagiOteli = () => {
               <h2 className="display-6 fw-bold mb-4">Nemrut Dağı'nın Kalbinde</h2>
               <p className="lead mb-4">
                 Güneş Hotel, Malatya Pütürge'de, UNESCO Dünya Mirası Nemrut Dağı'na 
-                en yakın konaklama tesisidir. 13 konforlu odamız, 32 yatak kapasitemiz 
-                ve 40 kişilik restoranımızla misafirlerimize unutulmaz bir deneyim sunuyoruz.
+                en yakın konaklama tesisidir. 10 konforlu odamız, 25 yatak kapasitemiz 
+                ve 30 kişilik restoranımızla misafirlerimize unutulmaz bir deneyim sunuyoruz.
               </p>
               
               <div className="info-list">

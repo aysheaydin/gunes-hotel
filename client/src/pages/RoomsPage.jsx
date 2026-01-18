@@ -97,7 +97,7 @@ const RoomsPage = () => {
 
                       <div className="room-footer">
                         <div className="room-price">
-                          <span className="price-amount">₺{room.price}</span>
+                          <span className="price-amount">{room.currency}{room.price}</span>
                           <span className="price-period">/ {t('rooms.perNight')}</span>
                         </div>
                         <Link to="/contact" className="btn btn-primary">

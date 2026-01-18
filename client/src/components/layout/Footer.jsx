@@ -21,7 +21,8 @@ const Footer = () => {
     { icon: 'fa-wifi', text: t('footer.service1') },
     { icon: 'fa-tint', text: t('footer.service2') },
     { icon: 'fa-mountain', text: t('footer.service3') },
-    { icon: 'fa-coffee', text: t('footer.service4') }
+    { icon: 'fa-utensils', text: t('footer.service4') },
+    { icon: 'fa-shuttle-van', text: t('footer.service5') }
   ], [t])
 
   return (

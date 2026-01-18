@@ -81,8 +81,8 @@ const Rooms = () => {
                   <div className="room-footer">
                     <div className="room-price" itemProp="offers" itemScope itemType="https://schema.org/Offer">
                       <span className="price-label">{t('rooms.startingFrom')}</span>
-                      <span className="price-amount" itemProp="price" content={room.price}>₺{room.price}</span>
-                      <meta itemProp="priceCurrency" content="TRY" />
+                      <span className="price-amount" itemProp="price" content={room.price}>{room.currency}{room.price}</span>
+                      <meta itemProp="priceCurrency" content="EUR" />
                       <span className="price-period">/ {t('rooms.perNight')}</span>
                     </div>
                     <Link 
