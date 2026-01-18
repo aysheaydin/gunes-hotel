@@ -102,7 +102,7 @@ const Contact = () => {
                     {t('contact.quickContact.email')}
                   </a>{' '}
                   {t('contact.quickContact.contactVia')}{' '}
-                  <a href="https://wa.me/905438767271" target="_blank" rel="noopener noreferrer" className="alert-link">
+                  <a href="https://wa.me/905362870639" target="_blank" rel="noopener noreferrer" className="alert-link">
                     {t('contact.quickContact.whatsapp')}
                   </a>{' '}
                   {t('contact.quickContact.viaText')}

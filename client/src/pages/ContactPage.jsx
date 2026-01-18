@@ -141,7 +141,7 @@ const ContactPage = () => {
                         {t('contact.form.email')}
                       </a>{' '}
                       {t('contact.form.contactVia')}{' '}
-                      <a href="https://wa.me/905438767271" target="_blank" rel="noopener noreferrer" className="alert-link">
+                      <a href="https://wa.me/905362870639" target="_blank" rel="noopener noreferrer" className="alert-link">
                         {t('contact.form.whatsapp')}
                       </a>{' '}
                       {t('contact.form.viaText')}
