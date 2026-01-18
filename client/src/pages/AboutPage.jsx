@@ -115,7 +115,7 @@ const AboutPage = () => {
               <Col md={6} lg={4} className="mb-4">
                 <div className="place-card">
                   <div className="place-image">
-                    <img src="/img/gallery-10.webp" alt={t('about.places.nemrut.name')} className="img-fluid" />
+                    <img src="/img/nemrut.webp" alt={t('about.places.nemrut.name')} className="img-fluid" />
                   </div>
                   <div className="place-content">
                     <h4>{t('about.places.nemrut.name')}</h4>
@@ -130,7 +130,7 @@ const AboutPage = () => {
               <Col md={6} lg={4} className="mb-4" data-aos-delay="100">
                 <div className="place-card">
                   <div className="place-image">
-                    <img src="/img/gallery-4.webp" alt={t('about.places.karakus.name')} className="img-fluid" />
+                    <img src="/img/karakus.webp" alt={t('about.places.karakus.name')} className="img-fluid" />
                   </div>
                   <div className="place-content">
                     <h4>{t('about.places.karakus.name')}</h4>
@@ -145,7 +145,7 @@ const AboutPage = () => {
               <Col md={6} lg={4} className="mb-4" data-aos-delay="200">
                 <div className="place-card">
                   <div className="place-image">
-                    <img src="/img/gallery-5.webp" alt={t('about.places.cendere.name')} className="img-fluid" />
+                    <img src="/img/cendere.webp" alt={t('about.places.cendere.name')} className="img-fluid" />
                   </div>
                   <div className="place-content">
                     <h4>{t('about.places.cendere.name')}</h4>
@@ -160,7 +160,7 @@ const AboutPage = () => {
               <Col md={6} lg={4} className="mb-4" data-aos-delay="300">
                 <div className="place-card">
                   <div className="place-image">
-                    <img src="/img/gallery-24.webp" alt={t('about.places.arsemia.name')} className="img-fluid" />
+                    <img src="/img/arsemia.webp" alt={t('about.places.arsemia.name')} className="img-fluid" />
                   </div>
                   <div className="place-content">
                     <h4>{t('about.places.arsemia.name')}</h4>
@@ -172,7 +172,7 @@ const AboutPage = () => {
                 </div>
               </Col>
 
-              <Col md={6} lg={4} className="mb-4" data-aos-delay="400">
+              {/* <Col md={6} lg={4} className="mb-4" data-aos-delay="400">
                 <div className="place-card">
                   <div className="place-image">
                     <img src="/img/gallery-25.webp" alt={t('about.places.kahta.name')} className="img-fluid" />
@@ -185,12 +185,12 @@ const AboutPage = () => {
                     </span>
                   </div>
                 </div>
-              </Col>
+              </Col> */}
 
               <Col md={6} lg={4} className="mb-4" data-aos-delay="500">
                 <div className="place-card">
                   <div className="place-image">
-                    <img src="/img/gallery-26.webp" alt={t('about.places.perre.name')} className="img-fluid" />
+                    <img src="/img/pirim.webp" alt={t('about.places.perre.name')} className="img-fluid" />
                   </div>
                   <div className="place-content">
                     <h4>{t('about.places.perre.name')}</h4>
@@ -202,7 +202,7 @@ const AboutPage = () => {
                 </div>
               </Col>
               
-                <Col md={6} lg={4} className="mb-4" data-aos-delay="600">
+                {/* <Col md={6} lg={4} className="mb-4" data-aos-delay="600">
                   <div className="place-card">
                     <div className="place-image">
                       <img src="/img/gallery-27.webp" alt={t('about.places.somuncuBaba.name')} className="img-fluid" />
@@ -215,9 +215,9 @@ const AboutPage = () => {
                       </span>
                     </div>
                   </div>
-                </Col>
+                </Col> */}
 
-                <Col md={6} lg={4} className="mb-4" data-aos-delay="700">
+                {/* <Col md={6} lg={4} className="mb-4" data-aos-delay="700">
                   <div className="place-card">
                     <div className="place-image">
                       <img src="/img/gallery-28.webp" alt={t('about.places.gunpinar.name')} className="img-fluid" />
@@ -230,12 +230,12 @@ const AboutPage = () => {
                       </span>
                     </div>
                   </div>
-                </Col>
+                </Col> */}
 
                 <Col md={6} lg={4} className="mb-4" data-aos-delay="800">
                   <div className="place-card">
                     <div className="place-image">
-                      <img src="/img/gallery-29.webp" alt={t('about.places.tohma.name')} className="img-fluid" />
+                      <img src="/img/tohma.webp" alt={t('about.places.tohma.name')} className="img-fluid" />
                     </div>
                     <div className="place-content">
                       <h4>{t('about.places.tohma.name')}</h4>
@@ -247,7 +247,7 @@ const AboutPage = () => {
                   </div>
                 </Col>
 
-                <Col md={6} lg={4} className="mb-4" data-aos-delay="900">
+                {/* <Col md={6} lg={4} className="mb-4" data-aos-delay="900">
                   <div className="place-card">
                     <div className="place-image">
                       <img src="/img/gallery-30.webp" alt={t('about.places.levent.name')} className="img-fluid" />
@@ -260,7 +260,7 @@ const AboutPage = () => {
                       </span>
                     </div>
                   </div>
-                </Col>
+                </Col> */}
             </Row>
           </Container>
         </section>
