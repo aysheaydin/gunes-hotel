@@ -1,0 +1,158 @@
+// FAQ Page Styles
+
+$primary-color: #c18c30;
+
+.faq-header {
+  position: relative;
+  min-height: 35vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+              url('/img/slide-2.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  
+  .faq-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(193, 140, 48, 0.2), rgba(0, 0, 0, 0.6));
+  }
+  
+  .faq-header-content {
+    position: relative;
+    z-index: 2;
+    
+    h1 {
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    
+    .lead {
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+.faq-category {
+  .category-title {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid $primary-color;
+  }
+}
+
+.faq-accordion-item {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-header {
+    .accordion-button {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #2c3e50;
+      padding: 1.25rem 1.5rem;
+      background-color: #f8f9fa;
+      
+      &:not(.collapsed) {
+        background-color: #fff;
+        color: $primary-color;
+        box-shadow: none;
+        
+        i {
+          color: $primary-color;
+        }
+      }
+      
+      &:focus {
+        box-shadow: none;
+        border-color: transparent;
+      }
+      
+      &::after {
+        background-size: 1.25rem;
+        margin-left: auto;
+      }
+    }
+  }
+  
+  .accordion-body {
+    padding: 1.5rem;
+    line-height: 1.8;
+    color: #555;
+    font-size: 1rem;
+    background-color: #fafafa;
+  }
+}
+
+.contact-cta {
+  border: 2px solid $primary-color;
+  
+  h3 {
+    color: #2c3e50;
+    font-weight: 700;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    
+    .btn {
+      min-width: 200px;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .faq-header {
+    min-height: 30vh;
+    padding: 60px 0;
+    
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  .faq-category {
+    .category-title {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .faq-accordion-item {
+    .accordion-header .accordion-button {
+      font-size: 0.95rem;
+      padding: 1rem;
+    }
+    
+    .accordion-body {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .contact-cta {
+    padding: 2rem 1rem !important;
+    
+    .cta-buttons {
+      flex-direction: column;
+      
+      .btn {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+  }
+}

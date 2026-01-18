@@ -1,4 +1,5 @@
 # robots.txt for nemrutgunesmotel.com
+# Updated: 2026-01-18
 
 User-agent: *
 Allow: /
@@ -6,9 +7,9 @@ Allow: /
 # Disallow admin and private areas
 Disallow: /admin/
 Disallow: /api/
-Disallow: /*.json$
+Disallow: /private/
 
-# Allow images and assets
+# Allow important resources for SEO
 Allow: /img/
 Allow: /assets/
 Allow: /*.css$
@@ -18,8 +19,18 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.svg$
 
-# Sitemap location
+# Priority crawling for Googlebot
+User-agent: Googlebot
+Crawl-delay: 0
+Allow: /
+
+# Bingbot optimization
+User-agent: bingbot
+Crawl-delay: 0
+Allow: /
+
+# Sitemap locations
 Sitemap: https://www.nemrutgunesmotel.com/sitemap.xml
 
-# Crawl delay
+# Crawl rate
 Crawl-delay: 1

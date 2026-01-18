@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import StructuredData from '@components/common/StructuredData'
+import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './AboutPage.scss'
 
 const AboutPage = () => {
@@ -11,14 +11,18 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>Hakkımızda - Güneş Hotel | Nemrut Dağı</title>
+        <title>Hakkımızda - Nemrut Dağı'na 2 km | 30+ Yıl Deneyim | Güneş Hotel</title>
         <meta 
           name="description" 
-          content="Güneş Hotel hakkında bilgi edinin. 1980'lerden beri aile işletmesi olarak hizmet veriyoruz." 
+          content="1980'den beri Nemrut Dağı'nda hizmet veren aile oteli. Malatya Pütürge'de, UNESCO Dünya Mirası'na en yakın konaklama. 13 oda, 32 yatak kapasitesi, samimi ortam." 
+        />
+        <meta
+          name="keywords"
+          content="Güneş Hotel tarihçe, Nemrut Dağı aile oteli, Malatya Pütürge konaklama, Kommagene Krallığı turu, Nemrut yakın otel"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/about" />
       </Helmet>
-      <StructuredData type="hotel" page="about" />
+      <EnhancedStructuredData page="about" />
 
       <div className="about-page">
         {/* Page Header */}

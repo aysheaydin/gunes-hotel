@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Modal } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import StructuredData from '@components/common/StructuredData'
+import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './GalleryPage.scss'
 
 const GalleryPage = () => {
@@ -87,14 +87,18 @@ const GalleryPage = () => {
   return (
     <>
       <Helmet>
-        <title>Galeri - Güneş Hotel | Nemrut Dağı</title>
+        <title>Nemrut Dağı Fotoğraf Galerisi | Otel Odaları & Manzara - Güneş Hotel</title>
         <meta 
           name="description" 
-          content="Güneş Hotel ve Nemrut Dağı'ndan fotoğraflar. Odalarımız, manzaralarımız ve otelimizden kareler." 
+          content="Nemrut Dağı ve Güneş Hotel fotoğraf galerisi. Gün doğumu manzaraları, otel odaları, restoran ve Kommagene tarihi eserleri. 100+ fotoğraf." 
+        />
+        <meta
+          name="keywords"
+          content="Nemrut Dağı fotoğrafları, Nemrut gün doğumu, otel odası görselleri, Kommagene fotoğrafları, Nemrut manzara"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/gallery" />
       </Helmet>
-      <StructuredData type="hotel" page="gallery" />
+      <EnhancedStructuredData page="gallery" />
 
       <div className="gallery-page">
         {/* Page Header */}

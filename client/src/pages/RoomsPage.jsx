@@ -4,7 +4,7 @@ import { Container, Row, Col, Badge } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useRooms } from '@hooks'
-import StructuredData from '@components/common/StructuredData'
+import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './RoomsPage.scss'
 
 const RoomsPage = () => {
@@ -14,14 +14,18 @@ const RoomsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Odalarımız - Güneş Hotel | Nemrut Dağı</title>
+        <title>Nemrut Dağı Otel Odaları | Çift Kişilik, Üçlü, Aile Odası - Güneş Hotel</title>
         <meta 
           name="description" 
-          content="Konforlu ve modern donanımlı odalarımızı keşfedin. Dağ manzaralı, sıcak sulu odalar." 
+          content="Nemrut Dağı manzaralı odalar. Çift kişilik, üçlü ve aile odası seçenekleri. 24 saat sıcak su, ücretsiz WiFi, merkezi ısıtma. Fiyatlar 1.500 TL'den başlıyor." 
+        />
+        <meta
+          name="keywords"
+          content="Nemrut otel odaları, dağ manzaralı oda, çift kişilik oda Nemrut, aile odası Malatya, otel fiyatları Nemrut"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/rooms" />
       </Helmet>
-      <StructuredData type="hotel" page="rooms" />
+      <EnhancedStructuredData page="rooms" />
 
       <div className="rooms-page">
         {/* Page Header */}

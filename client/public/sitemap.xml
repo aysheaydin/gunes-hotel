@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
   <!-- Ana Sayfa -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/"/>
@@ -13,10 +14,26 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/"/>
   </url>
   
+  <!-- Nemrut Dağı Oteli (SEO Landing Page) -->
+  <url>
+    <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-oteli</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <!-- Nemrut Dağı Konaklama -->
+  <url>
+    <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-konaklama</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- Odalar Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/rooms</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/rooms"/>
@@ -49,12 +66,20 @@
   <!-- İletişim Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/contact</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/contact"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/contact"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/contact"/>
+  </url>
+  
+  <!-- SSS Sayfası -->
+  <url>
+    <loc>https://www.nemrutgunesmotel.com/sss</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 
 </urlset>

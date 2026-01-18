@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { reservationAPI } from '@services/api'
 import { useErrorHandler } from '@hooks'
 import { validationRules } from '@utils/formValidation'
-import StructuredData from '@components/common/StructuredData'
+import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './ContactPage.scss'
 
 const ContactPage = () => {
@@ -49,14 +49,18 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>İletişim & Rezervasyon - Güneş Hotel | Nemrut Dağı</title>
+        <title>Nemrut Dağı Otel Rezervasyon | Online Rezervasyon - Güneş Hotel</title>
         <meta 
           name="description" 
-          content="Güneş Hotel ile iletişime geçin ve rezervasyon yapın. Telefon, email ve adres bilgilerimiz." 
+          content="Nemrut Dağı Güneş Hotel rezervasyon. Tel: +90 543 876 7271, WhatsApp mevcut. Erken rezervasyon indirimi. Malatya Pütürge, Nemrut'a 2 km. Hemen rezervasyon yapın!" 
+        />
+        <meta
+          name="keywords"
+          content="Nemrut otel rezervasyon, Nemrut Dağı online rezervasyon, Güneş Hotel iletişim, Nemrut konaklama rezervasyon, Malatya otel"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/contact" />
       </Helmet>
-      <StructuredData type="hotel" page="contact" />
+      <EnhancedStructuredData page="contact" />
 
       <div className="contact-page">
         {/* Page Header */}

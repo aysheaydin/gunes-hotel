@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import AOS from 'aos'
 import { Toaster } from 'react-hot-toast'
 import Layout from '@components/layout/Layout'
-import ErrorBoundary from '@components/common/ErrorBoundary'
+import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary'
 
 // Lazy Loading - Sayfalar sadece gerektiğinde yüklenecek
 const Home = lazy(() => import(/* webpackChunkName: "home" */ '@pages/Home'))
@@ -11,6 +11,8 @@ const AboutPage = lazy(() => import(/* webpackChunkName: "about" */ '@pages/Abou
 const RoomsPage = lazy(() => import(/* webpackChunkName: "rooms" */ '@pages/RoomsPage'))
 const GalleryPage = lazy(() => import(/* webpackChunkName: "gallery" */ '@pages/GalleryPage'))
 const ContactPage = lazy(() => import(/* webpackChunkName: "contact" */ '@pages/ContactPage'))
+const NemrutDagiOteli = lazy(() => import(/* webpackChunkName: "nemrut-hotel" */ '@pages/NemrutDagiOteli'))
+const FAQ = lazy(() => import(/* webpackChunkName: "faq" */ '@pages/FAQ'))
 const NotFound = lazy(() => import(/* webpackChunkName: "notfound" */ '@pages/NotFound'))
 
 // Loading Component - Memoized for performance
@@ -88,16 +90,6 @@ function App() {
     }
   }, [location.pathname])
 
-  // Update document title and meta description based on route
-  useEffect(() => {
-    // This will be handled by Helmet in each page component
-    // but we ensure the default title is set
-    const defaultTitle = 'Güneş Hotel - Nemrut Dağı'
-    if (!document.title || document.title === defaultTitle) {
-      document.title = defaultTitle
-    }
-  }, [location.pathname])
-
   return (
     <ErrorBoundary>
       <Toaster
@@ -122,6 +114,8 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/rooms" element={<RoomsPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/nemrut-dagi-oteli" element={<NemrutDagiOteli />} />
+            <Route path="/sss" element={<FAQ />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
