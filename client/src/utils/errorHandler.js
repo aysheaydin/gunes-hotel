@@ -41,6 +41,7 @@ export const getErrorMessage = (error) => {
 
 export const showErrorToast = (error, customMessage) => {
   const message = customMessage || getErrorMessage(error)
+  
   toast.error(message, {
     duration: 4000,
     position: 'top-right',

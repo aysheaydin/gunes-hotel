@@ -78,7 +78,7 @@ const Contact = () => {
               </div>
               <h4>{t('contact.email')}</h4>
               <p>
-                <a href="mailto:info@guneshotel.com">info@guneshotel.com</a>
+                <a href="mailto:gunesmotel@hotmail.com">gunesmotel@hotmail.com</a>
               </p>
             </div>
           </Col>
@@ -92,6 +92,22 @@ const Contact = () => {
               <p className="text-muted mb-4">
                 {t('contact.quickContact.description')}
               </p>
+
+              {/* Temporary Unavailable Alert */}
+              <div className="alert alert-warning d-flex align-items-center mb-4" role="alert">
+                <i className="fas fa-exclamation-triangle me-3" style={{ fontSize: '1.5rem' }}></i>
+                <div>
+                  <strong>{t('contact.quickContact.tempUnavailable')}</strong>{' '}
+                  <a href="mailto:gunesmotel@hotmail.com" className="alert-link">
+                    {t('contact.quickContact.email')}
+                  </a>{' '}
+                  {t('contact.quickContact.contactVia')}{' '}
+                  <a href="https://wa.me/905438767271" target="_blank" rel="noopener noreferrer" className="alert-link">
+                    {t('contact.quickContact.whatsapp')}
+                  </a>{' '}
+                  {t('contact.quickContact.viaText')}
+                </div>
+              </div>
 
               <Form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Row>
@@ -178,19 +194,11 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="btn-submit"
-                    disabled={isSubmitting}
+                    disabled={true}
+                    title={t('contact.quickContact.tempUnavailable')}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        {t('contact.quickContact.sending')}
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-paper-plane me-2"></i>
-                        {t('contact.quickContact.send')}
-                      </>
-                    )}
+                    <i className="fas fa-ban me-2"></i>
+                    {t('contact.quickContact.send')}
                   </Button>
 
                   <Link to="/contact" className="btn btn-outline ms-3">

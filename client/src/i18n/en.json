@@ -168,7 +168,12 @@
       "send": "Send Message",
       "makeReservation": "Make Reservation",
       "success": "Your message has been sent successfully! We will get back to you as soon as possible.",
-      "error": "An error occurred. Please try again."
+      "error": "An error occurred. Please try again.",
+      "tempUnavailable": "Online form submissions are temporarily unavailable. Please contact us via",
+      "contactVia": "or",
+      "email": "email",
+      "whatsapp": "WhatsApp",
+      "viaText": "."
     },
     "form": {
       "title": "Reservation Form",
@@ -186,8 +191,11 @@
       "submit": "Send Reservation Request",
       "sending": "Sending...",
       "success": "Your reservation request has been sent successfully! We will get back to you as soon as possible.",
-      "error": "An error occurred. Please try again.",
-      "guestOptions": {
+      "error": "An error occurred. Please try again.",      "tempUnavailable": "Online reservation submissions are temporarily unavailable. Please make your reservation via",
+      "contactVia": "or",
+      "email": "email",
+      "whatsapp": "WhatsApp",
+      "viaText": ".",      "guestOptions": {
         "1": "1 Guest",
         "2": "2 Guests",
         "3": "3 Guests",

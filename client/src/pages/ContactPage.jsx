@@ -102,7 +102,7 @@ const ContactPage = () => {
                     </div>
                     <h4>{t('contact.email')}</h4>
                     <p>
-                      <a href="mailto:info@guneshotel.com">info@guneshotel.com</a>
+                      <a href="mailto:gunesmotel@hotmail.com">gunesmotel@hotmail.com</a>
                     </p>
                   </div>
 
@@ -127,6 +127,22 @@ const ContactPage = () => {
               <Col lg={8}>
                 <div className="reservation-form">
                   <h3 className="form-title">{t('contact.form.title')}</h3>
+
+                  {/* Temporary Unavailable Alert */}
+                  <div className="alert alert-warning d-flex align-items-center mb-4" role="alert">
+                    <i className="fas fa-exclamation-triangle me-3" style={{ fontSize: '1.5rem' }}></i>
+                    <div>
+                      <strong>{t('contact.form.tempUnavailable')}</strong>{' '}
+                      <a href="mailto:gunesmotel@hotmail.com" className="alert-link">
+                        {t('contact.form.email')}
+                      </a>{' '}
+                      {t('contact.form.contactVia')}{' '}
+                      <a href="https://wa.me/905438767271" target="_blank" rel="noopener noreferrer" className="alert-link">
+                        {t('contact.form.whatsapp')}
+                      </a>{' '}
+                      {t('contact.form.viaText')}
+                    </div>
+                  </div>
 
                   <Form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <Row>
@@ -296,16 +312,11 @@ const ContactPage = () => {
                     <Button 
                       type="submit" 
                       className="btn-submit"
-                      disabled={isSubmitting}
+                      disabled={true}
+                      title={t('contact.form.tempUnavailable')}
                     >
-                      {isSubmitting ? (
-                        <>
-                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                          {t('contact.form.sending')}
-                        </>
-                      ) : (
-                        t('contact.form.submit')
-                      )}
+                      <i className="fas fa-ban me-2"></i>
+                      {t('contact.form.submit')}
                     </Button>
                   </Form>
                 </div>

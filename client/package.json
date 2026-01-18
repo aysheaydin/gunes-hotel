@@ -13,8 +13,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext js,jsx --fix",
     "clean": "rm -rf dist build node_modules/.vite",
-    "serve": "vite preview --port 4173",
-    "typecheck": "tsc --noEmit"
+    "serve": "vite preview --port 4173"
   },
   "dependencies": {
     "aos": "^2.3.4",

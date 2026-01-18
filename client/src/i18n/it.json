@@ -168,7 +168,12 @@
       "send": "Invia Messaggio",
       "makeReservation": "Prenota",
       "success": "Il tuo messaggio è stato inviato con successo! Ti contatteremo al più presto.",
-      "error": "Si è verificato un errore. Riprova."
+      "error": "Si è verificato un errore. Riprova.",
+      "tempUnavailable": "L'invio di moduli online è temporaneamente non disponibile. Si prega di contattarci tramite",
+      "contactVia": "o",
+      "email": "email",
+      "whatsapp": "WhatsApp",
+      "viaText": "."
     },
     "form": {
       "title": "Modulo di Prenotazione",
@@ -187,6 +192,11 @@
       "sending": "Invio...",
       "success": "La tua richiesta di prenotazione è stata inviata con successo! Ti contatteremo al più presto.",
       "error": "Si è verificato un errore. Riprova.",
+      "tempUnavailable": "L'invio di prenotazioni online è temporaneamente non disponibile. Si prega di effettuare la prenotazione tramite",
+      "contactVia": "o",
+      "email": "email",
+      "whatsapp": "WhatsApp",
+      "viaText": ".",
       "guestOptions": {
         "1": "1 Ospite",
         "2": "2 Ospiti",

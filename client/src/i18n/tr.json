@@ -168,7 +168,12 @@
       "send": "Mesaj Gönder",
       "makeReservation": "Rezervasyon Yap",
       "success": "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapılacaktır.",
-      "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+      "tempUnavailable": "Şu an online form işlemleri geçici olarak kullanılamıyor. Lütfen",
+      "contactVia": "veya",
+      "email": "e-posta",
+      "whatsapp": "WhatsApp",
+      "viaText": "üzerinden bize ulaşın."
     },
     "form": {
       "title": "Rezervasyon Formu",
@@ -187,6 +192,11 @@
       "sending": "Gönderiliyor...",
       "success": "Rezervasyon talebiniz başarıyla gönderildi! En kısa sürede size dönüş yapılacaktır.",
       "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+      "tempUnavailable": "Şu an online rezervasyon işlemleri geçici olarak kullanılamıyor. Lütfen",
+      "contactVia": "veya",
+      "email": "e-posta",
+      "whatsapp": "WhatsApp",
+      "viaText": "üzerinden rezervasyon yapabilirsiniz.",
       "guestOptions": {
         "1": "1 Kişi",
         "2": "2 Kişi",

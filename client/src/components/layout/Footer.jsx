@@ -109,8 +109,8 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <i className="fas fa-envelope" aria-hidden="true"></i>
-                <a href="mailto:info@guneshotel.com" aria-label="E-posta: info@guneshotel.com">
-                  info@guneshotel.com
+                <a href="mailto:gunesmotel@hotmail.com" aria-label="E-posta: gunesmotel@hotmail.com">
+                  gunesmotel@hotmail.com
                 </a>
               </div>
             </address>
