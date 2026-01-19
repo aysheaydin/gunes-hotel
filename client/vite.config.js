@@ -6,6 +6,7 @@ import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: '/', // Dosya yolları için root path
   plugins: [
     react({
       // Fast Refresh optimizasyonu
@@ -42,7 +43,7 @@ export default defineConfig({
     // PWA Support
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['img/logo.webp', 'favicon.ico'],
       manifest: {
         name: 'Güneş Hotel - Nemrut Dağı',
         short_name: 'Güneş Hotel',
@@ -52,19 +53,15 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: '/img/logo.webp',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/webp',
+            purpose: 'any maskable'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/img/logo.webp',
             sizes: '512x512',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            type: 'image/webp',
             purpose: 'any maskable'
           }
         ]
@@ -136,9 +133,7 @@ export default defineConfig({
       '@i18n': path.resolve(__dirname, './src/i18n'),
       '@data': path.resolve(__dirname, './src/data'),
       '@hooks': path.resolve(__dirname, './src/hooks')
-    },
-    // React'in tek instance olarak kullanılmasını garanti et
-    dedupe: ['react', 'react-dom', 'react-router-dom', 'react-bootstrap']
+    }
   },
 
   // Dependency optimization
@@ -203,11 +198,14 @@ export default defineConfig({
     // Rollup options
     rollupOptions: {
       output: {
-        // Manuel chunk splitting - Core Web Vitals için optimize
+        // Manuel chunk splitting - React duplicate önleme
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'react-vendor'
+            // Tüm React ilişkili paketleri aynı chunk'ta tut
+            if (id.includes('react') || id.includes('react-dom') || 
+                id.includes('react-router') || id.includes('react-helmet') || 
+                id.includes('react-hook-form') || id.includes('react-hot-toast')) {
+              return 'vendor'
             }
             if (id.includes('bootstrap') || id.includes('react-bootstrap')) {
               return 'bootstrap'
