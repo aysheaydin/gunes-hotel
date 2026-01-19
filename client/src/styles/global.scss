@@ -234,6 +234,19 @@ img[width][height] {
     }
   }
 
+  &.btn-primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+
+    &:hover,
+    &:focus {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      color: white;
+    }
+  }
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;

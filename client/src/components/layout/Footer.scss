@@ -252,12 +252,20 @@
         }
 
         a {
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(255, 255, 255, 0.9);
           transition: $transition;
           word-break: break-word;
+          text-decoration: none;
 
           &:hover {
             color: $primary;
+            text-decoration: none;
+          }
+
+          &:focus {
+            color: $primary;
+            outline: 2px solid $primary;
+            outline-offset: 2px;
           }
         }
       }
