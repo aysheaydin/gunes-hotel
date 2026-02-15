@@ -1,98 +1,110 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Modal } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './GalleryPage.scss'
 
+const INITIAL_VISIBLE_COUNT = 24
+
+const galleryImages = [
+  { src: '/img/gallery-1.webp', alt: 'Otel Dýþ Görünüm', category: 'hotel' },
+  { src: '/img/gallery-2.webp', alt: 'Otel Dýþ Görünüm', category: 'hotel' },
+  { src: '/img/gallery-3.webp', alt: 'Resepsiyon Alaný', category: 'hotel' },
+  { src: '/img/gallery-5.webp', alt: 'Lounge Alaný', category: 'hotel' },
+  { src: '/img/gallery-6.webp', alt: 'Restoran', category: 'hotel' },
+  { src: '/img/gallery-8.webp', alt: 'Restoran', category: 'hotel' },
+  { src: '/img/double-room-1.webp', alt: 'Çift Kiþilik Oda', category: 'rooms' },
+  { src: '/img/double-room-2.webp', alt: 'Oda Detayý', category: 'rooms' },
+  { src: '/img/bathroom-1.webp', alt: 'Banyo', category: 'rooms' },
+  { src: '/img/bathroom-2.webp', alt: 'Banyo Detayý', category: 'rooms' },
+  { src: '/img/triple-room.webp', alt: 'Üç Kiþilik Oda', category: 'rooms' },
+  { src: '/img/twin-room-3.webp', alt: 'Çift Kiþilik Oda Görünüm', category: 'rooms' },
+  { src: '/img/gallery-9.webp', alt: 'Manzara', category: 'view' },
+  { src: '/img/gallery-10.webp', alt: 'Manzara', category: 'view' },
+  { src: '/img/gallery-11.webp', alt: 'Bahçe Alaný', category: 'hotel' },
+  { src: '/img/gallery-12.webp', alt: 'Nemrut', category: 'view' },
+  { src: '/img/gallery-13.webp', alt: 'Yemek Alaný', category: 'hotel' },
+  { src: '/img/gallery-14.webp', alt: 'Restoran Detay', category: 'hotel' },
+  { src: '/img/gallery-15.webp', alt: 'Otel Bahçe', category: 'hotel' },
+  { src: '/img/gallery-16.webp', alt: 'Otel Bahçe', category: 'hotel' },
+  { src: '/img/gallery-17.webp', alt: 'Genel Alan', category: 'hotel' },
+  { src: '/img/gallery-18.webp', alt: 'Dýþ Mekan', category: 'hotel' },
+  { src: '/img/gallery-19.webp', alt: 'Manzara', category: 'view' },
+  { src: '/img/gallery-20.webp', alt: 'Nemrut', category: 'view' },
+  { src: '/img/gallery-21.webp', alt: 'Manzara', category: 'view' },
+  { src: '/img/gallery-22.webp', alt: 'Doða', category: 'view' },
+  { src: '/img/gallery-23.webp', alt: 'Çevre', category: 'view' },
+  { src: '/img/winter.webp', alt: 'Kýþ Manzarasý', category: 'view' },
+  { src: '/img/gallery-24.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-25.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-26.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-27.webp', alt: 'Kýþ', category: 'view' },
+  { src: '/img/gallery-28.webp', alt: 'Kýþ', category: 'view' },
+  { src: '/img/gallery-29.webp', alt: 'Açýk Hava', category: 'hotel' },
+  { src: '/img/gallery-30.webp', alt: 'Yol Manzarasý', category: 'view' },
+  { src: '/img/gallery-31.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-36.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-37.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-38.webp', alt: 'Gün Batýmý Manzarasý', category: 'view' },
+  { src: '/img/gallery-39.webp', alt: 'Nemrut Daðý Gün Doðumu', category: 'view' },
+  { src: '/img/gallery-40.webp', alt: 'Sabah Manzarasý', category: 'view' },
+  { src: '/img/gallery-41.webp', alt: 'Doða ve Tarih', category: 'view' },
+  { src: '/img/gallery-42.webp', alt: 'Nemrut Panorama', category: 'view' },
+  { src: '/img/gallery-43.webp', alt: 'Dað Yolu', category: 'view' },
+  { src: '/img/gallery-44.webp', alt: 'Nemrut Yolu', category: 'view' },
+  { src: '/img/gallery-45.webp', alt: 'Dað Görünümü', category: 'view' },
+  { src: '/img/gallery-46.webp', alt: 'Otel Giriþ', category: 'hotel' },
+  { src: '/img/gallery-47.webp', alt: 'Nemrut Manzarasý', category: 'view' },
+  { src: '/img/gallery-48.webp', alt: 'Çift Kiþilik Oda', category: 'rooms' },
+  { src: '/img/gallery-52.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-53.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-54.webp', alt: 'Ýki Kiþilik Oda', category: 'rooms' },
+  { src: '/img/gallery-55.webp', alt: 'Banyo', category: 'rooms' },
+  { src: '/img/gallery-56.webp', alt: 'Nemrut Daðý', category: 'view' },
+  { src: '/img/gallery-57.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-58.webp', alt: 'Otel Giriþi', category: 'hotel' },
+  { src: '/img/gallery-59.webp', alt: 'Nemrut Daðý', category: 'view' },
+  { src: '/img/gallery-60.webp', alt: 'Otel Dýþ Mekan', category: 'hotel' },
+  { src: '/img/gallery-64.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-66.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-67.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-68.webp', alt: 'Otel', category: 'hotel' },
+  { src: '/img/gallery-69.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-70.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-71.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-72.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-73.webp', alt: 'Yemek Alaný', category: 'hotel' },
+  { src: '/img/gallery-74.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-75.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-76.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-77.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-80.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-81.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-82.webp', alt: 'Müþterilerimiz', category: 'customers' },
+  { src: '/img/gallery-83.webp', alt: 'Müþterilerimiz', category: 'customers' }
+]
+
 const GalleryPage = () => {
   const { t } = useTranslation()
   const [showModal, setShowModal] = useState(false)
   const [currentImage, setCurrentImage] = useState(0)
-
-  const galleryImages = [
-    { src: '/img/gallery-1.webp', alt: 'Otel DÄ±ÅŸ GÃ¶rÃ¼nÃ¼m', category: 'hotel' },
-    { src: '/img/gallery-2.webp', alt: 'Otel DÄ±ÅŸ GÃ¶rÃ¼nÃ¼m', category: 'hotel' },
-    { src: '/img/gallery-3.webp', alt: 'Resepsiyon AlanÄ±', category: 'hotel' },
-    { src: '/img/gallery-5.webp', alt: 'Lounge AlanÄ±', category: 'hotel' },
-    { src: '/img/gallery-6.webp', alt: 'Restoran', category: 'hotel' },
-    { src: '/img/gallery-8.webp', alt: 'Restoran', category: 'hotel' },
-    { src: '/img/double-room-1.webp', alt: 'Ã‡ift KiÅŸilik Oda', category: 'rooms' },
-    { src: '/img/double-room-2.webp', alt: 'Oda DetayÄ±', category: 'rooms' },
-    { src: '/img/bathroom-1.webp', alt: 'Banyo', category: 'rooms' },
-    { src: '/img/bathroom-2.webp', alt: 'Banyo DetayÄ±', category: 'rooms' },
-    { src: '/img/triple-room.webp', alt: 'ÃœÃ§ KiÅŸilik Oda', category: 'rooms' },
-    { src: '/img/twin-room-3.webp', alt: 'Ã‡ift KiÅŸilik Oda GÃ¶rÃ¼nÃ¼m', category: 'rooms' },
-    { src: '/img/gallery-9.webp', alt: 'Manzara', category: 'view' },
-    { src: '/img/gallery-10.webp', alt: 'Manzara', category: 'view' },
-    { src: '/img/gallery-11.webp', alt: 'BahÃ§e AlanÄ±', category: 'hotel' },
-    { src: '/img/gallery-12.webp', alt: 'Nemrut', category: 'view' },
-    { src: '/img/gallery-13.webp', alt: 'Yemek AlanÄ±', category: 'hotel' },
-    { src: '/img/gallery-14.webp', alt: 'Restoran Detay', category: 'hotel' },
-    { src: '/img/gallery-15.webp', alt: 'Otel BahÃ§e', category: 'hotel' },
-    { src: '/img/gallery-16.webp', alt: 'Otel BahÃ§e', category: 'hotel' },
-    { src: '/img/gallery-17.webp', alt: 'Genel Alan', category: 'hotel' },
-    { src: '/img/gallery-18.webp', alt: 'DÄ±ÅŸ Mekan', category: 'hotel' },
-    { src: '/img/gallery-19.webp', alt: 'Manzara', category: 'view' },
-    { src: '/img/gallery-20.webp', alt: 'Nemrut', category: 'view' },
-    { src: '/img/gallery-21.webp', alt: 'Manzara', category: 'view' },
-    { src: '/img/gallery-22.webp', alt: 'DoÄŸa', category: 'view' },
-    { src: '/img/gallery-23.webp', alt: 'Ã‡evre', category: 'view' },
-    { src: '/img/winter.webp', alt: 'KÄ±ÅŸ ManzarasÄ±', category: 'view' },
-    { src: '/img/gallery-24.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-25.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-26.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-27.webp', alt: 'KÄ±ÅŸ', category: 'view' },
-    { src: '/img/gallery-28.webp', alt: 'KÄ±ÅŸ', category: 'view' },
-    { src: '/img/gallery-29.webp', alt: 'AÃ§Ä±k Hava', category: 'hotel' },
-    { src: '/img/gallery-30.webp', alt: 'Yol ManzarasÄ±', category: 'view' },
-    { src: '/img/gallery-31.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-36.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-37.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-38.webp', alt: 'GÃ¼n BatÄ±mÄ± ManzarasÄ±', category: 'view' },
-    { src: '/img/gallery-39.webp', alt: 'Nemrut DaÄŸÄ± GÃ¼n DoÄŸumu', category: 'view' },
-    { src: '/img/gallery-40.webp', alt: 'Sabah ManzarasÄ±', category: 'view' },
-    { src: '/img/gallery-41.webp', alt: 'DoÄŸa ve Tarih', category: 'view' },
-    { src: '/img/gallery-42.webp', alt: 'Nemrut Panorama', category: 'view' },
-    { src: '/img/gallery-43.webp', alt: 'DaÄŸ Yolu', category: 'view' },
-    { src: '/img/gallery-44.webp', alt: 'Nemrut Yolu', category: 'view' },
-    { src: '/img/gallery-45.webp', alt: 'DaÄŸ GÃ¶rÃ¼nÃ¼mÃ¼', category: 'view' },
-    { src: '/img/gallery-46.webp', alt: 'Otel GiriÅŸ', category: 'hotel' },
-    { src: '/img/gallery-47.webp', alt: 'Nemrut ManzarasÄ±', category: 'view' },
-    { src: '/img/gallery-48.webp', alt: 'Ã‡ift KiÅŸilik Oda', category: 'rooms' },
-    { src: '/img/gallery-52.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-53.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-54.webp', alt: 'Ä°ki KiÅŸilik Oda', category: 'rooms' },
-    { src: '/img/gallery-55.webp', alt: 'Banyo', category: 'rooms' },
-    { src: '/img/gallery-56.webp', alt: 'Nemrut DaÄŸÄ±', category: 'view' },
-    { src: '/img/gallery-57.webp', alt: 'Otel BahÃ§esi', category: 'hotel' },
-    { src: '/img/gallery-58.webp', alt: 'Otel GiriÅŸi', category: 'hotel' },
-    { src: '/img/gallery-59.webp', alt: 'Nemrut DaÄŸÄ±', category: 'view' },
-    { src: '/img/gallery-60.webp', alt: 'Otel DÄ±ÅŸ Mekan', category: 'hotel' },
-    { src: '/img/gallery-64.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-66.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-67.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-68.webp', alt: 'Otel', category: 'hotel' },
-    { src: '/img/gallery-69.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-70.webp', alt: 'Otel BahÃ§esi', category: 'hotel' },
-    { src: '/img/gallery-71.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-72.webp', alt: 'Otel BahÃ§esi', category: 'hotel' },
-    { src: '/img/gallery-73.webp', alt: 'Yemek AlanÄ±', category: 'hotel' },
-    { src: '/img/gallery-74.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-75.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-76.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-77.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-80.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-81.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-82.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-    { src: '/img/gallery-83.webp', alt: 'MÃ¼ÅŸterilerimiz', category: 'customers' },
-  ]
-
   const [filter, setFilter] = useState('all')
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT)
 
-  const filteredImages = filter === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === filter)
+  const filteredImages = useMemo(() => {
+    if (filter === 'all') return galleryImages
+    return galleryImages.filter((img) => img.category === filter)
+  }, [filter])
+
+  const visibleImages = useMemo(() => {
+    return filteredImages.slice(0, visibleCount)
+  }, [filteredImages, visibleCount])
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT)
+    setCurrentImage(0)
+  }, [filter])
 
   const openModal = (index) => {
     setCurrentImage(index)
@@ -117,24 +129,29 @@ const GalleryPage = () => {
     if (e.key === 'Escape') closeModal()
   }
 
+  const showMore = () => {
+    setVisibleCount((prev) => Math.min(prev + INITIAL_VISIBLE_COUNT, filteredImages.length))
+  }
+
+  const hasMoreImages = visibleCount < filteredImages.length
+
   return (
     <>
       <Helmet>
-        <title>Nemrut DaÄŸÄ± FotoÄŸraf Galerisi | Otel OdalarÄ± & Manzara - GÃ¼neÅŸ Hotel</title>
-        <meta 
-          name="description" 
-          content="Nemrut DaÄŸÄ± ve GÃ¼neÅŸ Hotel fotoÄŸraf galerisi. GÃ¼n doÄŸumu manzaralarÄ±, otel odalarÄ±, restoran ve Kommagene tarihi eserleri. 100+ fotoÄŸraf." 
+        <title>Nemrut Daðý Fotoðraf Galerisi | Otel Odalarý & Manzara - Güneþ Hotel</title>
+        <meta
+          name="description"
+          content="Nemrut Daðý ve Güneþ Hotel fotoðraf galerisi. Gün doðumu manzaralarý, otel odalarý, restoran ve Kommagene tarihi eserleri. 100+ fotoðraf."
         />
         <meta
           name="keywords"
-          content="Nemrut DaÄŸÄ± fotoÄŸraflarÄ±, Nemrut gÃ¼n doÄŸumu, otel odasÄ± gÃ¶rselleri, Kommagene fotoÄŸraflarÄ±, Nemrut manzara"
+          content="Nemrut Daðý fotoðraflarý, Nemrut gün doðumu, otel odasý görselleri, Kommagene fotoðraflarý, Nemrut manzara"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/gallery" />
       </Helmet>
       <EnhancedStructuredData page="gallery" />
 
       <div className="gallery-page">
-        {/* Page Header */}
         <section className="page-header">
           <div className="page-header-overlay"></div>
           <Container>
@@ -145,35 +162,22 @@ const GalleryPage = () => {
           </Container>
         </section>
 
-        {/* Gallery Filters */}
         <section className="section gallery-section">
           <Container>
             <div className="gallery-filters">
-              <button 
-                className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-                onClick={() => setFilter('all')}
-              >
+              <button className={`filter-btn ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>
                 <i className="fas fa-th"></i> {t('gallery.filter.all')}
               </button>
-              <button 
-                className={`filter-btn ${filter === 'hotel' ? 'active' : ''}`}
-                onClick={() => setFilter('hotel')}
-              >
+              <button className={`filter-btn ${filter === 'hotel' ? 'active' : ''}`} onClick={() => setFilter('hotel')}>
                 <i className="fas fa-hotel"></i> {t('gallery.filter.hotel')}
               </button>
-              <button 
-                className={`filter-btn ${filter === 'rooms' ? 'active' : ''}`}
-                onClick={() => setFilter('rooms')}
-              >
+              <button className={`filter-btn ${filter === 'rooms' ? 'active' : ''}`} onClick={() => setFilter('rooms')}>
                 <i className="fas fa-bed"></i> {t('gallery.filter.rooms')}
               </button>
-              <button 
-                className={`filter-btn ${filter === 'view' ? 'active' : ''}`}
-                onClick={() => setFilter('view')}
-              >
+              <button className={`filter-btn ${filter === 'view' ? 'active' : ''}`} onClick={() => setFilter('view')}>
                 <i className="fas fa-mountain"></i> {t('gallery.filter.view')}
               </button>
-              <button 
+              <button
                 className={`filter-btn ${filter === 'customers' ? 'active' : ''}`}
                 onClick={() => setFilter('customers')}
               >
@@ -181,25 +185,28 @@ const GalleryPage = () => {
               </button>
             </div>
 
-            {/* Gallery Grid */}
             <Row className="gallery-grid">
-              {filteredImages.map((image, index) => (
-                <Col 
-                  key={index} 
-                  lg={4} 
-                  md={6} 
-                  className="gallery-item"
-                >
-                  <div 
+              {visibleImages.map((image, index) => (
+                <Col key={image.src} lg={4} md={6} className="gallery-item">
+                  <div
                     className="gallery-card"
                     onClick={() => openModal(index)}
                     role="button"
                     tabIndex={0}
-                    onKeyPress={(e) => e.key === 'Enter' && openModal(index)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        openModal(index)
+                      }
+                    }}
                   >
-                    <img 
-                      src={image.src} 
+                    <img
+                      src={image.src}
                       alt={image.alt}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="400"
                     />
                     <div className="gallery-overlay">
                       <i className="fas fa-search-plus"></i>
@@ -209,32 +216,33 @@ const GalleryPage = () => {
                 </Col>
               ))}
             </Row>
+
+            {hasMoreImages && (
+              <div className="text-center mt-4">
+                <button className="btn btn-primary" onClick={showMore}>
+                  Daha Fazla Görsel Yükle ({filteredImages.length - visibleCount})
+                </button>
+              </div>
+            )}
           </Container>
         </section>
 
-        {/* Lightbox Modal */}
-        <Modal 
-          show={showModal} 
-          onHide={closeModal}
-          size="xl"
-          centered
-          className="gallery-modal"
-          onKeyDown={handleKeyDown}
-        >
+        <Modal show={showModal} onHide={closeModal} size="xl" centered className="gallery-modal" onKeyDown={handleKeyDown}>
           <Modal.Body>
             <button className="modal-close" onClick={closeModal} aria-label="Kapat">
               <i className="fas fa-times"></i>
             </button>
-            <button className="modal-prev" onClick={prevImage} aria-label="Ã–nceki">
+            <button className="modal-prev" onClick={prevImage} aria-label="Önceki">
               <i className="fas fa-chevron-left"></i>
             </button>
             <button className="modal-next" onClick={nextImage} aria-label="Sonraki">
               <i className="fas fa-chevron-right"></i>
             </button>
-            <img 
-              src={filteredImages[currentImage]?.src} 
+            <img
+              src={filteredImages[currentImage]?.src}
               alt={filteredImages[currentImage]?.alt}
               className="modal-image"
+              decoding="async"
             />
             <div className="modal-caption">
               <p>{filteredImages[currentImage]?.alt}</p>
