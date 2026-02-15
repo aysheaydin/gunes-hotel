@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useImagePreload } from '@hooks'
 import './Hero.scss'
 
 const Hero = () => {
@@ -47,28 +46,53 @@ const Hero = () => {
     }
   ], [])
 
-  // Preload all slider images for smooth transitions
-  const imageSrcs = useMemo(() => slides.map(s => s.image), [slides])
-  const { preloadImage } = useImagePreload(imageSrcs, { 
-    preloadAll: typeof window !== 'undefined' && window.innerWidth >= 768,
-    priority: true 
-  })
+  const nextSlideIndex = (activeSlide + 1) % slides.length
 
-  // Auto-play with performance optimization
+  // Auto-play only when tab is visible
   useEffect(() => {
     const isMobile = window.innerWidth < 768
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length)
-    }, isMobile ? 8000 : 5000)
-    return () => clearInterval(interval)
+    const intervalMs = isMobile ? 8000 : 5000
+    let intervalId = null
+
+    const start = () => {
+      if (intervalId !== null || document.visibilityState !== 'visible') return
+      intervalId = window.setInterval(() => {
+        setActiveSlide((prev) => (prev + 1) % slides.length)
+      }, intervalMs)
+    }
+
+    const stop = () => {
+      if (intervalId !== null) {
+        window.clearInterval(intervalId)
+        intervalId = null
+      }
+    }
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        start()
+      } else {
+        stop()
+      }
+    }
+
+    start()
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    return () => {
+      stop()
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
   }, [slides.length])
 
-  // Preload next slide for smooth transition
+  // Preload only next slide
   useEffect(() => {
     const nextIndex = (activeSlide + 1) % slides.length
     const nextImage = slides[nextIndex].image
-    preloadImage(nextImage)
-  }, [activeSlide, slides, preloadImage])
+    const img = new Image()
+    img.decoding = 'async'
+    img.src = nextImage
+  }, [activeSlide, slides])
 
   const goToSlide = useCallback((index) => {
     setActiveSlide(index)
@@ -87,26 +111,25 @@ const Hero = () => {
       <div className="hero-slider-custom" role="group" aria-roledescription="Slayt gösterisi" aria-label="Otel görselleri">
         {slides.map((slide, index) => {
           const isActive = index === activeSlide
+          const shouldRenderImage = isActive || index === nextSlideIndex
           
           return (
             <div 
               key={index} 
               className={`slide ${isActive ? 'active' : ''}`}
             >
-              <img 
-                src={slide.image}
-                alt={`${t(slide.titleKey)} - ${t(slide.subtitleKey)}`}
-                className="slide-bg-img"
-                loading={index === 0 ? 'eager' : 'lazy'}
-                fetchpriority={index === 0 ? 'high' : 'low'}
-                decoding={index === 0 ? 'sync' : 'async'}
-                width="1920"
-                height="1080"
-                style={{ 
-                  objectFit: 'cover',
-                  imageRendering: window.innerWidth < 768 ? 'auto' : 'auto'
-                }}
-              />
+              {shouldRenderImage && (
+                <img
+                  src={slide.image}
+                  alt={`${t(slide.titleKey)} - ${t(slide.subtitleKey)}`}
+                  className="slide-bg-img"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={isActive ? 'high' : 'low'}
+                  decoding={isActive ? 'sync' : 'async'}
+                  width="1920"
+                  height="1080"
+                />
+              )}
               <div className="slide-overlay"></div>
               <div className="slide-content" style={{ display: isActive ? 'flex' : 'none' }}>
                 <div className="container">
