@@ -58,7 +58,7 @@ class ErrorBoundary extends React.Component {
               <h2>Bir şeyler yanlış gitti</h2>
               <p>Üzgünüz, bir hata oluştu. Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin.</p>
               
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {import.meta.env.DEV && this.state.error && (
                 <details className="error-details">
                   <summary>Hata Detayları (Sadece geliştirme ortamında görünür)</summary>
                   <pre>
