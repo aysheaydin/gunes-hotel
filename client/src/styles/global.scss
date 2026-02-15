@@ -94,21 +94,9 @@ img {
   height: auto;
   display: block;
   border-style: none;
-  /* CRITICAL: Görsellerin görünmesini sağla */
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
-/* Lazy Loading - Yüklenene kadar fade effect */
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
 
-  &.loaded,
-  &[data-loaded="true"] {
-    opacity: 1;
-  }
-}
 
 /* Görsel yüklenene kadar placeholder */
 img:not([src]),
@@ -457,42 +445,6 @@ select:focus-visible {
 .mb-3 { margin-bottom: 1rem; }
 .mb-4 { margin-bottom: 1.5rem; }
 .mb-5 { margin-bottom: 3rem; }
-
-/* === RESPONSIVE FIX === */
-* {
-  max-width: 100%;
-}
-
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw;
-}
-
-.row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.container-fluid {
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-}
-
-/* Bootstrap col fixes */
-[class*="col-"] {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* === FIX: Görsellerin kesinlikle görünmesini sağla === */
-.about-image,
-.room-image img,
-.gallery-card img,
-.slide-bg {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
 
 /* AOS animasyonları yüklenene kadar görünür olsun */
 [data-aos] {
