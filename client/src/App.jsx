@@ -15,6 +15,8 @@ const NemrutDagiOteli = lazy(() => import(/* webpackChunkName: "nemrut-hotel" */
 const NemrutDagiKonaklama = lazy(() => import(/* webpackChunkName: "nemrut-konaklama" */ '@pages/NemrutDagiKonaklama'))
 const NemrutDagiGunDogumuTuru = lazy(() => import(/* webpackChunkName: "nemrut-gundogumu" */ '@pages/NemrutDagiGunDogumuTuru'))
 const FAQ = lazy(() => import(/* webpackChunkName: "faq" */ '@pages/FAQ'))
+const PrivacyPage = lazy(() => import(/* webpackChunkName: "privacy" */ '@pages/PrivacyPage'))
+const TermsPage = lazy(() => import(/* webpackChunkName: "terms" */ '@pages/TermsPage'))
 const NotFound = lazy(() => import(/* webpackChunkName: "notfound" */ '@pages/NotFound'))
 
 // Loading Component - Memoized for performance
@@ -121,6 +123,8 @@ function App() {
             <Route path="/nemrut-dagi-gun-dogumu-turu" element={<NemrutDagiGunDogumuTuru />} />
             <Route path="/sss" element={<FAQ />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
