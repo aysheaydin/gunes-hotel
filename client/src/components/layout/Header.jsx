@@ -62,7 +62,7 @@ const Header = () => {
               width="50"
               height="50"
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               onError={(e) => {
                 e.target.style.display = 'none'
               }}
