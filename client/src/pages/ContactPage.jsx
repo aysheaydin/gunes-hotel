@@ -15,7 +15,7 @@ const ContactPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
     watch
   } = useForm({

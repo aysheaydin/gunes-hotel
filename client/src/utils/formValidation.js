@@ -30,7 +30,7 @@ export const validationRules = {
   phone: {
     required: 'Telefon numarası zorunludur',
     pattern: {
-      value: /^[\d\s()+\-]{10,20}$/,
+      value: /^[\d\s()+-]{10,20}$/,
       message: 'Geçerli bir telefon numarası giriniz'
     }
   },

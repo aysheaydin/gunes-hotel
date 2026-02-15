@@ -14,7 +14,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset
   } = useForm({
     mode: 'onBlur',
