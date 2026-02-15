@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Accordion } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
 import './FAQ.scss'
 
 const FAQ = () => {
-  const { t } = useTranslation()
-  const [activeKey, setActiveKey] = useState('0')
-
   const faqData = [
     {
       category: "🏨 Konaklama ve Rezervasyon",
