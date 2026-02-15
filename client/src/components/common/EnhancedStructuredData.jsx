@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet-async'
 
-const EnhancedStructuredData = ({ page = 'home', roomData = null }) => {
+const EnhancedStructuredData = ({ page = 'home' }) => {
   
   // 1. HOTEL SCHEMA (Enhanced with all critical SEO fields)
   const hotelSchema = {
@@ -405,8 +405,19 @@ const EnhancedStructuredData = ({ page = 'home', roomData = null }) => {
 }
 
 EnhancedStructuredData.propTypes = {
-  page: PropTypes.oneOf(['home', 'about', 'rooms', 'gallery', 'contact', 'nemrut-hotel', 'reservation']),
-  roomData: PropTypes.object
+  page: PropTypes.oneOf([
+    'home',
+    'about',
+    'rooms',
+    'gallery',
+    'contact',
+    'nemrut-hotel',
+    'nemrut-konaklama',
+    'nemrut-gundogumu',
+    'faq',
+    'privacy',
+    'terms'
+  ])
 }
 
 export default EnhancedStructuredData

@@ -1,14 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './NemrutDagiOteli.scss'
 
 const NemrutDagiOteli = () => {
-  const { t } = useTranslation()
-
   return (
     <>
       <Helmet>
@@ -30,7 +27,7 @@ const NemrutDagiOteli = () => {
         <meta property="og:url" content="https://www.nemrutgunesmotel.com/nemrut-dagi-oteli" />
         <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
       </Helmet>
-      <EnhancedStructuredData page="home" />
+      <EnhancedStructuredData page="nemrut-hotel" />
 
       {/* Hero Section */}
       <section className="nemrut-hero">

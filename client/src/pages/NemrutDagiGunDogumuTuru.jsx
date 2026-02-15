@@ -25,7 +25,7 @@ const NemrutDagiGunDogumuTuru = () => {
         <meta property="og:url" content="https://www.nemrutgunesmotel.com/nemrut-dagi-gun-dogumu-turu" />
         <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/slide-3.webp" />
       </Helmet>
-      <EnhancedStructuredData page="home" />
+      <EnhancedStructuredData page="nemrut-gundogumu" />
 
       <article className="nemrut-guide-page">
         <section className="page-header">
