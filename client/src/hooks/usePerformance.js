@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * Custom hook for measuring component performance
@@ -12,7 +12,7 @@ export const usePerformanceMonitor = (componentName, dependencies = []) => {
   useEffect(() => {
     renderCount.current += 1
     
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       const renderTime = performance.now() - renderStart.current
       
       if (renderCount.current > 1) {
@@ -41,9 +41,9 @@ export const usePerformanceMonitor = (componentName, dependencies = []) => {
  * @returns {*} Debounced value
  */
 export const useDebounce = (value, delay = 300) => {
-  const [debouncedValue, setDebouncedValue] = React.useState(value)
+  const [debouncedValue, setDebouncedValue] = useState(value)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value)
     }, delay)
