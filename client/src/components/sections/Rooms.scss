@@ -296,20 +296,21 @@
     }
   }
 
-  .btn-outline {
-    border: 2px solid $primary;
-    color: $primary;
-    background: transparent;
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+  // Buton stilleri global.scss'den inherit edilir
+  // .btn-outline {
+  //   border: 2px solid $primary;
+  //   color: $primary;
+  //   background: transparent;
+  //   padding: 1rem 3rem;
+  //   border-radius: 50px;
+  //   font-weight: 600;
+  //   transition: all 0.3s ease;
 
-    &:hover {
-      background: $primary;
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-  }
+  //   &:hover {
+  //     background: $primary;
+  //     color: white;
+  //     transform: translateY(-3px);
+  //     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  //   }
+  // }
 }

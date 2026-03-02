@@ -97,7 +97,7 @@ const About = () => {
                 ))}
               </div>
 
-              <Link to="/about" className="btn btn-primary">
+              <Link to="/about" className="btn btn-primary btn-lg">
                 {t('about.learnMore')}
               </Link>
             </div>

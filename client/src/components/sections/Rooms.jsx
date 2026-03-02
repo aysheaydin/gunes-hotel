@@ -102,7 +102,7 @@ const Rooms = () => {
         <div className="text-center mt-4">
           <Link 
             to="/rooms" 
-            className="btn btn-outline btn-lg"
+            className="btn btn-primary btn-lg"
             aria-label="Tüm odaları görüntüle"
           >
             {t('rooms.viewAll')}

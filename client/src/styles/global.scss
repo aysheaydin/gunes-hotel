@@ -235,6 +235,15 @@ img[width][height] {
     }
   }
 
+  &.btn-lg {
+    padding: 1rem 2.5rem !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important; /* Bootstrap override için */
+    letter-spacing: 0.3px !important;
+    line-height: 1.5 !important;
+  }
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
