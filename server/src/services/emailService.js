@@ -1,16 +1,32 @@
 import transporter from '../config/email.js';
 import { logger } from '../utils/logger.js';
+import { sanitizeForEmail, sanitizeEmail } from '../utils/sanitizer.js';
 
 /**
  * Email Service
- * Handles all email communications:
+ * Handles all email communications with comprehensive sanitization
+ * Protects against:
+ * - Email Header Injection
+ * - XSS in email templates
+ * - HTML injection
+ * 
  * 1. Hotel notification emails (reservation details)
  * 2. Customer confirmation emails (auto-reply)
  */
 
 // Email template for HOTEL - Detailed reservation info
 const getHotelEmailTemplate = (data) => {
-  const { fullName, email, phone, checkIn, checkOut, guests, roomType, message } = data;
+  // Sanitize all inputs to prevent XSS in email
+  const fullName = sanitizeForEmail(data.fullName);
+  const email = data.email; // Already sanitized by validator
+  const phone = sanitizeForEmail(data.phone);
+  const roomType = data.roomType ? sanitizeForEmail(data.roomType) : 'Belirtilmedi';
+  const message = data.message ? sanitizeForEmail(data.message) : '';
+  
+  // Dates are already validated, safe to use
+  const checkInDate = new Date(data.checkIn).toLocaleDateString('tr-TR');
+  const checkOutDate = new Date(data.checkOut).toLocaleDateString('tr-TR');
+  const guests = parseInt(data.guests, 10);
   
   return `
 <!DOCTYPE html>
@@ -56,11 +72,11 @@ const getHotelEmailTemplate = (data) => {
       <h2>Rezervasyon Detayları</h2>
       <div class="field">
         <span class="label">Giriş Tarihi:</span>
-        <span class="value">${new Date(checkIn).toLocaleDateString('tr-TR')}</span>
+        <span class="value">${checkInDate}</span>
       </div>
       <div class="field">
         <span class="label">Çıkış Tarihi:</span>
-        <span class="value">${new Date(checkOut).toLocaleDateString('tr-TR')}</span>
+        <span class="value">${checkOutDate}</span>
       </div>
       <div class="field">
         <span class="label">Misafir Sayısı:</span>
@@ -68,7 +84,7 @@ const getHotelEmailTemplate = (data) => {
       </div>
       <div class="field">
         <span class="label">Oda Tipi:</span>
-        <span class="value">${roomType || 'Belirtilmedi'}</span>
+        <span class="value">${roomType}</span>
       </div>
       
       ${message ? `
@@ -94,7 +110,10 @@ const getHotelEmailTemplate = (data) => {
 
 // Email template for CUSTOMER - Confirmation message
 const getCustomerEmailTemplate = (data) => {
-  const { fullName, checkIn, checkOut, guests } = data;
+  const fullName = sanitizeForEmail(data.fullName);
+  const checkInDate = new Date(data.checkIn).toLocaleDateString('tr-TR');
+  const checkOutDate = new Date(data.checkOut).toLocaleDateString('tr-TR');
+  const guests = parseInt(data.guests, 10);
   
   return `
 <!DOCTYPE html>
@@ -129,8 +148,8 @@ const getCustomerEmailTemplate = (data) => {
       
       <div class="info-box">
         <h3>📋 Talep Özeti</h3>
-        <p><strong>Giriş:</strong> ${new Date(checkIn).toLocaleDateString('tr-TR')}</p>
-        <p><strong>Çıkış:</strong> ${new Date(checkOut).toLocaleDateString('tr-TR')}</p>
+        <p><strong>Giriş:</strong> ${checkInDate}</p>
+        <p><strong>Çıkış:</strong> ${checkOutDate}</p>
         <p><strong>Misafir:</strong> ${guests} kişi</p>
       </div>
       
@@ -239,19 +258,24 @@ export const sendReservationEmails = async (reservationData) => {
  */
 export const sendContactEmail = async (contactData) => {
   try {
-    const { fullName, email, phone, subject, message } = contactData;
+    // Sanitize all inputs
+    const fullName = sanitizeForEmail(contactData.fullName);
+    const email = contactData.email; // Already sanitized by validator
+    const phone = contactData.phone ? sanitizeForEmail(contactData.phone) : 'Belirtilmedi';
+    const subject = contactData.subject ? sanitizeForEmail(contactData.subject) : 'Genel';
+    const message = sanitizeForEmail(contactData.message);
     
     const mailOptions = {
       from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
       to: process.env.CONTACT_EMAIL || 'gunesmotel@hotmail.com',
       replyTo: email,
-      subject: `📧 İletişim Formu: ${subject || 'Yeni Mesaj'}`,
+      subject: `📧 İletişim Formu: ${subject}`,
       html: `
         <h2>Yeni İletişim Formu Mesajı</h2>
         <p><strong>Ad Soyad:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone || 'Belirtilmedi'}</p>
-        <p><strong>Konu:</strong> ${subject || 'Genel'}</p>
+        <p><strong>Telefon:</strong> ${phone}</p>
+        <p><strong>Konu:</strong> ${subject}</p>
         <hr>
         <p><strong>Mesaj:</strong></p>
         <p>${message}</p>

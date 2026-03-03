@@ -1,8 +1,10 @@
 import rateLimit from 'express-rate-limit';
+import { logger } from '../utils/logger.js';
 
 /**
  * Rate limiter for reservation endpoint
  * Prevents spam and abuse
+ * Enhanced with stricter limits and logging
  */
 export const reservationLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -13,18 +15,35 @@ export const reservationLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  // Skip rate limiting for certain IPs (optional)
+  
+  // Skip rate limiting for certain IPs in development
   skip: (req) => {
     // Example: skip for localhost in development
     if (process.env.NODE_ENV === 'development' && req.ip === '127.0.0.1') {
       return true;
     }
     return false;
+  },
+  
+  // Custom handler with logging
+  handler: (req, res) => {
+    logger.warn(`Reservation rate limit exceeded for IP: ${req.ip}`);
+    res.status(429).json({
+      success: false,
+      message: 'Çok fazla rezervasyon talebi gönderdiniz. Lütfen 15 dakika sonra tekrar deneyiniz.',
+      retryAfter: '15 minutes'
+    });
+  },
+  
+  // Key generator (use IP + user agent for better tracking)
+  keyGenerator: (req) => {
+    return `${req.ip}_${req.headers['user-agent']}`;
   }
 });
 
 /**
  * Rate limiter for contact form
+ * Slightly more lenient than reservation
  */
 export const contactLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
@@ -34,5 +53,18 @@ export const contactLimiter = rateLimit({
     message: 'Çok fazla mesaj gönderdiniz. Lütfen 10 dakika sonra tekrar deneyiniz.'
   },
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
+  
+  handler: (req, res) => {
+    logger.warn(`Contact rate limit exceeded for IP: ${req.ip}`);
+    res.status(429).json({
+      success: false,
+      message: 'Çok fazla mesaj gönderdiniz. Lütfen 10 dakika sonra tekrar deneyiniz.',
+      retryAfter: '10 minutes'
+    });
+  },
+  
+  keyGenerator: (req) => {
+    return `${req.ip}_${req.headers['user-agent']}`;
+  }
 });
