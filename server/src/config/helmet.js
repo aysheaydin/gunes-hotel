@@ -104,9 +104,6 @@ export const helmetConfig = {
     policy: 'strict-origin-when-cross-origin'
   },
 
-  // X-XSS-Protection - Legacy XSS protection (for older browsers)
-  xssFilter: true,
-
   // Cross-Origin-Embedder-Policy
   crossOriginEmbedderPolicy: false, // Set to true if you need strict isolation
 

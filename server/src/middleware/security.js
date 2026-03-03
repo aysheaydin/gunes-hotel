@@ -57,8 +57,14 @@ export const globalRateLimiter = rateLimit({
   },
   standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
   legacyHeaders: false, // Disable `X-RateLimit-*` headers
-  // Skip rate limiting for health check
-  skip: (req) => req.path === '/health',
+  // Skip rate limiting for health check and localhost in development
+  skip: (req) => {
+    if (req.path === '/health') return true;
+    if (process.env.NODE_ENV === 'development' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.1')) {
+      return true;
+    }
+    return false;
+  },
   handler: (req, res) => {
     logger.warn(`Rate limit exceeded for IP: ${req.ip}`);
     res.status(429).json({

@@ -11,19 +11,21 @@ export const validateReservation = [
     .notEmpty().withMessage('İsim soyisim gereklidir')
     .isLength({ min: 2, max: 100 }).withMessage('İsim 2-100 karakter arasında olmalıdır')
     .matches(/^[a-zA-ZğüşöçİĞÜŞÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
+    .custom(value => {
+      // Block SQL injection patterns
+      const sqlPatterns = /('|(--|;)|(\/\*|\*\/)|(\bOR\b|\bAND\b|\bUNION\b|\bSELECT\b|\bDROP\b|\bINSERT\b|\bDELETE\b|\bUPDATE\b))/i;
+      if (sqlPatterns.test(value)) {
+        throw new Error('Geçersiz karakter içeriyor');
+      }
+      return true;
+    })
     .customSanitizer(value => sanitizeName(value)),
   
   body('email')
     .trim()
     .notEmpty().withMessage('Email gereklidir')
     .isEmail().withMessage('Geçerli bir email adresi giriniz')
-    .customSanitizer(value => {
-      try {
-        return sanitizeEmail(value);
-      } catch (error) {
-        throw new Error('Geçersiz email formatı');
-      }
-    }),
+    .normalizeEmail(),
   
   body('phone')
     .trim()
@@ -128,19 +130,21 @@ export const validateContact = [
     .notEmpty().withMessage('İsim soyisim gereklidir')
     .isLength({ min: 2, max: 100 }).withMessage('İsim 2-100 karakter arasında olmalıdır')
     .matches(/^[a-zA-ZğüşöçİĞÜŞÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
+    .custom(value => {
+      // Block SQL injection patterns
+      const sqlPatterns = /('|(--|;)|(\/\*|\*\/)|(\bOR\b|\bAND\b|\bUNION\b|\bSELECT\b|\bDROP\b|\bINSERT\b|\bDELETE\b|\bUPDATE\b))/i;
+      if (sqlPatterns.test(value)) {
+        throw new Error('Geçersiz karakter içeriyor');
+      }
+      return true;
+    })
     .customSanitizer(value => sanitizeName(value)),
   
   body('email')
     .trim()
     .notEmpty().withMessage('Email gereklidir')
     .isEmail().withMessage('Geçerli bir email adresi giriniz')
-    .customSanitizer(value => {
-      try {
-        return sanitizeEmail(value);
-      } catch (error) {
-        throw new Error('Geçersiz email formatı');
-      }
-    }),
+    .normalizeEmail(),
   
   body('phone')
     .optional()
