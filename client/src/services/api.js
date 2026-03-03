@@ -31,9 +31,7 @@ api.interceptors.response.use(
 )
 
 export const reservationAPI = {
-  create: (data) => api.post('/reservations', data),
-  getAll: () => api.get('/reservations'),
-  getById: (id) => api.get(`/reservations/${id}`)
+  create: (data) => api.post('/reservations', data)
 }
 
 export const contactAPI = {
