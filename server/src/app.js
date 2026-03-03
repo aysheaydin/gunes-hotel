@@ -4,10 +4,15 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+
+// Load environment variables FIRST
+dotenv.config();
+
 import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import reservationRoutes from './routes/reservation.js';
 import contactRoutes from './routes/contact.js';
+import emailTransporter from './config/email.js';  // Import email config
 
 // Security imports
 import { helmetConfig, additionalSecurityHeaders, enforceHTTPS, disableCache } from './config/helmet.js';
@@ -24,6 +29,9 @@ import {
 
 // Load environment variables
 dotenv.config();
+
+// Initialize email configuration (must be after dotenv.config())
+import('./config/email.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
