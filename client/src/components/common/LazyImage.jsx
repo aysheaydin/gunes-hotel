@@ -28,7 +28,6 @@ const LazyImage = memo(({
   ...props
 }) => {
   const [imageSrc, setImageSrc] = useState(placeholder)
-  const [imageError, setImageError] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const imgRef = useRef(null)
   const observerRef = useRef(null)
@@ -74,7 +73,6 @@ const LazyImage = memo(({
   }
 
   const handleError = () => {
-    setImageError(true)
     setImageSrc(fallback)
   }
 
@@ -87,7 +85,7 @@ const LazyImage = memo(({
       width={width}
       height={height}
       loading={loading}
-      fetchpriority={fetchPriority}
+      fetchPriority={fetchPriority}
       decoding="async"
       sizes={sizes}
       srcSet={srcSet}
