@@ -21,8 +21,8 @@ export const HOTEL_CONFIG = {
   email: import.meta.env.VITE_EMAIL || 'gunesmotel@hotmail.com',
   
   // WhatsApp (without + prefix for wa.me links)
-  whatsapp: import.meta.env.VITE_WHATSAPP || '905438767271',
-  whatsappDisplay: '+90 543 876 7271',
+  whatsapp: import.meta.env.VITE_WHATSAPP || '905362870639',
+  whatsappDisplay: '+90 536 287 0639',
   
   // Social Media
   instagram: import.meta.env.VITE_INSTAGRAM_URL || 'https://www.instagram.com/mount_nemrut_tour?igsh=MTBsZDJmN3Zva24xZA==',

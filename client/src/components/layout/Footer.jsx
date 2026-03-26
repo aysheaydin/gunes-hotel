@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import { HOTEL_CONFIG, getPhoneLink, getEmailLink } from '@/config/hotel'
 import './Footer.scss'
 
 const Footer = () => {
