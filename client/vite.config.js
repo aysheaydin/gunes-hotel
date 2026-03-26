@@ -43,7 +43,7 @@ export default defineConfig({
     // PWA Support
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['img/logo.webp', 'favicon.ico'],
+      includeAssets: ['img/logo.webp'],
       manifest: {
         name: 'Güneş Hotel - Nemrut Dağı',
         short_name: 'Güneş Hotel',
@@ -146,9 +146,18 @@ export default defineConfig({
       'react-helmet-async',
       'react-i18next',
       'i18next',
-      'i18next-browser-languagedetector'
+      'i18next-browser-languagedetector',
+      'axios',
+      'aos'
     ],
-    force: true
+    exclude: ['@vite/client', '@vite/env'],
+    force: false,
+    esbuildOptions: {
+      target: 'es2020',
+      supported: {
+        'top-level-await': true
+      }
+    }
   },
   
   server: {
