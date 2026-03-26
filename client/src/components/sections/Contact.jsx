@@ -5,11 +5,12 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { useErrorHandler } from '@hooks'
 import { contactAPI } from '@services/api'
-import { validationRules } from '@utils/formValidation'
+import { getValidationRules } from '@utils/formValidation'
 import './Contact.scss'
 
 const Contact = () => {
   const { t } = useTranslation()
+  const validationRules = getValidationRules(t)
   const { handleSuccess, withErrorHandling, loading } = useErrorHandler()
   const {
     register,

@@ -5,12 +5,13 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { reservationAPI } from '@services/api'
 import { useErrorHandler } from '@hooks'
-import { validationRules } from '@utils/formValidation'
+import { getValidationRules } from '@utils/formValidation'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './ContactPage.scss'
 
 const ContactPage = () => {
   const { t } = useTranslation()
+  const validationRules = getValidationRules(t)
   const { handleSuccess, withErrorHandling, loading } = useErrorHandler()
   const {
     register,
@@ -49,7 +50,7 @@ const ContactPage = () => {
     // Remove honeypot field before sending
     const { website, ...sanitizedData } = data;
     
-    const { success, error } = await withErrorHandling(
+    const { success } = await withErrorHandling(
       () => reservationAPI.create(sanitizedData),
       t('contact.form.error')
     )
@@ -251,7 +252,7 @@ const ContactPage = () => {
                           <Form.Control
                             id="reservation-checkIn"
                             type="date"
-                            {...register('checkIn', validationRules.checkInDate)}
+                            {...register('checkIn', validationRules.checkIn)}
                             min={new Date().toISOString().split('T')[0]}
                             isInvalid={!!errors.checkIn}
                             aria-invalid={!!errors.checkIn}
@@ -269,7 +270,7 @@ const ContactPage = () => {
                           <Form.Control
                             id="reservation-checkOut"
                             type="date"
-                            {...register('checkOut', validationRules.checkOutDate)}
+                            {...register('checkOut', validationRules.checkOut)}
                             min={checkInDate || new Date().toISOString().split('T')[0]}
                             isInvalid={!!errors.checkOut}
                             aria-invalid={!!errors.checkOut}

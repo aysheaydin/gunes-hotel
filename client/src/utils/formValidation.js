@@ -189,8 +189,9 @@ export const validationRules = {
     required: i18n.t('formValidation.checkOut.required'),
     validate: {
       afterCheckIn: (value, formValues) => {
-        if (!formValues.checkInDate) return true
-        const checkIn = new Date(formValues.checkInDate)
+        const checkInValue = formValues.checkIn || formValues.checkInDate
+        if (!checkInValue) return true
+        const checkIn = new Date(checkInValue)
         const checkOut = new Date(value)
         return checkOut > checkIn || i18n.t('formValidation.checkOut.minDate')
       }
