@@ -2,21 +2,24 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './NemrutDagiOteli.scss'
 
 const NemrutDagiKonaklama = () => {
+  const { t } = useTranslation()
+  
   return (
     <>
       <Helmet>
-        <title>Nemrut Dağı Konaklama - Pansiyon ve Otel Seçenekleri | Güneş Hotel</title>
+        <title>{t('seoPages.nemrutKonaklama.title')}</title>
         <meta
           name="description"
-          content="Nemrut Dağı konaklama rehberi. En yakın oteller, pansiyonlar, fiyatlar, gün doğumu turları hakkında kapsamlı bilgi. 2 km mesafede konforlu konaklama."
+          content={t('seoPages.nemrutKonaklama.description')}
         />
         <meta
           name="keywords"
-          content="nemrut dağı konaklama, nemrut pansiyon, nemrut otel fiyatları, nemrut nerede kalınır, nemrut konaklama yerleri"
+          content={t('seoPages.nemrutKonaklama.keywords')}
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/nemrut-dagi-konaklama" />
         <meta property="og:title" content="Nemrut Dağı Konaklama Rehberi - Güneş Hotel" />
@@ -34,11 +37,10 @@ const NemrutDagiKonaklama = () => {
             <Row className="align-items-center min-vh-50">
               <Col lg={8}>
                 <h1 className="display-4 text-white fw-bold mb-3">
-                  Nemrut Dağı Konaklama Rehberi
+                  {t('seoPages.nemrutKonaklama.hero.title')}
                 </h1>
                 <p className="lead text-white-50 mb-4">
-                  UNESCO Dünya Mirası Nemrut Dağı'nı ziyaret ederken nerede kalmalı? 
-                  En iyi konaklama seçenekleri, fiyatlar ve pratik bilgiler.
+                  {t('seoPages.nemrutKonaklama.hero.subtitle')}
                 </p>
               </Col>
             </Row>
@@ -50,20 +52,20 @@ const NemrutDagiKonaklama = () => {
           <Container>
             <Card className="shadow-sm">
               <Card.Body>
-                <h2 className="h4 mb-4">📋 İçindekiler</h2>
+                <h2 className="h4 mb-4">{t('seoPages.nemrutKonaklama.toc.title')}</h2>
                 <Row>
                   <Col md={6}>
                     <ul className="content-list">
-                      <li><a href="#nerede-kalinir">Nemrut Dağı'nda Nerede Kalınır?</a></li>
-                      <li><a href="#gunes-hotel">Güneş Hotel - En Yakın Seçenek</a></li>
-                      <li><a href="#konaklama-secenekleri">Diğer Konaklama Seçenekleri</a></li>
+                      <li><a href="#nerede-kalinir">{t('seoPages.nemrutKonaklama.toc.items.0')}</a></li>
+                      <li><a href="#gunes-hotel">{t('seoPages.nemrutKonaklama.toc.items.1')}</a></li>
+                      <li><a href="#konaklama-secenekleri">{t('seoPages.nemrutKonaklama.toc.items.2')}</a></li>
                     </ul>
                   </Col>
                   <Col md={6}>
                     <ul className="content-list">
-                      <li><a href="#fiyatlar">Konaklama Fiyatları</a></li>
-                      <li><a href="#ipuclari">Rezervasyon İpuçları</a></li>
-                      <li><a href="#sss">Sıkça Sorulan Sorular</a></li>
+                      <li><a href="#fiyatlar">{t('seoPages.nemrutKonaklama.toc.items.3')}</a></li>
+                      <li><a href="#ipuclari">{t('seoPages.nemrutKonaklama.toc.items.4')}</a></li>
+                      <li><a href="#sss">{t('seoPages.nemrutKonaklama.toc.items.5')}</a></li>
                     </ul>
                   </Col>
                 </Row>
@@ -78,7 +80,7 @@ const NemrutDagiKonaklama = () => {
             <Row>
               <Col lg={8} className="mx-auto">
                 <article className="content-article">
-                  <h2>Nemrut Dağı'nda Nerede Kalınır?</h2>
+                  <h2>{t('seoPages.nemrutKonaklama.headings.whereToStay')}</h2>
                   <p className="lead">
                     Nemrut Dağı, Türkiye'nin Güneydoğu Anadolu Bölgesi'nde, Malatya ve Adıyaman 
                     illeri arasında yer alan 2.134 metre yüksekliğinde bir dağdır. UNESCO Dünya 
@@ -138,7 +140,7 @@ const NemrutDagiKonaklama = () => {
                     Malatya'dan sabah 03:00-04:00'te yola çıkmak oldukça yorucudur.
                   </div>
 
-                  <h2 id="gunes-hotel" className="mt-5">Güneş Hotel - Nemrut Dağı'na En Yakın Otel</h2>
+                  <h2 id="gunes-hotel" className="mt-5">{t('seoPages.nemrutKonaklama.headings.gunesHotel')}</h2>
                   
                   <Row className="align-items-center my-4">
                     <Col md={6}>
@@ -173,12 +175,12 @@ const NemrutDagiKonaklama = () => {
                       </ul>
                       <Link to="/contact" className="btn btn-primary mt-3">
                         <i className="fas fa-calendar-check me-2"></i>
-                        Hemen Rezervasyon Yap
+                        {t('seoPages.nemrutKonaklama.cta.bookNow')}
                       </Link>
                     </Col>
                   </Row>
 
-                  <h2 id="konaklama-secenekleri" className="mt-5">Diğer Konaklama Seçenekleri</h2>
+                  <h2 id="konaklama-secenekleri" className="mt-5">{t('seoPages.nemrutKonaklama.headings.otherOptions')}</h2>
                   
                   <h3 className="h5 mt-4">Karadut Bölgesi Otelleri</h3>
                   <p>
@@ -194,7 +196,7 @@ const NemrutDagiKonaklama = () => {
                     kalkış (03:00-04:00) gerektirmektedir.
                   </p>
 
-                  <h2 id="fiyatlar" className="mt-5">Nemrut Dağı Konaklama Fiyatları (2026)</h2>
+                  <h2 id="fiyatlar" className="mt-5">{t('seoPages.nemrutKonaklama.headings.pricing')}</h2>
                   
                   <div className="price-table mt-4">
                     <Card className="mb-3">
@@ -232,7 +234,7 @@ const NemrutDagiKonaklama = () => {
                     fiyatlar %20-40 artabilir. Erken rezervasyon yapmanız önerilir.
                   </div>
 
-                  <h2 id="ipuclari" className="mt-5">Nemrut Konaklama İpuçları</h2>
+                  <h2 id="ipuclari" className="mt-5">{t('seoPages.nemrutKonaklama.headings.tips')}</h2>
                   
                   <div className="tips-list">
                     <Card className="mb-3 border-success">
@@ -285,7 +287,7 @@ const NemrutDagiKonaklama = () => {
                     </Card>
                   </div>
 
-                  <h2 id="sss" className="mt-5">Sıkça Sorulan Sorular</h2>
+                  <h2 id="sss" className="mt-5">{t('seoPages.nemrutKonaklama.headings.faq')}</h2>
                   
                   <div className="faq-section">
                     <Card className="mb-3">
@@ -345,11 +347,11 @@ const NemrutDagiKonaklama = () => {
                     </p>
                     <Link to="/contact" className="btn btn-warning btn-lg me-3">
                       <i className="fas fa-phone-alt me-2"></i>
-                      Hemen Ara: +90 543 876 7271
+                      {t('seoPages.nemrutKonaklama.cta.callNow')}
                     </Link>
                     <Link to="/rooms" className="btn btn-light btn-lg">
                       <i className="fas fa-bed me-2"></i>
-                      Odalarımızı İncele
+                      {t('seoPages.nemrutKonaklama.cta.viewRooms')}
                     </Link>
                   </div>
                 </article>
