@@ -64,6 +64,12 @@ PageLoader.displayName = 'PageLoader'
 
 function App() {
   const location = useLocation()
+  const { i18n } = useTranslation()
+
+  // Update HTML lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = i18n.language
+  }, [i18n.language])
 
   useEffect(() => {
     import('aos/dist/aos.css')
