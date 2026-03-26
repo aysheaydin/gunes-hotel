@@ -5,8 +5,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import App from './App'
 import './i18n/config'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'aos/dist/aos.css'
 import './styles/global.scss'
+import './styles/toast.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

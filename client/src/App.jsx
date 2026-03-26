@@ -32,7 +32,7 @@ const PageLoader = memo(() => (
     }}
     role="status"
     aria-live="polite"
-    aria-label="Sayfa yükleniyor"
+    aria-label={i18n.t('loading.pageLoading')}
   >
     <div 
       style={{
@@ -45,7 +45,7 @@ const PageLoader = memo(() => (
       }}
       aria-hidden="true"
     />
-    <p style={{ color: '#666', fontSize: '14px' }}>Yükleniyor...</p>
+    <p style={{ color: '#666', fontSize: '14px' }}>{i18n.t('loading.text')}</p>
     <style>{`
       @keyframes spin {
         0% { transform: rotate(0deg); }
@@ -61,6 +61,8 @@ function App() {
   const location = useLocation()
 
   useEffect(() => {
+    import('aos/dist/aos.css')
+
     // Initialize AOS - Performans odaklı ayarlar
     const isMobile = window.innerWidth < 768
     
@@ -77,37 +79,67 @@ function App() {
       anchorPlacement: 'top-bottom'
     })
 
-    return () => {
-      AOS.refresh()
-    }
+    return undefined
   }, [])
 
   useEffect(() => {
     // Scroll to top on route change - native scrollTo for better performance
     window.scrollTo(0, 0)
-    
-    // AOS refresh with requestIdleCallback for better performance
+
+    // AOS only refreshes when animated elements exist on page
+    if (!document.querySelector('[data-aos]')) {
+      return undefined
+    }
+
+    let timeoutId
     if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(() => AOS.refresh())
+      window.requestIdleCallback(() => AOS.refreshHard())
     } else {
-      setTimeout(() => AOS.refresh(), 100)
+      timeoutId = window.setTimeout(() => AOS.refreshHard(), 100)
+    }
+
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId)
+      }
     }
   }, [location.pathname])
 
   return (
     <ErrorBoundary>
       <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={false}
         gutter={8}
+        containerStyle={{
+          top: 80,
+          zIndex: 9999
+        }}
         toastOptions={{
           duration: 4000,
           style: {
-            background: '#363636',
-            color: '#fff',
-            padding: '16px',
+            background: '#fff',
+            color: '#374151',
+            padding: '16px 20px',
             borderRadius: '8px',
-            fontSize: '14px'
+            fontSize: '14px',
+            fontWeight: '500',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12)',
+            maxWidth: '450px'
+          },
+          success: {
+            duration: 4000,
+            iconTheme: {
+              primary: '#10b981',
+              secondary: '#fff'
+            }
+          },
+          error: {
+            duration: 4000,
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#fff'
+            }
           }
         }}
       />
@@ -134,3 +166,4 @@ function App() {
 }
 
 export default App
+
