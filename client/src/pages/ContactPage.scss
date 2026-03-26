@@ -156,6 +156,26 @@
         }
       }
 
+      // Honeypot field - completely hidden from users
+      .honeypot-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+        
+        // Additional obfuscation
+        input {
+          position: absolute !important;
+          left: -9999px !important;
+          width: 1px !important;
+          height: 1px !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      }
+
       .btn-submit {
         width: 100%;
         padding: 1rem;

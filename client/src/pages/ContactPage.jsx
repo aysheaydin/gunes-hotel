@@ -11,7 +11,7 @@ import './ContactPage.scss'
 
 const ContactPage = () => {
   const { t } = useTranslation()
-  const { handleSuccess, withErrorHandling } = useErrorHandler()
+  const { handleSuccess, withErrorHandling, loading } = useErrorHandler()
   const {
     register,
     handleSubmit,
@@ -27,21 +27,39 @@ const ContactPage = () => {
       checkIn: '',
       checkOut: '',
       roomType: '',
-      guests: '',
-      specialRequests: ''
+      guests: 1,
+      message: '',
+      website: '' // Honeypot field
     }
   })
 
   const checkInDate = watch('checkIn')
 
   const onSubmit = async (data) => {
-    const { success } = await withErrorHandling(
-      () => reservationAPI.create(data),
+    if (import.meta.env.MODE === 'development') {
+      console.log('ContactPage - Form submitted with data:', data)
+    }
+    
+    // Honeypot check - if filled, likely a bot
+    if (data.website) {
+      console.warn('Honeypot triggered - possible bot submission');
+      return;
+    }
+    
+    // Remove honeypot field before sending
+    const { website, ...sanitizedData } = data;
+    
+    const { success, error } = await withErrorHandling(
+      () => reservationAPI.create(sanitizedData),
       t('contact.form.error')
     )
 
+    if (import.meta.env.MODE === 'development') {
+      console.log('ContactPage - withErrorHandling result:', success)
+    }
+    
     if (success) {
-      handleSuccess(t('contact.form.success'))
+      handleSuccess(t('contact.form.successDesc'))
       reset()
     }
   }
@@ -132,22 +150,6 @@ const ContactPage = () => {
                 <div className="reservation-form">
                   <h3 className="form-title">{t('contact.form.title')}</h3>
 
-                  {/* Temporary Unavailable Alert */}
-                  <div className="alert alert-warning d-flex align-items-center mb-4" role="alert">
-                    <i className="fas fa-exclamation-triangle me-3" style={{ fontSize: '1.5rem' }}></i>
-                    <div>
-                      <strong>{t('contact.form.tempUnavailable')}</strong>{' '}
-                      <a href="mailto:gunesmotel@hotmail.com" className="alert-link">
-                        {t('contact.form.email')}
-                      </a>{' '}
-                      {t('contact.form.contactVia')}{' '}
-                      <a href="https://wa.me/905362870639" target="_blank" rel="noopener noreferrer" className="alert-link">
-                        {t('contact.form.whatsapp')}
-                      </a>{' '}
-                      {t('contact.form.viaText')}
-                    </div>
-                  </div>
-
                   <Form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <Row>
                       <Col md={6}>
@@ -214,19 +216,26 @@ const ContactPage = () => {
                           <Form.Label htmlFor="reservation-guests">{t('contact.form.guests')} *</Form.Label>
                           <Form.Select
                             id="reservation-guests"
-                            {...register('guests', validationRules.guests)}
+                            {...register('guests', { 
+                              ...validationRules.guests,
+                              valueAsNumber: true // Convert string to number
+                            })}
                             isInvalid={!!errors.guests}
                             aria-invalid={!!errors.guests}
                             aria-describedby={errors.guests ? 'reservation-guests-error' : undefined}
                             aria-required="true"
                           >
                             <option value="">{t('contact.form.selectGuests')}</option>
-                            <option value="1">{t('contact.form.guestOptions.1')}</option>
-                            <option value="2">{t('contact.form.guestOptions.2')}</option>
-                            <option value="3">{t('contact.form.guestOptions.3')}</option>
-                            <option value="4">{t('contact.form.guestOptions.4')}</option>
-                            <option value="5">{t('contact.form.guestOptions.5')}</option>
-                            <option value="6+">{t('contact.form.guestOptions.6plus')}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                           </Form.Select>
                           <Form.Control.Feedback type="invalid" id="reservation-guests-error">
                             {errors.guests?.message}
@@ -297,30 +306,50 @@ const ContactPage = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-4">
-                      <Form.Label htmlFor="reservation-specialRequests">{t('contact.form.specialRequests')}</Form.Label>
+                      <Form.Label htmlFor="reservation-message">{t('contact.form.specialRequests')}</Form.Label>
                       <Form.Control
-                        id="reservation-specialRequests"
+                        id="reservation-message"
                         as="textarea"
                         rows={4}
-                        {...register('specialRequests', {
+                        {...register('message', {
                           maxLength: { value: 500, message: 'Özel istekler en fazla 500 karakter olabilir' }
                         })}
                         placeholder="Özel isteklerinizi buraya yazabilirsiniz..."
-                        isInvalid={!!errors.specialRequests}
+                        isInvalid={!!errors.message}
                       />
                       <Form.Control.Feedback type="invalid">
-                        {errors.specialRequests?.message}
+                        {errors.message?.message}
                       </Form.Control.Feedback>
+                    </Form.Group>
+
+                    {/* Honeypot field - hidden from users, only bots will fill this */}
+                    <Form.Group className="honeypot-field" aria-hidden="true">
+                      <Form.Label htmlFor="website">Website</Form.Label>
+                      <Form.Control
+                        id="website"
+                        type="text"
+                        {...register('website')}
+                        tabIndex="-1"
+                        autoComplete="off"
+                      />
                     </Form.Group>
 
                     <Button 
                       type="submit" 
                       className="btn-submit"
-                      disabled={true}
-                      title={t('contact.form.tempUnavailable')}
+                      disabled={loading}
                     >
-                      <i className="fas fa-ban me-2"></i>
-                      {t('contact.form.submit')}
+                      {loading ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          {t('contact.form.sending')}
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-calendar-check me-2"></i>
+                          {t('contact.form.submit')}
+                        </>
+                      )}
                     </Button>
                   </Form>
                 </div>
