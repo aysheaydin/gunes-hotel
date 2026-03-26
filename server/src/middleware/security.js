@@ -1,7 +1,6 @@
 import { doubleCsrf } from 'csrf-csrf';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
-import crypto from 'crypto';
 import { detectSuspiciousPatterns, validateRequestHeaders } from '../utils/sanitizer.js';
 import { logger } from '../utils/logger.js';
 
@@ -15,6 +14,7 @@ import { logger } from '../utils/logger.js';
  */
 const { generateCsrfToken, doubleCsrfProtection } = doubleCsrf({
   getSecret: () => process.env.CSRF_SECRET || 'your-csrf-secret-change-this-in-production',
+  getSessionIdentifier: (req) => `${req.ip}-${req.headers['user-agent'] || 'unknown-agent'}`,
   cookieName: process.env.NODE_ENV === 'production' ? '__Host-psifi.x-csrf-token' : 'x-csrf-token',
   cookieOptions: {
     sameSite: 'strict',
@@ -24,7 +24,7 @@ const { generateCsrfToken, doubleCsrfProtection } = doubleCsrf({
   },
   size: 64,
   ignoredMethods: ['GET', 'HEAD', 'OPTIONS'],
-  getTokenFromRequest: (req) => req.headers['x-csrf-token'] || req.body._csrf
+  getCsrfTokenFromRequest: (req) => req.headers['x-csrf-token']
 });
 
 // Export CSRF middleware
@@ -36,22 +36,7 @@ export { doubleCsrfProtection };
  */
 export const csrfTokenRoute = (req, res) => {
   try {
-    // Generate a simple token for development
-    // In production, this should use the CSRF library properly
-    const token = crypto.randomBytes(64).toString('hex');
-    
-    // Set cookie
-    res.cookie(
-      process.env.NODE_ENV === 'production' ? '__Host-psifi.x-csrf-token' : 'x-csrf-token',
-      token,
-      {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/'
-      }
-    );
-    
+    const token = generateCsrfToken(req, res, { overwrite: true });
     res.json({ csrfToken: token });
   } catch (error) {
     logger.error('CSRF token generation error:', error);
@@ -220,8 +205,7 @@ export const originValidation = (req, res, next) => {
     'https://www.nemrutgunesmotel.com'
   ].filter(Boolean);
   
-  const origin = req.headers.origin;
-  const referer = req.headers.referer;
+  const { origin, referer } = req.headers;
   
   // Skip validation for GET requests and health check
   if (req.method === 'GET' || req.path === '/health') {
