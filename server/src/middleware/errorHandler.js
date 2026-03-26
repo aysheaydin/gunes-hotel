@@ -4,7 +4,7 @@ import { logger } from '../utils/logger.js';
  * Global error handler middleware
  * Catches all errors and sends appropriate response
  */
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res, _next) => {
   logger.error('Error Handler:', {
     message: err.message,
     stack: err.stack,
@@ -14,7 +14,7 @@ export const errorHandler = (err, req, res, next) => {
   });
 
   // Default error
-  let error = {
+  const error = {
     success: false,
     message: err.message || 'Sunucu hatası',
     statusCode: err.statusCode || 500

@@ -3,7 +3,7 @@
  * Additional protections against email bombing and sophisticated attacks
  */
 
-import rateLimit from 'express-rate-limit';
+import crypto from 'crypto';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
 import { logger } from '../utils/logger.js';
 
@@ -59,7 +59,7 @@ export const phoneRateLimiter = async (req, res, next) => {
   
   try {
     // Normalize phone (remove spaces, dashes)
-    const normalizedPhone = phone.replace(/[\s\-\(\)]/g, '');
+    const normalizedPhone = phone.replace(/[\s-()]/g, '');
     await phoneLimiterStore.consume(normalizedPhone);
     next();
   } catch (rejRes) {
@@ -105,8 +105,7 @@ export const createFingerprint = (req) => {
   const ip = req.ip || req.connection.remoteAddress;
   const userAgent = req.headers['user-agent'] || '';
   const acceptLanguage = req.headers['accept-language'] || '';
-  
-  const crypto = require('crypto');
+
   const hash = crypto.createHash('sha256');
   hash.update(`${ip}${userAgent}${acceptLanguage}`);
   
@@ -175,22 +174,10 @@ export const suspiciousActivityLogger = (req, res, next) => {
  */
 export const createDistributedLimiter = (options) => {
   if (process.env.REDIS_URL) {
-    // Production: Use Redis
-    const { RateLimiterRedis } = require('rate-limiter-flexible');
-    const redis = require('redis');
-    
-    const redisClient = redis.createClient({
-      url: process.env.REDIS_URL
-    });
-    
-    return new RateLimiterRedis({
-      storeClient: redisClient,
-      ...options
-    });
-  } else {
-    // Development: Use Memory
-    return new RateLimiterMemory(options);
+    logger.warn('REDIS_URL is set but Redis limiter is not configured in this ESM build. Falling back to memory limiter.');
   }
+
+  return new RateLimiterMemory(options);
 };
 
 /**

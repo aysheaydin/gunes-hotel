@@ -37,9 +37,7 @@ export const reservationLimiter = rateLimit({
   },
   
   // Key generator (use IP + user agent for better tracking)
-  keyGenerator: (req) => {
-    return `${req.ip}_${req.headers['user-agent']}`;
-  }
+  keyGenerator: (req) => `${req.ip}_${req.headers['user-agent']}`
 });
 
 /**
@@ -75,9 +73,7 @@ export const contactLimiter = rateLimit({
     });
   },
   
-  keyGenerator: (req) => {
-    return `${req.ip}_${req.headers['user-agent']}`;
-  }
+  keyGenerator: (req) => `${req.ip}_${req.headers['user-agent']}`
 });
 
 /**
@@ -103,7 +99,5 @@ export const apiLimiter = rateLimit({
     });
   },
   
-  keyGenerator: (req) => {
-    return req.ip;
-  }
+  keyGenerator: (req) => req.ip
 });
