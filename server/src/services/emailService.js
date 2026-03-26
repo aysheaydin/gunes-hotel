@@ -3,6 +3,27 @@ import { logger } from '../utils/logger.js';
 import { sanitizeForEmail, sanitizeEmail } from '../utils/sanitizer.js';
 
 /**
+ * Retry utility with exponential backoff
+ * @param {Function} fn - Async function to retry
+ * @param {number} maxRetries - Maximum number of retry attempts
+ * @param {number} delay - Initial delay in milliseconds
+ */
+const retryWithBackoff = async (fn, maxRetries = 3, delay = 1000) => {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (attempt === maxRetries) {
+        throw error;
+      }
+      const waitTime = delay * Math.pow(2, attempt - 1);
+      logger.warn(`Retry attempt ${attempt}/${maxRetries} after ${waitTime}ms`);
+      await new Promise(resolve => setTimeout(resolve, waitTime));
+    }
+  }
+};
+
+/**
  * Email Service
  * Handles all email communications with comprehensive sanitization
  * Protects against:
