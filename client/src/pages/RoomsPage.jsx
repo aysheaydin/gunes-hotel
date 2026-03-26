@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useRooms } from '@hooks'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
+import LazyImage from '@components/common/LazyImage'
 import './RoomsPage.scss'
 
 const RoomsPage = () => {
@@ -50,10 +51,14 @@ const RoomsPage = () => {
                 <Row className="align-items-center">
                   <Col lg={5}>
                     <div className="room-image-wrapper">
-                      <img 
+                      <LazyImage 
                         src={room.image} 
                         alt={room.name} 
                         className="img-fluid room-image"
+                        loading={index < 2 ? 'eager' : 'lazy'}
+                        fetchPriority={index === 0 ? 'high' : 'auto'}
+                        width="600"
+                        height="400"
                       />
                       {room.popular && (
                         <Badge bg="warning" className="room-badge">
