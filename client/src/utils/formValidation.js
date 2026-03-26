@@ -120,6 +120,10 @@ export const getValidationRules = (t) => ({
       value: 10,
       message: t('formValidation.guests.max')
     }
+  },
+
+  kvkkConsent: {
+    required: t('contact.form.kvkkConsentRequired')
   }
 });
 
@@ -208,6 +212,10 @@ export const validationRules = {
       value: 10,
       message: i18n.t('formValidation.guests.max')
     }
+  },
+
+  kvkkConsent: {
+    required: i18n.t('contact.form.kvkkConsentRequired')
   }
 }
 

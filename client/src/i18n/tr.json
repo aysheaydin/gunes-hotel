@@ -168,6 +168,8 @@
       "subjectPlaceholder": "Konu",
       "optional": "(İsteğe bağlı)",
       "messagePlaceholder": "Mesajınız *",
+      "kvkkConsent": "Kişisel verilerimin işlenmesini kabul ediyorum",
+      "kvkkRequired": "KVKK onayı vermelisiniz",
       "sending": "Gönderiliyor...",
       "send": "Mesaj Gönder",
       "makeReservation": "Rezervasyon Yap",
@@ -192,6 +194,10 @@
       "emailPlaceholder": "ornek@email.com",
       "phonePlaceholder": "+90 555 123 4567",
       "specialRequests": "Özel İstekler (Opsiyonel)",
+      "kvkkConsent": "KVKK Onayı",
+      "kvkkConsentText": "Kişisel verilerimin Gizlilik Politikası ve KVKK Aydınlatma Metni kapsamında işlenmesini kabul ediyorum.",
+      "kvkkConsentLink": "KVKK Aydınlatma Metni",
+      "kvkkRequired": "Devam etmek için KVKK onayı vermelisiniz",
       "submit": "Rezervasyon Talebi Gönder",
       "sending": "Gönderiliyor...",
       "success": "Rezervasyon talebiniz alındı",
@@ -287,18 +293,174 @@
     "pageLoading": "Sayfa yükleniyor"
   },
   "privacy": {
-    "title": "Gizlilik Politikası",
-    "heading": "Gizlilik Politikası",
-    "intro": "Bu sayfa, web sitemizi kullanırken işlenen kişisel veriler ve veri güvenliği süreçleri hakkında bilgi verir.",
-    "usage": "İletişim formları üzerinden iletilen veriler yalnızca talebinizi yanıtlamak amacıyla kullanılır ve üçüncü taraflarla paylaşılmaz.",
-    "contact": "Talepleriniz için:"
+    "title": "Gizlilik Politikası ve KVKK Aydınlatma Metni",
+    "heading": "Kişisel Verilerin Korunması ve Gizlilik Politikası",
+    "lastUpdated": "Son Güncelleme: 26 Mart 2026",
+    "intro": "Güneş Hotel olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) kapsamında kişisel verilerinizin güvenliğini sağlamayı ve gizliliğinizi korumayı taahhüt ediyoruz.",
+    
+    "dataController": {
+      "title": "1. Veri Sorumlusu",
+      "content": "Kişisel verileriniz, Güneş Motel (Adres: Karadut Köyü, Pötürge/Malatya) tarafından veri sorumlusu sıfatıyla işlenmektedir.",
+      "contact": "İletişim: gunesmotel@hotmail.com | +90 543 876 7271"
+    },
+    
+    "dataCollected": {
+      "title": "2. Toplanan Kişisel Veriler",
+      "content": "Rezervasyon ve iletişim formları aracılığıyla toplanan bilgiler:",
+      "items": [
+        "Ad Soyad",
+        "E-posta adresi",
+        "Telefon numarası",
+        "Giriş-çıkış tarihleri",
+        "Oda tercihi ve misafir sayısı",
+        "Özel talep ve notlar (isteğe bağlı)"
+      ]
+    },
+    
+    "purpose": {
+      "title": "3. Veri İşleme Amaçları",
+      "content": "Kişisel verileriniz aşağıdaki amaçlarla işlenmektedir:",
+      "items": [
+        "Rezervasyon talebinizi işleme almak ve yanıtlamak",
+        "Konaklama hizmetini sağlamak",
+        "Yasal yükümlülükleri yerine getirmek",
+        "Müşteri memnuniyeti ve hizmet kalitesini artırmak",
+        "İletişim kurmak ve bilgilendirme yapmak"
+      ]
+    },
+    
+    "legalBasis": {
+      "title": "4. Hukuki Dayanaklar",
+      "content": "Verileriniz KVKK m.5 ve m.6 uyarınca:",
+      "items": [
+        "Açık rızanız (rezervasyon formu onayı)",
+        "Sözleşmenin kurulması ve ifası",
+        "Hukuki yükümlülüğün yerine getirilmesi temelinde işlenmektedir"
+      ]
+    },
+    
+    "retention": {
+      "title": "5. Veri Saklama Süresi",
+      "content": "Kişisel verileriniz:",
+      "items": [
+        "Rezervasyon verileri: Konaklamadan sonra 10 yıl (Vergi Usul Kanunu gereği)",
+        "İletişim kayıtları: Talep sonuçlandıktan sonra 2 yıl",
+        "Hukuki süreç devam ediyorsa süreç sonuna kadar saklanır"
+      ]
+    },
+    
+    "rights": {
+      "title": "6. Kişisel Veri Sahibi Haklarınız",
+      "content": "KVKK m.11 uyarınca haklarınız:",
+      "items": [
+        "Kişisel verilerinizin işlenip işlenmediğini öğrenme",
+        "İşlenmişse bu konuda bilgi talep etme",
+        "İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme",
+        "Yurt içinde/dışında aktarıldığı 3. kişileri bilme",
+        "Eksik veya yanlış işlenmişse düzeltilmesini isteme",
+        "KVKK m.7'deki şartlar çerçevesinde silinmesini/yok edilmesini isteme",
+        "Düzeltme/silme işlemlerinin 3. kişilere bildirilmesini isteme",
+        "Münhasıran otomatik sistemlerle analiz edilmesine itiraz etme",
+        "Kanuna aykırı işleme nedeniyle zarara uğramanız halinde tazminat talep etme"
+      ]
+    },
+    
+    "dataRequest": {
+      "title": "7. Veri Silme, Düzeltme veya İtiraz Hakkı",
+      "content": "Haklarınızı kullanmak için başvuru yöntemi:",
+      "method": "E-posta: gunesmotel@hotmail.com (kimlik fotokopisi ekleyerek)",
+      "response": "Başvurunuz 30 gün içinde ücretsiz olarak yanıtlanacaktır. İşlemin maliyet gerektirmesi halinde KVKK Tarifesi uygulanır."
+    },
+    
+    "security": {
+      "title": "8. Veri Güvenliği",
+      "content": "Kişisel verileriniz SSL şifrelemesi, güvenli sunucular ve erişim kontrolü ile korunmaktadır. Yetkisiz erişim, kayıp veya ifşaya karşı teknik ve idari tedbirler alınmıştır."
+    },
+    
+    "sharing": {
+      "title": "9. Veri Paylaşımı",
+      "content": "Verileriniz yalnızca yasal zorunluluklar (mahkeme kararı, vergi dairesi vb.) dışında 3. taraflarla paylaşılmaz. Pazarlama amaçlı satış/kiralama/paylaşım yapılmaz."
+    },
+    
+    "cookies": {
+      "title": "10. Çerezler (Cookies)",
+      "content": "Web sitemiz teknik çerezler kullanmaktadır. Analitik çerezler (Google Analytics) şu anda aktif değildir. Gelecekte kullanılması halinde ayrıca bilgilendirme yapılacaktır."
+    },
+    
+    "contact": {
+      "title": "11. İletişim",
+      "email": "gunesmotel@hotmail.com",
+      "phone": "+90 543 876 7271",
+      "address": "Karadut Köyü, Pötürge/Malatya"
+    }
   },
   "terms": {
-    "title": "Kullanım Koşulları",
-    "heading": "Kullanım Koşulları",
-    "intro": "Bu web sitesini kullanan tüm ziyaretçiler aşağıdaki koşulları kabul etmiş sayılır.",
-    "disclaimer": "İçerik bilgilendirme amaçlıdır. Fiyat, müsaitlik ve kampanyalar için rezervasyon öncesi doğrulama yapılmalıdır.",
-    "contact": "Koşullar hakkında:"
+    "title": "Kullanım Koşulları ve Yasal Uyarılar",
+    "heading": "Web Sitesi Kullanım Koşulları",
+    "lastUpdated": "Son Güncelleme: 26 Mart 2026",
+    "intro": "www.nemrutgunesmotel.com adresini ziyaret ederek ve kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız. Koşulları kabul etmiyorsanız lütfen siteyi kullanmayınız.",
+    
+    "acceptance": {
+      "title": "1. Koşulların Kabulü",
+      "content": "Bu web sitesini kullanarak, burada belirtilen tüm şartları, politikaları ve uyarıları okuduğunuzu ve kabul ettiğinizi beyan etmiş olursunuz."
+    },
+    
+    "services": {
+      "title": "2. Hizmet Kapsamı",
+      "content": "Bu web sitesi bilgilendirme ve rezervasyon talebi iletme amacıyla sunulmaktadır. Oda müsaitliği, fiyatlar ve kampanyalar değişebilir. Kesin teyit için otelinizle iletişime geçiniz."
+    },
+    
+    "reservation": {
+      "title": "3. Rezervasyon Koşulları",
+      "items": [
+        "Web sitesi üzerinden yapılan rezervasyon talepleri ön talep niteliğindedir",
+        "Rezervasyonunuzun kesinleşmesi için otel tarafından onay verilmesi gerekmektedir",
+        "Fiyatlar ve müsaitlik bilgileri anlık olarak değişiklik gösterebilir",
+        "Yanlış veya eksik bilgi verilmesi rezervasyonun iptaline sebep olabilir"
+      ]
+    },
+    
+    "payment": {
+      "title": "4. Ödeme ve İptal Politikası",
+      "items": [
+        "Ödeme koşulları rezervasyon onayı sırasında bildirilir",
+        "İptal koşulları rezervasyon dönemine göre değişiklik gösterebilir",
+        "Erken iptal bildirimi halinde ücret iadesi yapılabilir",
+        "Detaylı iptal koşulları için otel ile iletişime geçiniz"
+      ]
+    },
+    
+    "intellectual": {
+      "title": "5. Fikri Mülkiyet Hakları",
+      "content": "Bu web sitesinde yer alan tüm içerik, tasarım, logo, fotoğraf ve metinler Güneş Hotel'e aittir. İzinsiz kopyalama, çoğaltma veya ticari kullanımı yasaktır."
+    },
+    
+    "liability": {
+      "title": "6. Sorumluluk Sınırlaması",
+      "content": "Web sitesindeki bilgilerin doğruluğu için azami özen gösterilmektedir. Ancak teknik hatalar, yazım yanlışları veya güncel olmayan bilgilerden dolayı Güneş Hotel sorumlu tutulamaz."
+    },
+    
+    "links": {
+      "title": "7. Üçüncü Taraf Bağlantıları",
+      "content": "Web sitemizde yer alan dış bağlantılar bilgilendirme amaçlıdır. Bağlantı verilen sitelerin içeriğinden Güneş Hotel sorumlu değildir."
+    },
+    
+    "changes": {
+      "title": "8. Değişiklik Hakkı",
+      "content": "Güneş Hotel, kullanım koşullarını önceden haber vermeksizin değiştirme hakkını saklı tutar. Değişiklikler yayınlandığı anda yürürlüğe girer."
+    },
+    
+    "law": {
+      "title": "9. Uygulanacak Hukuk ve Yetki",
+      "content": "İşbu kullanım koşulları Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlıklarda Malatya Mahkemeleri ve İcra Daireleri yetkilidir."
+    },
+    
+    "contact": {
+      "title": "10. İletişim",
+      "content": "Sorularınız ve talepleriniz için:",
+      "email": "gunesmotel@hotmail.com",
+      "phone": "+90 543 876 7271"
+    }
   },
   "faq": {
     "title": "Nemrut Dağı Oteli SSS | Sık Sorulan Sorular - Güneş Hotel",

@@ -207,7 +207,10 @@
         "4": "4 Guests",
         "5": "5 Guests",
         "6plus": "6+ Guests"
-      }
+      },
+      "kvkkConsent": "I agree to the processing of my personal data",
+      "kvkkConsentLink": "Privacy Policy",
+      "kvkkConsentRequired": "You must agree to the privacy policy to continue"
     }
   },
   "footer": {

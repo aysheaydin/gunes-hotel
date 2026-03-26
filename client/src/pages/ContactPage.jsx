@@ -30,6 +30,7 @@ const ContactPage = () => {
       roomType: '',
       guests: 1,
       message: '',
+      kvkkConsent: false,
       website: '' // Honeypot field
     }
   })
@@ -321,6 +322,26 @@ const ContactPage = () => {
                       <Form.Control.Feedback type="invalid">
                         {errors.message?.message}
                       </Form.Control.Feedback>
+                    </Form.Group>
+
+                    {/* KVKK Consent */}
+                    <Form.Group className="mb-3">
+                      <Form.Check
+                        id="reservation-kvkkConsent"
+                        type="checkbox"
+                        {...register('kvkkConsent', validationRules.kvkkConsent)}
+                        isInvalid={!!errors.kvkkConsent}
+                        feedback={errors.kvkkConsent?.message}
+                        feedbackType="invalid"
+                        label={
+                          <>
+                            {t('contact.form.kvkkConsent')}{' '}
+                            <a href="/privacy" target="_blank" rel="noopener noreferrer">
+                              {t('contact.form.kvkkConsentLink')}
+                            </a>
+                          </>
+                        }
+                      />
                     </Form.Group>
 
                     {/* Honeypot field - hidden from users, only bots will fill this */}

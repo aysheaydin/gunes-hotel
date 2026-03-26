@@ -208,7 +208,10 @@
         "4": "4 Ospiti",
         "5": "5 Ospiti",
         "6plus": "6+ Ospiti"
-      }
+      },
+      "kvkkConsent": "Accetto il trattamento dei miei dati personali",
+      "kvkkConsentLink": "Informativa sulla Privacy",
+      "kvkkConsentRequired": "È necessario accettare l'informativa sulla privacy per continuare"
     }
   },
   "footer": {

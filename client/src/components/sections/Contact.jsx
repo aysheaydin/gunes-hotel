@@ -24,7 +24,8 @@ const Contact = () => {
       email: '',
       phone: '',
       subject: '',
-      message: ''
+      message: '',
+      kvkkConsent: false
     }
   })
 
@@ -196,6 +197,26 @@ const Contact = () => {
                   <Form.Control.Feedback type="invalid" id="message-error">
                     {errors.message?.message}
                   </Form.Control.Feedback>
+                </Form.Group>
+
+                {/* KVKK Consent */}
+                <Form.Group className="mb-3">
+                  <Form.Check
+                    id="contact-kvkkConsent"
+                    type="checkbox"
+                    {...register('kvkkConsent', validationRules.kvkkConsent)}
+                    isInvalid={!!errors.kvkkConsent}
+                    feedback={errors.kvkkConsent?.message}
+                    feedbackType="invalid"
+                    label={
+                      <>
+                        {t('contact.form.kvkkConsent')}{' '}
+                        <a href="/privacy" target="_blank" rel="noopener noreferrer">
+                          {t('contact.form.kvkkConsentLink')}
+                        </a>
+                      </>
+                    }
+                  />
                 </Form.Group>
 
                 <div className="form-actions">
