@@ -34,195 +34,170 @@ const getHotelEmailTemplate = (data) => {
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
-    .content { background: #f9f9f9; padding: 30px; border: 1px solid #ddd; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #667eea; }
-    .value { color: #333; }
-    .footer { text-align: center; margin-top: 20px; color: #777; font-size: 12px; }
-    .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      line-height: 1.6; 
+      color: #333;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container { 
+      max-width: 600px; 
+      margin: 20px auto; 
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+    }
+    .header { 
+      background: #c18c30; 
+      color: white; 
+      padding: 30px 20px; 
+      text-align: center;
+      border-bottom: 4px solid #9a6d1f;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .content { 
+      padding: 30px 20px;
+    }
+    .alert { 
+      background: #fff3cd; 
+      border-left: 4px solid #ffc107; 
+      padding: 15px; 
+      margin: 0 0 20px 0;
+    }
+    .section {
+      margin-bottom: 25px;
+    }
+    .section h2 {
+      color: #c18c30;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .field { 
+      margin-bottom: 12px;
+      padding: 8px 0;
+    }
+    .label { 
+      font-weight: 600; 
+      color: #555;
+      display: inline-block;
+      min-width: 140px;
+    }
+    .value { 
+      color: #333;
+    }
+    .value a {
+      color: #c18c30;
+      text-decoration: none;
+    }
+    .value a:hover {
+      text-decoration: underline;
+    }
+    .message-box {
+      background: #f9f9f9;
+      border-left: 4px solid #c18c30;
+      padding: 15px;
+      margin: 10px 0;
+      font-style: italic;
+    }
+    .info-box {
+      background: #e3f2fd;
+      border: 1px solid #90caf9;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .footer { 
+      background: #f5f5f5;
+      text-align: center; 
+      padding: 20px; 
+      color: #777; 
+      font-size: 12px;
+      border-top: 1px solid #e0e0e0;
+    }
+    .footer p {
+      margin: 5px 0;
+    }
+    .footer strong {
+      color: #c18c30;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>🏨 Yeni Rezervasyon Talebi</h1>
+      <h1>Yeni Rezervasyon Talebi</h1>
+      <p style="margin: 10px 0 0 0; font-size: 14px;">Güneş Motel - Nemrut Dağı</p>
     </div>
     <div class="content">
       <div class="alert">
-        <strong>⚠️ Dikkat:</strong> Yeni bir rezervasyon talebi geldi. Lütfen müşteriyle iletişime geçin.
+        <strong>Dikkat:</strong> Yeni bir rezervasyon talebi geldi. Lütfen müşteriyle iletişime geçin.
       </div>
       
-      <h2>Müşteri Bilgileri</h2>
-      <div class="field">
-        <span class="label">Ad Soyad:</span>
-        <span class="value">${fullName}</span>
-      </div>
-      <div class="field">
-        <span class="label">Email:</span>
-        <span class="value"><a href="mailto:${email}">${email}</a></span>
-      </div>
-      <div class="field">
-        <span class="label">Telefon:</span>
-        <span class="value">${phone}</span>
+      <div class="section">
+        <h2>Müşteri Bilgileri</h2>
+        <div class="field">
+          <span class="label">Ad Soyad:</span>
+          <span class="value">${fullName}</span>
+        </div>
+        <div class="field">
+          <span class="label">Email:</span>
+          <span class="value"><a href="mailto:${email}">${email}</a></span>
+        </div>
+        <div class="field">
+          <span class="label">Telefon:</span>
+          <span class="value"><a href="tel:${phone}">${phone}</a></span>
+        </div>
       </div>
       
-      <h2>Rezervasyon Detayları</h2>
-      <div class="field">
-        <span class="label">Giriş Tarihi:</span>
-        <span class="value">${checkInDate}</span>
-      </div>
-      <div class="field">
-        <span class="label">Çıkış Tarihi:</span>
-        <span class="value">${checkOutDate}</span>
-      </div>
-      <div class="field">
-        <span class="label">Misafir Sayısı:</span>
-        <span class="value">${guests} kişi</span>
-      </div>
-      <div class="field">
-        <span class="label">Oda Tipi:</span>
-        <span class="value">${roomType}</span>
+      <div class="section">
+        <h2>Rezervasyon Detayları</h2>
+        <div class="field">
+          <span class="label">Giriş Tarihi:</span>
+          <span class="value">${checkInDate}</span>
+        </div>
+        <div class="field">
+          <span class="label">Çıkış Tarihi:</span>
+          <span class="value">${checkOutDate}</span>
+        </div>
+        <div class="field">
+          <span class="label">Misafir Sayısı:</span>
+          <span class="value">${guests} kişi</span>
+        </div>
+        <div class="field">
+          <span class="label">Oda Tipi:</span>
+          <span class="value">${roomType}</span>
+        </div>
       </div>
       
       ${message ? `
-      <h2>Özel İstekler / Notlar</h2>
-      <div class="field">
-        <p style="background: white; padding: 15px; border-left: 4px solid #667eea;">${message}</p>
+      <div class="section">
+        <h2>Özel İstekler / Notlar</h2>
+        <div class="message-box">${message}</div>
       </div>
       ` : ''}
       
-      <div style="margin-top: 30px; padding: 15px; background: #e3f2fd; border-radius: 4px;">
-        <p><strong>📧 Yanıt vermek için:</strong> Bu emaile yanıt verdiğinizde otomatik olarak müşteriye gider (Reply-To: ${email})</p>
-      </div>
-    </div>
-    <div class="footer">
-      <p>Bu email otomatik olarak gunes-otel.com web sitesinden gönderilmiştir.</p>
-      <p>Tarih: ${new Date().toLocaleString('tr-TR')}</p>
-    </div>
-  </div>
-</body>
-</html>
-  `.trim();
-};
-
-// Email template for CUSTOMER - Confirmation message
-const getCustomerEmailTemplate = (data) => {
-  const fullName = sanitizeForEmail(data.fullName);
-  const checkInDate = new Date(data.checkIn).toLocaleDateString('tr-TR');
-  const checkOutDate = new Date(data.checkOut).toLocaleDateString('tr-TR');
-  const guests = parseInt(data.guests, 10);
-  
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
-    .content { background: #f9f9f9; padding: 30px; border: 1px solid #ddd; }
-    .success-box { background: #d4edda; border: 1px solid #28a745; color: #155724; padding: 20px; margin: 20px 0; border-radius: 4px; text-align: center; }
-    .info-box { background: white; padding: 20px; border-left: 4px solid #667eea; margin: 20px 0; }
-    .footer { text-align: center; margin-top: 20px; color: #777; font-size: 12px; }
-    .btn { display: inline-block; padding: 12px 30px; background: #667eea; color: white; text-decoration: none; border-radius: 4px; margin-top: 15px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>🏨 Güneş Hotel</h1>
-      <p>Nemrut Dağı Oteli</p>
-    </div>
-    <div class="content">
-      <div class="success-box">
-        <h2>✅ Rezervasyon Talebiniz Alındı!</h2>
-      </div>
-      
-      <p>Sayın <strong>${fullName}</strong>,</p>
-      
-      <p>Rezervasyon talebinizi aldık. En kısa sürede sizinle iletişime geçeceğiz.</p>
-      
       <div class="info-box">
-        <h3>📋 Talep Özeti</h3>
-        <p><strong>Giriş:</strong> ${checkInDate}</p>
-        <p><strong>Çıkış:</strong> ${checkOutDate}</p>
-        <p><strong>Misafir:</strong> ${guests} kişi</p>
-      </div>
-      
-      <p><strong>⏱️ Ne Zaman Dönüş Alabilirim?</strong></p>
-      <p>Ekibimiz rezervasyon talebinizi en geç <strong>24 saat içinde</strong> değerlendirecek ve size geri dönüş yapacaktır.</p>
-      
-      <p><strong>📞 Acil Rezervasyon için:</strong></p>
-      <p>Telefon: +90 XXX XXX XX XX<br>
-      Email: gunesmotel@hotmail.com</p>
-      
-      <div style="text-align: center; margin-top: 30px;">
-        <a href="https://gunes-otel.com" class="btn">Web Sitemizi Ziyaret Edin</a>
+        <strong>Yanıt vermek için:</strong> Bu emaile yanıt verdiğinizde otomatik olarak müşteriye gider (Reply-To: ${email})
       </div>
     </div>
     <div class="footer">
-      <p><strong>Güneş Hotel - Nemrut Dağı</strong></p>
-      <p>Karadut Köyü, Kâhta/Adıyaman</p>
-      <p>www.gunes-otel.com | gunesmotel@hotmail.com</p>
+      <p>Bu email otomatik olarak www.nemrutgunesmotel.com web sitesinden gönderilmiştir.</p>
+      <p><strong>Güneş Motel - Nemrut Dağı Oteli</strong></p>
+      <p>Büyüköz, Nemrut Dağı Yolu, 44850 Pütürge/Malatya</p>
+      <p>Tel: +90 543 876 7271 / +90 536 287 0639 | Email: gunesmotel@hotmail.com</p>
+      <p style="margin-top: 10px; color: #999;">Tarih: ${new Date().toLocaleString('tr-TR')}</p>
     </div>
   </div>
 </body>
 </html>
   `.trim();
-};
-
-/**
- * Send reservation notification to hotel (internal function)
- * @param {Object} reservationData - Reservation details
- * @returns {Promise<Object>}
- */
-const sendHotelNotification = async (reservationData) => {
-  try {
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
-      to: process.env.RESERVATION_EMAIL || 'gunesmotel@hotmail.com',
-      replyTo: reservationData.email, // ✅ Important: Reply goes to customer
-      subject: `🏨 Yeni Rezervasyon Talebi - ${reservationData.fullName}`,
-      html: getHotelEmailTemplate(reservationData),
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-    logger.info(`✅ Hotel notification sent: ${info.messageId}`);
-    
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    logger.error('❌ Failed to send hotel notification:', error);
-    throw error;
-  }
-};
-
-/**
- * Send confirmation email to customer (internal function)
- * @param {Object} reservationData - Reservation details
- * @returns {Promise<Object>}
- */
-const sendCustomerConfirmation = async (reservationData) => {
-  try {
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
-      to: reservationData.email,
-      replyTo: process.env.RESERVATION_EMAIL || 'gunesmotel@hotmail.com',
-      subject: '✅ Rezervasyon Talebiniz Alındı - Güneş Hotel',
-      html: getCustomerEmailTemplate(reservationData),
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-    logger.info(`✅ Customer confirmation sent to: ${reservationData.email}`);
-    
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    logger.error('❌ Failed to send customer confirmation:', error);
-    throw error;
-  }
 };
 
 /**
@@ -257,7 +232,7 @@ export const sendReservationEmails = async (reservationData) => {
  * @returns {Promise<Object>}
  */
 export const sendContactEmail = async (contactData) => {
-  try {
+  const sendEmail = async () => {
     // Sanitize all inputs
     const fullName = sanitizeForEmail(contactData.fullName);
     const email = contactData.email; // Already sanitized by validator
@@ -269,27 +244,158 @@ export const sendContactEmail = async (contactData) => {
       from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
       to: process.env.CONTACT_EMAIL || 'gunesmotel@hotmail.com',
       replyTo: email,
-      subject: `📧 İletişim Formu: ${subject}`,
+      subject: `Web Sitesi İletişim Formu: ${subject}`,
       html: `
-        <h2>Yeni İletişim Formu Mesajı</h2>
-        <p><strong>Ad Soyad:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone}</p>
-        <p><strong>Konu:</strong> ${subject}</p>
-        <hr>
-        <p><strong>Mesaj:</strong></p>
-        <p>${message}</p>
-        <hr>
-        <p><small>Tarih: ${new Date().toLocaleString('tr-TR')}</small></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      line-height: 1.6; 
+      color: #333;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container { 
+      max-width: 600px; 
+      margin: 20px auto; 
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+    }
+    .header { 
+      background: #c18c30; 
+      color: white; 
+      padding: 25px 20px; 
+      text-align: center;
+      border-bottom: 4px solid #9a6d1f;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .content { 
+      padding: 30px 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      color: #c18c30;
+      font-size: 17px;
+      margin: 0 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .field { 
+      margin: 10px 0;
+      padding: 6px 0;
+    }
+    .label { 
+      font-weight: 600; 
+      color: #555;
+      display: inline-block;
+      min-width: 110px;
+    }
+    .value { 
+      color: #333;
+    }
+    .value a {
+      color: #c18c30;
+      text-decoration: none;
+    }
+    .value a:hover {
+      text-decoration: underline;
+    }
+    .message-box {
+      background: #f9f9f9;
+      border-left: 4px solid #c18c30;
+      padding: 15px;
+      margin: 15px 0;
+      line-height: 1.7;
+    }
+    .info-box {
+      background: #e3f2fd;
+      border: 1px solid #90caf9;
+      padding: 12px 15px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .footer { 
+      background: #f5f5f5;
+      text-align: center; 
+      padding: 18px; 
+      color: #777; 
+      font-size: 12px;
+      border-top: 1px solid #e0e0e0;
+    }
+    .footer p {
+      margin: 4px 0;
+    }
+    .footer strong {
+      color: #c18c30;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Yeni İletişim Formu Mesajı</h1>
+      <p style="margin: 8px 0 0 0; font-size: 13px;">Güneş Motel - Web Sitesi</p>
+    </div>
+    <div class="content">
+      <div class="section">
+        <h2>Gönderen Bilgileri</h2>
+        <div class="field">
+          <span class="label">Ad Soyad:</span>
+          <span class="value">${fullName}</span>
+        </div>
+        <div class="field">
+          <span class="label">Email:</span>
+          <span class="value"><a href="mailto:${email}">${email}</a></span>
+        </div>
+        <div class="field">
+          <span class="label">Telefon:</span>
+          <span class="value">${phone !== 'Belirtilmedi' ? `<a href="tel:${phone}">${phone}</a>` : phone}</span>
+        </div>
+        <div class="field">
+          <span class="label">Konu:</span>
+          <span class="value">${subject}</span>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Mesaj İçeriği</h2>
+        <div class="message-box">${message}</div>
+      </div>
+      
+      <div class="info-box">
+        <strong>Yanıt vermek için:</strong> Bu emaile yanıt verdiğinizde otomatik olarak gönderene gider (Reply-To: ${email})
+      </div>
+    </div>
+    <div class="footer">
+      <p>Bu email otomatik olarak www.nemrutgunesmotel.com web sitesinden gönderilmiştir.</p>
+      <p><strong>Güneş Motel - Nemrut Dağı Oteli</strong></p>
+      <p style="margin-top: 8px; color: #999;">Tarih: ${new Date().toLocaleString('tr-TR')}</p>
+    </div>
+  </div>
+</body>
+</html>
       `
     };
 
     const info = await transporter.sendMail(mailOptions);
     logger.info(`✅ Contact form email sent: ${info.messageId}`);
-    
     return { success: true, messageId: info.messageId };
+  };
+
+  try {
+    return await retryWithBackoff(sendEmail, 3, 1000);
   } catch (error) {
-    logger.error('❌ Failed to send contact email:', error);
+    logger.error('❌ Failed to send contact email after retries:', error);
     throw error;
   }
 };
