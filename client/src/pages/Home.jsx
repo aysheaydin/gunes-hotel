@@ -11,14 +11,14 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Nemrut Daðý Oteli - Güneþ Hotel (2 km) | Rezervasyon</title>
+        <title>Nemrut DaÄŸÄ± Oteli - GÃ¼neÅŸ Hotel (2 km) | Rezervasyon</title>
         <meta
           name="description"
-          content="Nemrut Daðý'na en yakýn otel (2 km). Gün doðumu turlarý, konforlu odalar ve rezervasyon için Güneþ Hotel."
+          content="Nemrut DaÄŸÄ±'na en yakÄ±n otel (2 km). GÃ¼n doÄŸumu turlarÄ±, konforlu odalar ve rezervasyon iÃ§in GÃ¼neÅŸ Hotel."
         />
         <meta
           name="keywords"
-          content="nemrut daðý oteli, nemrut otel, nemrut konaklama, malatya pütürge otel, gün doðumu turu"
+          content="nemrut daÄŸÄ± oteli, nemrut otel, nemrut konaklama, malatya pÃ¶tÃ¼rge otel, gÃ¼n doÄŸumu turu"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/" />
       </Helmet>

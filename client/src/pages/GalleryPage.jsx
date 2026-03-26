@@ -9,81 +9,81 @@ import './GalleryPage.scss'
 const INITIAL_VISIBLE_COUNT = 12 // Reduced from 24 for faster initial load
 
 const galleryImages = [
-  { src: '/img/gallery-1.webp', alt: 'Otel D�� G�r�n�m', category: 'hotel' },
-  { src: '/img/gallery-2.webp', alt: 'Otel D�� G�r�n�m', category: 'hotel' },
-  { src: '/img/gallery-3.webp', alt: 'Resepsiyon Alan�', category: 'hotel' },
-  { src: '/img/gallery-5.webp', alt: 'Lounge Alan�', category: 'hotel' },
+  { src: '/img/gallery-1.webp', alt: 'Otel Dış Görünüm', category: 'hotel' },
+  { src: '/img/gallery-2.webp', alt: 'Otel Dış Görünüm', category: 'hotel' },
+  { src: '/img/gallery-3.webp', alt: 'Resepsiyon Alanı', category: 'hotel' },
+  { src: '/img/gallery-5.webp', alt: 'Lounge Alanı', category: 'hotel' },
   { src: '/img/gallery-6.webp', alt: 'Restoran', category: 'hotel' },
   { src: '/img/gallery-8.webp', alt: 'Restoran', category: 'hotel' },
-  { src: '/img/double-room-1.webp', alt: '�ift Ki�ilik Oda', category: 'rooms' },
-  { src: '/img/double-room-2.webp', alt: 'Oda Detay�', category: 'rooms' },
+  { src: '/img/double-room-1.webp', alt: 'Çift Kişilik Oda', category: 'rooms' },
+  { src: '/img/double-room-2.webp', alt: 'Oda Detayı', category: 'rooms' },
   { src: '/img/bathroom-1.webp', alt: 'Banyo', category: 'rooms' },
-  { src: '/img/bathroom-2.webp', alt: 'Banyo Detay�', category: 'rooms' },
-  { src: '/img/triple-room.webp', alt: '�� Ki�ilik Oda', category: 'rooms' },
-  { src: '/img/twin-room-3.webp', alt: '�ift Ki�ilik Oda G�r�n�m', category: 'rooms' },
+  { src: '/img/bathroom-2.webp', alt: 'Banyo Detayı', category: 'rooms' },
+  { src: '/img/triple-room.webp', alt: 'Üç Kişilik Oda', category: 'rooms' },
+  { src: '/img/twin-room-3.webp', alt: 'Çift Kişilik Oda Görünüm', category: 'rooms' },
   { src: '/img/gallery-9.webp', alt: 'Manzara', category: 'view' },
   { src: '/img/gallery-10.webp', alt: 'Manzara', category: 'view' },
-  { src: '/img/gallery-11.webp', alt: 'Bah�e Alan�', category: 'hotel' },
+  { src: '/img/gallery-11.webp', alt: 'Bahçe Alanı', category: 'hotel' },
   { src: '/img/gallery-12.webp', alt: 'Nemrut', category: 'view' },
-  { src: '/img/gallery-13.webp', alt: 'Yemek Alan�', category: 'hotel' },
+  { src: '/img/gallery-13.webp', alt: 'Yemek Alanı', category: 'hotel' },
   { src: '/img/gallery-14.webp', alt: 'Restoran Detay', category: 'hotel' },
-  { src: '/img/gallery-15.webp', alt: 'Otel Bah�e', category: 'hotel' },
-  { src: '/img/gallery-16.webp', alt: 'Otel Bah�e', category: 'hotel' },
+  { src: '/img/gallery-15.webp', alt: 'Otel Bahçe', category: 'hotel' },
+  { src: '/img/gallery-16.webp', alt: 'Otel Bahçe', category: 'hotel' },
   { src: '/img/gallery-17.webp', alt: 'Genel Alan', category: 'hotel' },
-  { src: '/img/gallery-18.webp', alt: 'D�� Mekan', category: 'hotel' },
+  { src: '/img/gallery-18.webp', alt: 'Dış Mekan', category: 'hotel' },
   { src: '/img/gallery-19.webp', alt: 'Manzara', category: 'view' },
   { src: '/img/gallery-20.webp', alt: 'Nemrut', category: 'view' },
   { src: '/img/gallery-21.webp', alt: 'Manzara', category: 'view' },
-  { src: '/img/gallery-22.webp', alt: 'Do�a', category: 'view' },
-  { src: '/img/gallery-23.webp', alt: '�evre', category: 'view' },
-  { src: '/img/winter.webp', alt: 'K�� Manzaras�', category: 'view' },
-  { src: '/img/gallery-24.webp', alt: 'M��terilerimiz', category: 'customers' },
+  { src: '/img/gallery-22.webp', alt: 'Doğa', category: 'view' },
+  { src: '/img/gallery-23.webp', alt: 'Çevre', category: 'view' },
+  { src: '/img/winter.webp', alt: 'Kış Manzarası', category: 'view' },
+  { src: '/img/gallery-24.webp', alt: 'Müşterilerimiz', category: 'customers' },
   { src: '/img/gallery-25.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-26.webp', alt: 'Otel', category: 'hotel' },
-  { src: '/img/gallery-27.webp', alt: 'K��', category: 'view' },
-  { src: '/img/gallery-28.webp', alt: 'K��', category: 'view' },
-  { src: '/img/gallery-29.webp', alt: 'A��k Hava', category: 'hotel' },
-  { src: '/img/gallery-30.webp', alt: 'Yol Manzaras�', category: 'view' },
+  { src: '/img/gallery-27.webp', alt: 'Kış', category: 'view' },
+  { src: '/img/gallery-28.webp', alt: 'Kış', category: 'view' },
+  { src: '/img/gallery-29.webp', alt: 'Açık Hava', category: 'hotel' },
+  { src: '/img/gallery-30.webp', alt: 'Yol Manzarası', category: 'view' },
   { src: '/img/gallery-31.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-36.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-37.webp', alt: 'Otel', category: 'hotel' },
-  { src: '/img/gallery-38.webp', alt: 'G�n Bat�m� Manzaras�', category: 'view' },
-  { src: '/img/gallery-39.webp', alt: 'Nemrut Da�� G�n Do�umu', category: 'view' },
-  { src: '/img/gallery-40.webp', alt: 'Sabah Manzaras�', category: 'view' },
-  { src: '/img/gallery-41.webp', alt: 'Do�a ve Tarih', category: 'view' },
+  { src: '/img/gallery-38.webp', alt: 'Gün Batımı Manzarası', category: 'view' },
+  { src: '/img/gallery-39.webp', alt: 'Nemrut Dağı Gün Doğumu', category: 'view' },
+  { src: '/img/gallery-40.webp', alt: 'Sabah Manzarası', category: 'view' },
+  { src: '/img/gallery-41.webp', alt: 'Doğa ve Tarih', category: 'view' },
   { src: '/img/gallery-42.webp', alt: 'Nemrut Panorama', category: 'view' },
-  { src: '/img/gallery-43.webp', alt: 'Da� Yolu', category: 'view' },
+  { src: '/img/gallery-43.webp', alt: 'Dağ Yolu', category: 'view' },
   { src: '/img/gallery-44.webp', alt: 'Nemrut Yolu', category: 'view' },
-  { src: '/img/gallery-45.webp', alt: 'Da� G�r�n�m�', category: 'view' },
-  { src: '/img/gallery-46.webp', alt: 'Otel Giri�', category: 'hotel' },
-  { src: '/img/gallery-47.webp', alt: 'Nemrut Manzaras�', category: 'view' },
-  { src: '/img/gallery-48.webp', alt: '�ift Ki�ilik Oda', category: 'rooms' },
+  { src: '/img/gallery-45.webp', alt: 'Dağ Görünümü', category: 'view' },
+  { src: '/img/gallery-46.webp', alt: 'Otel Giriş', category: 'hotel' },
+  { src: '/img/gallery-47.webp', alt: 'Nemrut Manzarası', category: 'view' },
+  { src: '/img/gallery-48.webp', alt: 'Çift Kişilik Oda', category: 'rooms' },
   { src: '/img/gallery-52.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-53.webp', alt: 'Otel', category: 'hotel' },
-  { src: '/img/gallery-54.webp', alt: '�ki Ki�ilik Oda', category: 'rooms' },
+  { src: '/img/gallery-54.webp', alt: 'İki Kişilik Oda', category: 'rooms' },
   { src: '/img/gallery-55.webp', alt: 'Banyo', category: 'rooms' },
-  { src: '/img/gallery-56.webp', alt: 'Nemrut Da��', category: 'view' },
-  { src: '/img/gallery-57.webp', alt: 'Otel Bah�esi', category: 'hotel' },
-  { src: '/img/gallery-58.webp', alt: 'Otel Giri�i', category: 'hotel' },
-  { src: '/img/gallery-59.webp', alt: 'Nemrut Da��', category: 'view' },
-  { src: '/img/gallery-60.webp', alt: 'Otel D�� Mekan', category: 'hotel' },
+  { src: '/img/gallery-56.webp', alt: 'Nemrut Dağı', category: 'view' },
+  { src: '/img/gallery-57.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-58.webp', alt: 'Otel Girişi', category: 'hotel' },
+  { src: '/img/gallery-59.webp', alt: 'Nemrut Dağı', category: 'view' },
+  { src: '/img/gallery-60.webp', alt: 'Otel Dış Mekan', category: 'hotel' },
   { src: '/img/gallery-64.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-66.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-67.webp', alt: 'Otel', category: 'hotel' },
   { src: '/img/gallery-68.webp', alt: 'Otel', category: 'hotel' },
-  { src: '/img/gallery-69.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-70.webp', alt: 'Otel Bah�esi', category: 'hotel' },
-  { src: '/img/gallery-71.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-72.webp', alt: 'Otel Bah�esi', category: 'hotel' },
-  { src: '/img/gallery-73.webp', alt: 'Yemek Alan�', category: 'hotel' },
-  { src: '/img/gallery-74.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-75.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-76.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-77.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-80.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-81.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-82.webp', alt: 'M��terilerimiz', category: 'customers' },
-  { src: '/img/gallery-83.webp', alt: 'M��terilerimiz', category: 'customers' }
+  { src: '/img/gallery-69.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-70.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-71.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-72.webp', alt: 'Otel Bahçesi', category: 'hotel' },
+  { src: '/img/gallery-73.webp', alt: 'Yemek Alanı', category: 'hotel' },
+  { src: '/img/gallery-74.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-75.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-76.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-77.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-80.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-81.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-82.webp', alt: 'Müşterilerimiz', category: 'customers' },
+  { src: '/img/gallery-83.webp', alt: 'Müşterilerimiz', category: 'customers' }
 ]
 
 const GalleryPage = () => {
@@ -139,14 +139,14 @@ const GalleryPage = () => {
   return (
     <>
       <Helmet>
-        <title>Nemrut Da�� Foto�raf Galerisi | Otel Odalar� & Manzara - G�ne� Hotel</title>
+        <title>Nemrut Dağı Fotoğraf Galerisi | Otel Odaları & Manzara - Güneş Hotel</title>
         <meta
           name="description"
-          content="Nemrut Da�� ve G�ne� Hotel foto�raf galerisi. G�n do�umu manzaralar�, otel odalar�, restoran ve Kommagene tarihi eserleri. 100+ foto�raf."
+          content="Nemrut Dağı ve Güneş Hotel fotoğraf galerisi. Gün doğumu manzaraları, otel odaları, restoran ve Kommagene tarihi eserleri. 100+ fotoğraf."
         />
         <meta
           name="keywords"
-          content="Nemrut Da�� foto�raflar�, Nemrut g�n do�umu, otel odas� g�rselleri, Kommagene foto�raflar�, Nemrut manzara"
+          content="Nemrut Dağı fotoğrafları, Nemrut gün doğumu, otel odası görselleri, Kommagene fotoğrafları, Nemrut manzara"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/gallery" />
       </Helmet>
@@ -205,7 +205,7 @@ const GalleryPage = () => {
                       src={image.src}
                       alt={image.alt}
                       loading={index < 6 ? 'eager' : 'lazy'}
-                      fetchPriority={index < 3 ? 'high' : 'auto'}
+                      fetchpriority={index < 3 ? 'high' : 'auto'}
                       width="600"
                       height="400"
                       className="gallery-image"
@@ -222,7 +222,7 @@ const GalleryPage = () => {
             {hasMoreImages && (
               <div className="text-center mt-4">
                 <button className="btn btn-primary" onClick={showMore}>
-                  Daha Fazla G�rsel Y�kle ({filteredImages.length - visibleCount})
+                  Daha Fazla Görsel Yükle ({filteredImages.length - visibleCount})
                 </button>
               </div>
             )}
@@ -234,7 +234,7 @@ const GalleryPage = () => {
             <button className="modal-close" onClick={closeModal} aria-label="Kapat">
               <i className="fas fa-times"></i>
             </button>
-            <button className="modal-prev" onClick={prevImage} aria-label="�nceki">
+            <button className="modal-prev" onClick={prevImage} aria-label="Önceki">
               <i className="fas fa-chevron-left"></i>
             </button>
             <button className="modal-next" onClick={nextImage} aria-label="Sonraki">
