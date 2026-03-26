@@ -138,6 +138,7 @@
     "title": "Galeri",
     "subtitle": "Otelimizden ve çevresinden kareler",
     "viewAll": "Tüm Galeriyi Görüntüle",
+    "loadMore": "Daha Fazla Görsel Yükle",
     "filter": {
       "all": "Tümü",
       "hotel": "Otel",
@@ -164,17 +165,18 @@
       "fullNamePlaceholder": "Ad Soyad *",
       "emailPlaceholder": "E-posta *",
       "phonePlaceholder": "Telefon *",
+      "subjectPlaceholder": "Konu",
+      "optional": "(İsteğe bağlı)",
       "messagePlaceholder": "Mesajınız *",
       "sending": "Gönderiliyor...",
       "send": "Mesaj Gönder",
       "makeReservation": "Rezervasyon Yap",
-      "success": "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapılacaktır.",
-      "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
-      "tempUnavailable": "Şu an online form işlemleri geçici olarak kullanılamıyor. Lütfen",
-      "contactVia": "veya",
-      "email": "e-posta",
-      "whatsapp": "WhatsApp",
-      "viaText": "üzerinden bize ulaşın."
+      "success": "Mesajınız başarıyla gönderildi",
+      "successDesc": "Mesajınız bize ulaştı. En kısa sürede size dönüş yapılacaktır.",
+      "error": "Mesaj gönderilemedi",
+      "errorDesc": "Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.",
+      "rateLimit": "Çok fazla istek",
+      "rateLimitDesc": "Bu email adresiyle çok fazla mesaj gönderildi. Lütfen daha sonra tekrar deneyin."
     },
     "form": {
       "title": "Rezervasyon Formu",
@@ -183,6 +185,7 @@
       "roomType": "Oda Tipi",
       "selectRoom": "Oda Seçiniz",
       "guests": "Kişi Sayısı",
+      "guest": "Kişi",
       "selectGuests": "Kişi Sayısı Seçiniz",
       "fullName": "Ad Soyad",
       "fullNamePlaceholder": "Ad Soyad",
@@ -191,13 +194,12 @@
       "specialRequests": "Özel İstekler (Opsiyonel)",
       "submit": "Rezervasyon Talebi Gönder",
       "sending": "Gönderiliyor...",
-      "success": "Rezervasyon talebiniz başarıyla gönderildi! En kısa sürede size dönüş yapılacaktır.",
-      "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
-      "tempUnavailable": "Şu an online rezervasyon işlemleri geçici olarak kullanılamıyor. Lütfen",
-      "contactVia": "veya",
-      "email": "e-posta",
-      "whatsapp": "WhatsApp",
-      "viaText": "üzerinden rezervasyon yapabilirsiniz.",
+      "success": "Rezervasyon talebiniz alındı",
+      "successDesc": "Rezervasyon talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapılacaktır.",
+      "error": "Rezervasyon gönderilemedi",
+      "errorDesc": "Rezervasyon talebiniz iletilemedi. Lütfen daha sonra tekrar deneyin.",
+      "rateLimit": "⚠️ Çok fazla rezervasyon talebi!",
+      "rateLimitDesc": "Bu email/telefon ile çok fazla talep gönderildi. Lütfen daha sonra tekrar deneyin.",
       "guestOptions": {
         "1": "1 Kişi",
         "2": "2 Kişi",
@@ -223,5 +225,385 @@
   "common": {
     "loading": "Yükleniyor...",
     "selectLanguage": "Dil Seçiniz"
+  },
+  "errors": {
+    "network": "Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin.",
+    "server": "Sunucu hatası. Lütfen daha sonra tekrar deneyin.",
+    "validation": "Lütfen tüm alanları doğru şekilde doldurun.",
+    "notFound": "Aradığınız içerik bulunamadı.",
+    "unauthorized": "Bu işlem için yetkiniz bulunmamaktadır.",
+    "timeout": "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+    "rateLimit": "Çok fazla istek gönderdiniz. Lütfen daha sonra tekrar deneyin.",
+    "unknown": "Beklenmeyen bir hata oluştu.",
+    "retryLater": "sonra tekrar deneyebilirsiniz"
+  },
+  "formValidation": {
+    "fullName": {
+      "required": "Ad Soyad alanı zorunludur",
+      "minLength": "Ad Soyad en az 2 karakter olmalıdır",
+      "maxLength": "Ad Soyad en fazla 100 karakter olmalıdır",
+      "pattern": "Ad Soyad sadece harf içermelidir"
+    },
+    "email": {
+      "required": "E-posta adresi zorunludur",
+      "pattern": "Geçerli bir e-posta adresi giriniz"
+    },
+    "phone": {
+      "required": "Telefon numarası zorunludur",
+      "pattern": "Geçerli bir telefon numarası giriniz (örn: +90 555 123 4567)",
+      "minLength": "Telefon numarası en az 10 haneli olmalıdır"
+    },
+    "message": {
+      "required": "Mesaj alanı zorunludur",
+      "minLength": "Mesaj en az 10 karakter olmalıdır",
+      "maxLength": "Mesaj en fazla 1000 karakter olmalıdır"
+    },
+    "checkIn": {
+      "required": "Giriş tarihi zorunludur",
+      "minDate": "Giriş tarihi bugünden önce olamaz"
+    },
+    "checkOut": {
+      "required": "Çıkış tarihi zorunludur",
+      "minDate": "Çıkış tarihi giriş tarihinden sonra olmalıdır"
+    },
+    "roomType": {
+      "required": "Oda tipi seçimi zorunludur"
+    },
+    "guests": {
+      "required": "Misafir sayısı zorunludur",
+      "min": "En az 1 misafir olmalıdır",
+      "max": "En fazla 10 misafir olabilir"
+    }
+  },
+  "notFound": {
+    "title": "Sayfa Bulunamadı",
+    "heading": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    "backToHome": "Ana Sayfaya Dön",
+    "contactUs": "İletişime Geç"
+  },
+  "loading": {
+    "text": "Yükleniyor...",
+    "pageLoading": "Sayfa yükleniyor"
+  },
+  "privacy": {
+    "title": "Gizlilik Politikası",
+    "heading": "Gizlilik Politikası",
+    "intro": "Bu sayfa, web sitemizi kullanırken işlenen kişisel veriler ve veri güvenliği süreçleri hakkında bilgi verir.",
+    "usage": "İletişim formları üzerinden iletilen veriler yalnızca talebinizi yanıtlamak amacıyla kullanılır ve üçüncü taraflarla paylaşılmaz.",
+    "contact": "Talepleriniz için:"
+  },
+  "terms": {
+    "title": "Kullanım Koşulları",
+    "heading": "Kullanım Koşulları",
+    "intro": "Bu web sitesini kullanan tüm ziyaretçiler aşağıdaki koşulları kabul etmiş sayılır.",
+    "disclaimer": "İçerik bilgilendirme amaçlıdır. Fiyat, müsaitlik ve kampanyalar için rezervasyon öncesi doğrulama yapılmalıdır.",
+    "contact": "Koşullar hakkında:"
+  },
+  "faq": {
+    "title": "Nemrut Dağı Oteli SSS | Sık Sorulan Sorular - Güneş Hotel",
+    "metaDescription": "Nemrut Dağı oteli hakkında merak ettikleriniz. Rezervasyon, gün doğumu turu, ulaşım, fiyatlar ve daha fazlası. 30+ soru-cevap.",
+    "metaKeywords": "nemrut dağı sss, nemrut otel sorular, nemrut gün doğumu saati, nemrut giriş ücreti, nemrut ulaşım, güneş hotel sss",
+    "heading": "Sık Sorulan Sorular",
+    "subtitle": "Nemrut Dağı ve Güneş Hotel hakkında merak ettikleriniz",
+    "categories": {
+      "accommodation": "🏨 Konaklama ve Rezervasyon",
+      "nemrut": "🌄 Nemrut Dağı ve Turlar",
+      "facilities": "🏡 Otel Olanakları",
+      "transportation": "🚗 Ulaşım",
+      "general": "Genel Bilgiler"
+    },
+    "questions": {
+      "accommodation": [
+        {
+          "q": "Nemrut Dağı'na mesafeniz kaç km?",
+          "a": "Güneş Hotel, Nemrut Dağı zirvesine sadece 2 km mesafededir. Gün doğumu turu için otelimizden araçla yaklaşık 10 dakikada zirveye ulaşabilirsiniz. Bölgedeki en yakın otel olarak misafirlerimize büyük kolaylık sağlıyoruz."
+        },
+        {
+          "q": "Otel rezervasyonu nasıl yapabilirim?",
+          "a": "Online rezervasyon için web sitemizden iletişim formunu doldurabilir, telefonla +90 543 876 7271 numaramızı arayabilir veya WhatsApp hattımızdan bizimle iletişime geçebilirsiniz. Erken rezervasyonda özel indirim fırsatlarımız mevcuttur."
+        },
+        {
+          "q": "Check-in ve check-out saatleri nedir?",
+          "a": "Check-in saatimiz 14:00, check-out saatimiz 12:00'dir. Erken giriş veya geç çıkış için müsaitlik durumuna göre ek ücret karşılığında ayarlama yapılabilir. Lütfen önceden bildiriniz."
+        },
+        {
+          "q": "İptal politikanız nedir?",
+          "a": "Giriş tarihinden 7 gün öncesine kadar ücretsiz iptal yapabilirsiniz. 7 günden daha kısa sürede yapılan iptallerde 1 gecelik ücret tahsil edilir. Özel günlerde (bayram, yılbaşı) farklı iptal koşulları uygulanabilir."
+        },
+        {
+          "q": "Kaç otel odası var? Kapasiteniz nedir?",
+          "a": "Otelimizde toplam 10 oda bulunmaktadır. 25 yatak kapasitemiz ile çift kişilik, üçlü ve aile odaları (5 kişilik) seçeneklerimiz mevcuttur. Tüm odalarımız dağ manzaralıdır."
+        },
+        {
+          "q": "Oda fiyatları ne kadar?",
+          "a": "2026 sezon fiyatlarımız: Standart/Çift kişilik oda €85/gece, Üçlü oda €115/gece, Aile odası (5 kişi) €145/gece. Fiyatlarımıza kahvaltı ve akşam yemeği dahildir. Yaz sezonu ve bayramlar da fiyatlar değişkenlik gösterebilir."
+        }
+      ],
+      "nemrut": [
+        {
+          "q": "Gün doğumu turu için hangi saatte kalkılmalı?",
+          "a": "Gün doğumu turları için yaz aylarında (Mayıs-Eylül) saat 04:00-04:30, kış aylarında (Ekim-Nisan) 05:00-05:30 arası hareket edilir. Mevsime göre güneş doğuş saatleri değiştiği için güncel bilgi için resepsiyonumuzu arayabilirsiniz. Güneş Hotel'den zirveye sadece 10 dakika mesafe!"
+        },
+        {
+          "q": "Nemrut Dağı giriş ücreti ne kadar?",
+          "a": "2026 yılı için Nemrut Dağı Milli Parkı giriş ücreti yetişkinler için 200 TL, öğrenciler için 100 TL'dir. Müze kart geçerlidir. 12 yaş altı çocuklar ücretsizdir. Ücretler mevsimsel olarak değişebilir."
+        },
+        {
+          "q": "Nemrut Dağı'na ne zaman gidilir? En iyi mevsim hangisi?",
+          "a": "Nemrut Dağı'nı yıl boyunca ziyaret edebilirsiniz. En popüler dönem Mayıs-Ekim arasıdır. Haziran-Eylül arası en sıcak dönemdir (açık hava, net görüş). Kış aylarında kar manzarası eşsiz güzellikte ancak yollar zorlu olabilir. Bahar (Nisan-Mayıs) ve sonbahar (Eylül-Ekim) ideal dönemlerdir."
+        },
+        {
+          "q": "Gün batımı turu da var mı?",
+          "a": "Evet, gün batımı turları da düzenliyoruz. Genellikle günbatımından 1.5-2 saat önce hareket edilir. Gün batımı turları daha az kalabalık olur ve fotoğraf için harika fırsatlar sunar. İdeal plan: Akşam gün batımı + ertesi sabah gün doğumu."
+        },
+        {
+          "q": "Nemrut'a çıkış yolu nasıl? Zorlu mu?",
+          "a": "Otelimizden Nemrut zirvesine kadar asfalt yol bulunmaktadır. Otopark alanından zirveye 400 metre taş merdivenle (15-20 dakika) çıkılır. Orta zorlukta bir yürüyüştür. Rahat ayakkabı, su ve yaz aylarında güneş kremi şarttır."
+        },
+        {
+          "q": "Nemrut'ta çadırla konaklama yapılabilir mi?",
+          "a": "Resmi olarak Nemrut Dağı Milli Parkı içinde çadırla konaklama yasaktır. Güvenlik ve konfor açısından otel konaklaması önerilir. Güneş Hotel zirveye en yakın otel olarak 2 km mesafededir."
+        }
+      ],
+      "facilities": [
+        {
+          "q": "Odalarda WiFi var mı?",
+          "a": "Evet, tüm odalarımızda ve ortak alanlarda ücretsiz WiFi hizmeti mevcuttur. Giriş şifresini resepsiyondan alabilirsiniz. İnternet hızı genellikle iyidir ancak dağlık bölgede olduğumuz için arada yavaşlama olabilir."
+        },
+        {
+          "q": "Otelde kahvaltı dahil mi?",
+          "a": "Evet, tüm odalarımızda kahvaltı fiyata dahildir. Geleneksel Türk kahvaltısı (zeytin, peynir, yumurta, reçel, bal, tereyağı, sebzeler) ile güne başlayabilirsiniz. Özel diyet ihtiyaçlarınız varsa önceden bildirebilirsiniz."
+        },
+        {
+          "q": "Restoran var mı? Akşam yemeği servisi var mı?",
+          "a": "Evet, 30 kişilik restoranımızda Türk mutfağından yemekler sunuyoruz. Akşam yemeği servisi mevcuttur (yarım pansiyon opsiyonu). Yöresel lezzetler ve ev yemekleri deneyebilirsiniz. Önceden haber vermeniz tavsiye edilir."
+        },
+        {
+          "q": "Otopark var mı?",
+          "a": "Evet, otelimizin özel ve ücretsiz otopark alanı bulunmaktadır. Aracınızı güvenle park edebilirsiniz. Kapalı otopark değildir ancak güvenli bir alan içerisindedir."
+        },
+        {
+          "q": "Odalarda klima var mı?",
+          "a": "Odalarımızda merkezi ısıtma sistemi bulunmaktadır. Yaz aylarında bölge iklimi serin olduğu için klima genellikle gerekli olmamaktadır. Gece sıcaklığı 15-20°C civarındadır. Kış aylarında ısıtma sistemi aktif olarak çalışır."
+        },
+        {
+          "q": "24 saat sıcak su var mı?",
+          "a": "Evet, tüm odalarımızda 24 saat kesintisiz sıcak su hizmeti bulunmaktadır. Konfor ve temizlik önceliğimizdir."
+        },
+        {
+          "q": "Evcil hayvan kabul ediyor musunuz?",
+          "a": "Evet, küçük ve orta boy evcil hayvanlarınızı (köpek, kedi) kabul ediyoruz. Önceden bildirim yapmanız ve evcil hayvanınızın tasmalı olması gerekmektedir."
+        }
+      ],
+      "transportation": [
+        {
+          "q": "Havalimanından transfer hizmeti var mı?",
+          "a": "Evet, Malatya Havalimanı (145 km - 2 saat) ve Adıyaman Havalimanı (85 km - 1.5 saat)'ndan otelimize transfer hizmeti sunuyoruz. Transfer hizmetimiz ücretsizdir ve rezervasyon sırasında talebinizi bildirmeniz gerekmektedir."
+        },
+        {
+          "q": "Nemrut Dağı'na nasıl ulaşılır?",
+          "a": "Nemrut'a ulaşım için üç ana rota vardır: 1) Malatya üzerinden (Pütürge - Güneş Hotel) - ÖNERİLEN, 2) Adıyaman üzerinden (Kahta - 85 km), 3) Şanlıurfa üzerinden. Otelimiz Malatya rotasında, zirveye en yakın noktadadır (2 km)."
+        },
+        {
+          "q": "Malatya'dan otele nasıl gidilir?",
+          "a": "Malatya merkez'den D300 karayolu ile Pütürge istikametine gidilir (yaklaşık 120 km). Pütürge'den sonra Nemrut Dağı tabelalarını takip ederek otelimize ulaşabilirsiniz (25 km). Toplam süre yaklaşık 2-2.5 saattir."
+        },
+        {
+          "q": "Toplu taşıma ile gelinebilir mi?",
+          "a": "Malatya'dan Pütürge'ye otobüs bulunmaktadır. Ancak Pütürge'den otelimize direkt toplu taşıma yoktur. Transfer hizmetimizden yararlanabilir veya taksi kiralayabilirsiniz."
+        }
+      ],
+      "general": [
+        {
+          "q": "Evcil hayvan kabul ediyor musunuz?",
+          "a": "Evet, küçük ve orta boy evcil hayvanları kabul ediyoruz. Ancak önceden bildirilmesi gerekmektedir. Evcil hayvanınız için ek ücret uygulanmaktadır (gecelik 100 TL)."
+        },
+        {
+          "q": "Çocuklar için indirim var mı?",
+          "a": "6 yaş altı çocuklar (anne-baba ile aynı odada, ekstra yatak olmadan) ücretsizdir. 6-12 yaş arası çocuklar için %50 indirim uygulanır. 12 yaş üzeri yetişkin fiyatlandırması geçerlidir."
+        },
+        {
+          "q": "Çevrede gezilecek başka yerler var mı?",
+          "a": "Evet! Nemrut'un yanı sıra çevrede Karakuş Tümülüsü (15 km), Cendere Köprüsü (20 km), Arsemia Ören Yeri (25 km), Kahta Kalesi (30 km), Perre Antik Kenti (50 km) gibi tarihi yerler bulunmaktadır. Tur paketleri hakkında bilgi alabiliriz."
+        },
+        {
+          "q": "Kredi kartı kabul ediyor musunuz?",
+          "a": "Evet, tüm kredi kartlarını (Visa, MasterCard, Troy) kabul ediyoruz. Nakit ödeme de mümkündür."
+        },
+        {
+          "q": "Otel kaç yıldızlı?",
+          "a": "Otelimiz butik aile oteli olarak 4 yıldız konfor seviyesinde hizmet vermektedir. Resmi yıldız sınıflandırması yerine misafir memnuniyetini ön planda tutuyoruz."
+        },
+        {
+          "q": "Ne kadar süreliğine kalmak gerekir?",
+          "a": "Sadece Nemrut gün doğumunu görmek için 1 gece yeterlidir. Ancak çevredeki diğer tarihi yerleri de gezmek isterseniz 2-3 gece kalmanızı öneririz. Böylece hem gün doğumu hem gün batımını izleyebilir, Kommagene kalıntılarını gezebilirsiniz."
+        }
+      ]
+    },
+    "contactCta": {
+      "title": "Başka sorunuz mu var?",
+      "description": "Size yardımcı olmaktan mutluluk duyarız. Bizimle iletişime geçin!",
+      "phoneLabel": "Telefon",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp"
+    }
+  },
+  "seoPages": {
+    "nemrutOteli": {
+      "title": "Nemrut Dağı Oteli - Güneş Hotel | 2 km Mesafede | Malatya",
+      "description": "Nemrut Dağı'na en yakın otel: Güneş Hotel. UNESCO Dünya Mirası'na sadece 2 km! Gün doğumu turları, 30+ yıl deneyim, konforlu odalar.",
+      "keywords": "nemrut dağı oteli, nemrut otel, nemrut dağı'na en yakın otel, unesco otel, malatya nemrut otel, gün doğumu turu",
+      "hero": {
+        "title": "Nemrut Dağı Oteli",
+        "titleHighlight": "Sadece 2 km Mesafede",
+        "description": "UNESCO Dünya Mirası Nemrut Dağı'na en yakın konaklama tesisi. 1980'den beri güvenilir hizmet, samimi atmosfer, muhteşem manzara.",
+        "features": ["Nemrut'a 2 km", "30+ Yıl Deneyim", "4.7/5 Puan"],
+        "cta": {
+          "reservation": "Hemen Rezervasyon Yap",
+          "viewRooms": "Odalarımızı İncele"
+        }
+      },
+      "whyChoose": {
+        "heading": "Neden Güneş Hotel?",
+        "subtitle": "Nemrut Dağı deneyiminiz için en iyi tercih",
+        "features": [
+          {
+            "title": "En Yakın Otel",
+            "description": "Nemrut Dağı zirvesine sadece 2 km mesafede. Gün doğumu için ideal lokasyon."
+          },
+          {
+            "title": "30+ Yıl Deneyim",
+            "description": "1980'den beri aile işletmesi olarak binlerce misafire hizmet verdik."
+          },
+          {
+            "title": "Transfer Hizmeti",
+            "description": "Malatya ve Adıyaman havalimanlarından ücretsiz transfer imkanı."
+          },
+          {
+            "title": "Samimi Ortam",
+            "description": "Aile sıcaklığında misafirperverlik, kendinizi evinizde hissedin."
+          }
+        ]
+      },
+      "aboutSection": {
+        "heading": "Nemrut Dağı'nın Kalbinde",
+        "description": "Güneş Hotel, Malatya Pütürge'de, UNESCO Dünya Mirası Nemrut Dağı'na en yakın konaklama tesisidir. 10 konforlu odamız, 25 yatak kapasitemiz ve 30 kişilik restoranımızla misafirlerimize unutulmaz bir deneyim sunuyoruz.",
+        "infoList": [
+          "24 Saat Sıcak Su: Kesintisiz konfor",
+          "Ücretsiz WiFi: Tüm odalarda hızlı internet",
+          "Dağ Manzarası: Tüm odalarımızda",
+          "Kahvaltı Dahil: Geleneksel Türk kahvaltısı",
+          "Özel Otopark: Ücretsiz araç parkı"
+        ],
+        "cta": "Detaylı Bilgi"
+      },
+      "roomsPreview": {
+        "heading": "Odalarımız",
+        "subtitle": "Konforlu ve ferah odalarımızda rahat bir konaklama",
+        "rooms": [
+          {"title": "Çift Kişilik Oda", "description": "Dağ manzaralı, konforlu çift kişilik oda", "price": "1.500 TL / gece"},
+          {"title": "Üçlü Oda", "description": "3 kişilik konforlu konaklama", "price": "2.000 TL / gece"},
+          {"title": "Aile Odası", "description": "5 kişilik geniş aile odası", "price": "3.000 TL / gece"}
+        ],
+        "cta": "Tüm Odaları Görüntüle"
+      },
+      "faqSection": {
+        "heading": "Sık Sorulan Sorular",
+        "questions": [
+          {
+            "q": "Nemrut Dağı'na mesafeniz kaç km?",
+            "a": "Otelimiz Nemrut Dağı zirvesine sadece 2 km mesafededir. Araçla yaklaşık 10 dakikada zirveye ulaşabilirsiniz."
+          },
+          {
+            "q": "Gün doğumu turu için hangi saatte kalkmalıyız?",
+            "a": "Yaz aylarında saat 04:00-04:30, kış aylarında 05:00-05:30 arası hareket edilir. Mevsime göre saatler değişebilir."
+          },
+          {
+            "q": "Transfer hizmeti var mı?",
+            "a": "Evet, Malatya ve Adıyaman havalimanlarından transfer hizmetimiz mevcuttur. Rezervasyon sırasında belirtmeniz yeterlidir."
+          }
+        ],
+        "cta": "Daha Fazla Bilgi İçin İletişime Geçin"
+      }
+    },
+    "nemrutKonaklama": {
+      "title": "Nemrut Dağı Konaklama - Pansiyon ve Otel Seçenekleri | Güneş Hotel",
+      "description": "Nemrut Dağı konaklama rehberi. En yakın oteller, pansiyonlar, fiyatlar, gün doğumu turları hakkında kapsamlı bilgi.",
+      "keywords": "nemrut dağı konaklama, nemrut pansiyon, nemrut otel fiyatları, nemrut nerede kalınır",
+      "hero": {
+        "title": "Nemrut Dağı Konaklama Rehberi",
+        "subtitle": "UNESCO Dünya Mirası Nemrut Dağı'nı ziyaret ederken nerede kalmalı? En iyi konaklama seçenekleri, fiyatlar ve pratik bilgiler."
+      },
+      "toc": {
+        "title": "📋 İçindekiler",
+        "items": [
+          "Nemrut Dağı'nda Nerede Kalınır?",
+          "Güneş Hotel - En Yakın Seçenek",
+          "Diğer Konaklama Seçenekleri",
+          "Konaklama Fiyatları",
+          "Rezervasyon İpuçları",
+          "Sıkça Sorulan Sorular"
+        ]
+      },
+      "headings": {
+        "whereToStay": "Nemrut Dağı'nda Nerede Kalınır?",
+        "gunesHotel": "Güneş Hotel - Nemrut Dağı'na En Yakın Otel",
+        "otherOptions": "Diğer Konaklama Seçenekleri",
+        "pricing": "Nemrut Dağı Konaklama Fiyatları (2026)",
+        "tips": "Nemrut Konaklama İpuçları",
+        "faq": "Sıkça Sorulan Sorular"
+      },
+      "cta": {
+        "bookNow": "Hemen Rezervasyon Yap",
+        "callNow": "Hemen Ara: +90 543 876 7271",
+        "viewRooms": "Odalarımızı İncele"
+      }
+    },
+    "nemrutGunDogumuTuru": {
+      "title": "Nemrut Dağı Gün Doğumu Turu - Rehber, Saatler ve İpuçları 2026",
+      "description": "Nemrut Dağı gün doğumu turu rehberi: En iyi aylar, tur saatleri, fiyatlar, ne giyilmeli, fotoğraf ipuçları.",
+      "keywords": "nemrut dağı gün doğumu, nemrut gün doğumu turu, nemrut sunrise tour, nemrut tur saatleri",
+      "hero": {
+        "title": "Nemrut Dağı Gün Doğumu Turu",
+        "subtitle": "UNESCO Dünya Mirası'nda eşsiz bir deneyim: Dev heykeller arasında gün doğumunu izleyin"
+      },
+      "quickInfo": "Hızlı Bilgi: Nemrut Dağı gün doğumu turları için en uygun aylar Mayıs-Eylül arasıdır. Güneş Hotel'den zirveye sadece 10 dakika mesafe!",
+      "headings": {
+        "whatIs": "Nemrut Dağı Gün Doğumu Turu Nedir?",
+        "whySpecial": "Neden Bu Kadar Özel?",
+        "tourTimes": "Nemrut Gün Doğumu Tur Saatleri",
+        "bestMonths": "En İyi Gün Doğumu Ayları",
+        "whatToWear": "Nemrut Gün Doğumu Turu İçin Ne Giyilmeli?",
+        "photoTips": "Nemrut Gün Doğumu Fotoğraf İpuçları",
+        "pricing": "Nemrut Gün Doğumu Turu Fiyatları (2026)",
+        "faq": "Sıkça Sorulan Sorular"
+      },
+      "tableHeaders": {
+        "period": "Dönem",
+        "sunriseTime": "Gün Doğumu Saati",
+        "departureTime": "Otelden Kalkış",
+        "arrivalTime": "Zirveye Varış"
+      },
+      "seasons": {
+        "best": "EN İYİ DÖNEM",
+        "good": "İYİ DÖNEM",
+        "winter": "KIŞ DÖNEMİ"
+      },
+      "clothing": {
+        "summer": "Yaz Giyimi (Haziran-Eylül)",
+        "winter": "Kış Giyimi (Kasım-Mart)"
+      },
+      "alert": {
+        "gunesHotel": "Güneş Hotel Avantajı: Nemrut zirvesine sadece 2 km mesafede olduğumuz için otelden çıkış sadece 10 dakika sürüyor! Kahta'dan gelen turlar 1.5-2 saat yol yapmak zorundadır.",
+        "important": "Önemli: Yaz aylarında bile sabah erken saatlerde Nemrut zirvesinde sıcaklık 5-10°C civarındadır ve rüzgar eser. Mutlaka üzerinize bir şeyler alın!"
+      },
+      "cta": {
+        "bookExperience": "Nemrut Gün Doğumu Deneyiminizi Rezerve Edin",
+        "stayWithUs": "Güneş Hotel'de konaklayın, gün doğumu turuna ücretsiz katılın! Sadece 2 km mesafede, en yakın otel avantajı.",
+        "reservation": "Rezervasyon: +90 543 876 7271",
+        "viewRooms": "Odaları İncele"
+      }
+    }
   }
 }

@@ -138,6 +138,7 @@
     "title": "Galleria",
     "subtitle": "Foto dal nostro hotel e dintorni",
     "viewAll": "Visualizza Galleria Completa",
+    "loadMore": "Carica Altre Immagini",
     "filter": {
       "all": "Tutti",
       "hotel": "Hotel",
@@ -164,17 +165,18 @@
       "fullNamePlaceholder": "Nome completo *",
       "emailPlaceholder": "Email *",
       "phonePlaceholder": "Telefono *",
-      "messagePlaceholder": "Il tuo messaggio *",
+      "subjectPlaceholder": "Oggetto",
+      "optional": "(Opzionale)",
+      "messagePlaceholder": "Il Tuo Messaggio *",
       "sending": "Invio...",
       "send": "Invia Messaggio",
       "makeReservation": "Prenota",
-      "success": "Il tuo messaggio è stato inviato con successo! Ti contatteremo al più presto.",
-      "error": "Si è verificato un errore. Riprova.",
-      "tempUnavailable": "L'invio di moduli online è temporaneamente non disponibile. Si prega di contattarci tramite",
-      "contactVia": "o",
-      "email": "email",
-      "whatsapp": "WhatsApp",
-      "viaText": "."
+      "success": "Messaggio inviato con successo",
+      "successDesc": "Il tuo messaggio ci è pervenuto. Ti risponderemo il prima possibile.",
+      "error": "Messaggio non inviato",
+      "errorDesc": "Il tuo messaggio non è stato inviato. Riprova più tardi.",
+      "rateLimit": "Troppe richieste",
+      "rateLimitDesc": "Troppi messaggi inviati con questa email. Riprova più tardi."
     },
     "form": {
       "title": "Modulo di Prenotazione",
@@ -182,7 +184,8 @@
       "checkOut": "Data di partenza",
       "roomType": "Tipo di camera",
       "selectRoom": "Seleziona camera",
-      "guests": "Numero di ospiti",
+      "guests": "Ospiti",
+      "guest": "Ospite",
       "selectGuests": "Seleziona numero di ospiti",
       "fullName": "Nome completo",
       "fullNamePlaceholder": "Nome completo",
@@ -191,13 +194,13 @@
       "specialRequests": "Richieste speciali (Opzionale)",
       "submit": "Invia richiesta di prenotazione",
       "sending": "Invio...",
-      "success": "La tua richiesta di prenotazione è stata inviata con successo! Ti contatteremo al più presto.",
-      "error": "Si è verificato un errore. Riprova.",
-      "tempUnavailable": "L'invio di prenotazioni online è temporaneamente non disponibile. Si prega di effettuare la prenotazione tramite",
-      "contactVia": "o",
-      "email": "email",
-      "whatsapp": "WhatsApp",
-      "viaText": ".",
+      "success": "Richiesta di prenotazione ricevuta",
+      "successDesc": "La tua richiesta di prenotazione è stata inviata con successo. Ti risponderemo il prima possibile.",
+      "error": "Prenotazione non inviata",
+      "errorDesc": "La tua richiesta di prenotazione non è stata elaborata. Riprova più tardi.",
+      "rateLimit": "Troppe richieste di prenotazione",
+      "rateLimitDesc": "Troppe richieste inviate con questa email/telefono. Riprova più tardi.",
+
       "guestOptions": {
         "1": "1 Ospite",
         "2": "2 Ospiti",
@@ -222,6 +225,383 @@
   },
   "common": {
     "loading": "Caricamento...",
-    "selectLanguage": "Scegli Lingua"
+    "selectLanguage": "Scegli Lingua"  },
+  "errors": {
+    "network": "Errore di connessione. Controlla la tua connessione internet.",
+    "server": "Errore del server. Riprova più tardi.",
+    "validation": "Compila tutti i campi correttamente.",
+    "notFound": "Il contenuto che cerchi non è stato trovato.",
+    "unauthorized": "Non hai i permessi per questa operazione.",
+    "timeout": "Richiesta scaduta. Riprova.",
+    "rateLimit": "Troppe richieste. Riprova più tardi.",
+    "unknown": "Si è verificato un errore imprevisto.",
+    "retryLater": "puoi riprovare più tardi"  },
+  "formValidation": {
+    "fullName": {
+      "required": "Il nome completo è obbligatorio",
+      "minLength": "Il nome completo deve contenere almeno 2 caratteri",
+      "maxLength": "Il nome completo deve contenere al massimo 100 caratteri",
+      "pattern": "Il nome completo deve contenere solo lettere"
+    },
+    "email": {
+      "required": "L'indirizzo email è obbligatorio",
+      "pattern": "Inserisci un indirizzo email valido"
+    },
+    "phone": {
+      "required": "Il numero di telefono è obbligatorio",
+      "pattern": "Inserisci un numero di telefono valido (es. +39 333 123 4567)",
+      "minLength": "Il numero di telefono deve contenere almeno 10 cifre"
+    },
+    "message": {
+      "required": "Il messaggio è obbligatorio",
+      "minLength": "Il messaggio deve contenere almeno 10 caratteri",
+      "maxLength": "Il messaggio deve contenere al massimo 1000 caratteri"
+    },
+    "checkIn": {
+      "required": "La data di check-in è obbligatoria",
+      "minDate": "La data di check-in non può essere precedente a oggi"
+    },
+    "checkOut": {
+      "required": "La data di check-out è obbligatoria",
+      "minDate": "La data di check-out deve essere successiva alla data di check-in"
+    },
+    "roomType": {
+      "required": "La selezione del tipo di camera è obbligatoria"
+    },
+    "guests": {
+      "required": "Il numero di ospiti è obbligatorio",
+      "min": "È richiesto almeno 1 ospite",
+      "max": "Numero massimo di ospiti: 10"
+    }
+  },
+  "notFound": {
+    "title": "Pagina Non Trovata",
+    "heading": "Pagina Non Trovata",
+    "description": "La pagina che stai cercando non esiste o potrebbe essere stata spostata.",
+    "backToHome": "Torna alla Home",
+    "contactUs": "Contattaci"
+  },
+  "loading": {
+    "text": "Caricamento...",
+    "pageLoading": "Caricamento della pagina"
+  },
+  "privacy": {
+    "title": "Informativa sulla Privacy",
+    "heading": "Informativa sulla Privacy",
+    "intro": "Questa pagina fornisce informazioni sui dati personali elaborati e sui processi di sicurezza dei dati durante l'utilizzo del nostro sito web.",
+    "usage": "I dati trasmessi tramite i moduli di contatto vengono utilizzati esclusivamente per rispondere alla tua richiesta e non vengono condivisi con terze parti.",
+    "contact": "Per richieste:"
+  },
+  "terms": {
+    "title": "Termini di Utilizzo",
+    "heading": "Termini di Utilizzo",
+    "intro": "Tutti i visitatori che utilizzano questo sito web sono considerati aver accettato i seguenti termini.",
+    "disclaimer": "Il contenuto è solo a scopo informativo. Prezzi, disponibilità e promozioni devono essere verificati prima della prenotazione.",
+    "contact": "Informazioni sui termini:"  },
+  "faq": {
+    "title": "FAQ Hotel Monte Nemrut | Domande Frequenti - Güneş Hotel",
+    "metaDescription": "Tutto quello che devi sapere sul nostro hotel al Monte Nemrut. Prenotazioni, tour all'alba, trasporti, prezzi e altro. 30+ domande e risposte.",
+    "metaKeywords": "monte nemrut faq, domande hotel nemrut, orario alba nemrut, biglietto ingresso nemrut, trasporto nemrut, faq hotel gunes",
+    "heading": "Domande Frequenti",
+    "subtitle": "Cosa sapere sul Monte Nemrut e Güneş Hotel",
+    "categories": {
+      "accommodation": "🏨 Alloggio e Prenotazioni",
+      "nemrut": "🌄 Monte Nemrut e Tour",
+      "facilities": "🏡 Servizi dell'Hotel",
+      "transportation": "🚗 Trasporti",
+      "general": "Informazioni Generali"
+    },
+    "questions": {
+      "accommodation": [
+        {
+          "q": "Quanto dista il Monte Nemrut?",
+          "a": "Güneş Hotel è a soli 2 km dalla vetta del Monte Nemrut. Per il tour all'alba, puoi raggiungere la vetta in circa 10 minuti di auto dal nostro hotel. Come hotel più vicino nella regione, offriamo grande comodità ai nostri ospiti."
+        },
+        {
+          "q": "Come posso prenotare una camera?",
+          "a": "Per la prenotazione online, puoi compilare il modulo di contatto sul nostro sito web, chiamarci al +90 543 876 7271 o contattarci via WhatsApp. Sono disponibili offerte speciali per prenotazioni anticipate."
+        },
+        {
+          "q": "Quali sono gli orari di check-in e check-out?",
+          "a": "Il nostro orario di check-in è alle 14:00 e il check-out alle 12:00. Check-in anticipato o check-out posticipato possono essere organizzati con un costo aggiuntivo in base alla disponibilità. Si prega di avvisare in anticipo."
+        },
+        {
+          "q": "Qual è la vostra politica di cancellazione?",
+          "a": "Puoi cancellare gratuitamente fino a 7 giorni prima dell'arrivo. Le cancellazioni effettuate entro 7 giorni verranno addebitate per 1 notte. Condizioni di cancellazione diverse possono applicarsi nei giorni speciali (festività, Capodanno)."
+        },
+        {
+          "q": "Quante camere ha l'hotel? Qual è la vostra capacità?",
+          "a": "Il nostro hotel ha un totale di 10 camere. Con la nostra capacità di 25 posti letto, offriamo camere doppie, triple e familiari (5 persone). Tutte le nostre camere hanno vista sulle montagne."
+        },
+        {
+          "q": "Quali sono i prezzi delle camere?",
+          "a": "I nostri prezzi per la stagione 2026: Camera Standard/Doppia €85/notte, Camera Tripla €115/notte, Camera Familiare (5 persone) €145/notte. La colazione e la cena sono incluse nei nostri prezzi. I prezzi possono variare durante l'alta stagione e le festività."
+        }
+      ],
+      "nemrut": [
+        {
+          "q": "A che ora si parte per il tour dell'alba?",
+          "a": "Per i tour all'alba, la partenza è tra le 04:00-04:30 nei mesi estivi (maggio-settembre) e le 05:00-05:30 nei mesi invernali (ottobre-aprile). Poiché gli orari dell'alba variano a seconda della stagione, puoi chiamare la nostra reception per informazioni aggiornate. Solo 10 minuti da Güneş Hotel alla vetta!"
+        },
+        {
+          "q": "Qual è il costo d'ingresso al Monte Nemrut?",
+          "a": "Per il 2026, la tariffa d'ingresso al Parco Nazionale del Monte Nemrut è di 200 TL per adulti e 100 TL per studenti. La tessera musei è valida. I bambini sotto i 12 anni entrano gratis. Le tariffe possono variare stagionalmente."
+        },
+        {
+          "q": "Quando è il momento migliore per visitare il Monte Nemrut? Quale stagione è migliore?",
+          "a": "Puoi visitare il Monte Nemrut tutto l'anno. Il periodo più popolare è tra maggio e ottobre. Giugno-settembre è il periodo più caldo (tempo sereno, visibilità chiara). In inverno, il paesaggio innevato è straordinariamente bello ma le strade possono essere difficili. Primavera (aprile-maggio) e autunno (settembre-ottobre) sono periodi ideali."
+        },
+        {
+          "q": "Ci sono anche tour al tramonto?",
+          "a": "Sì, organizziamo anche tour al tramonto. La partenza è solitamente 1,5-2 ore prima del tramonto. I tour al tramonto sono meno affollati e offrono ottime opportunità fotografiche. Piano ideale: Tramonto serale + alba del mattino successivo."
+        },
+        {
+          "q": "Com'è la strada per Nemrut? È difficile?",
+          "a": "C'è una strada asfaltata dal nostro hotel alla vetta di Nemrut. Dall'area di parcheggio alla vetta, si salgono 400 metri di gradini di pietra (15-20 minuti). È una camminata di media difficoltà. Scarpe comode, acqua e crema solare in estate sono indispensabili."
+        },
+        {
+          "q": "Si può campeggiare a Nemrut?",
+          "a": "Il campeggio è ufficialmente vietato all'interno del Parco Nazionale del Monte Nemrut. L'alloggio in hotel è raccomandato per sicurezza e comfort. Güneş Hotel è l'hotel più vicino alla vetta a 2 km."
+        }
+      ],
+      "facilities": [
+        {
+          "q": "C'è WiFi nelle camere?",
+          "a": "Sì, il servizio WiFi gratuito è disponibile in tutte le nostre camere e aree comuni. Puoi ottenere la password dalla reception. La velocità di Internet è generalmente buona, ma ci possono essere rallentamenti occasionali poiché siamo in una zona montuosa."
+        },
+{
+          "q": "La colazione è inclusa?",
+          "a": "Sì, la colazione è inclusa nel prezzo per tutte le nostre camere. Puoi iniziare la giornata con la tradizionale colazione turca (olive, formaggio, uova, marmellata, miele, burro, verdure). Se hai esigenze dietetiche speciali, puoi farcelo sapere in anticipo."
+        },
+        {
+          "q": "C'è un ristorante? Servite la cena?",
+          "a": "Sì, serviamo cucina turca nel nostro ristorante da 30 posti. Il servizio cena è disponibile (opzione mezza pensione). Puoi provare sapori locali e piatti casalinghi. Si consiglia di avvisare in anticipo."
+        },
+        {
+          "q": "C'è un parcheggio?",
+          "a": "Sì, l'hotel dispone di parcheggio privato e gratuito. Puoi parcheggiare il tuo veicolo in sicurezza. Non è un parcheggio coperto ma si trova in un'area sicura."
+        },
+        {
+          "q": "C'è l'aria condizionata nelle camere?",
+          "a": "Le nostre camere hanno un sistema di riscaldamento centralizzato. In estate, l'aria condizionata di solito non è necessaria poiché il clima regionale è fresco. La temperatura notturna è intorno ai 15-20°C. Il sistema di riscaldamento funziona attivamente in inverno."
+        },
+        {
+          "q": "C'è acqua calda 24 ore?",
+          "a": "Sì, tutte le nostre camere hanno servizio di acqua calda 24 ore su 24 senza interruzioni. Comfort e pulizia sono la nostra priorità."
+        },
+        {
+          "q": "Accettate animali domestici?",
+          "a": "Sì, accettiamo animali domestici di piccola e media taglia (cani, gatti). Devi avvisarci in anticipo e il tuo animale deve essere al guinzaglio."
+        }
+      ],
+      "transportation": [
+        {
+          "q": "C'è un servizio di trasferimento dall'aeroporto?",
+          "a": "Sì, offriamo servizio di trasferimento al nostro hotel dall'Aeroporto di Malatya (145 km - 2 ore) e dall'Aeroporto di Adıyaman (85 km - 1,5 ore). Il nostro servizio di trasferimento è gratuito e devi indicare la tua richiesta durante la prenotazione."
+        },
+        {
+          "q": "Come arrivare al Monte Nemrut?",
+          "a": "Ci sono tre percorsi principali per Nemrut: 1) Via Malatya (Pütürge - Güneş Hotel) - CONSIGLIATO, 2) Via Adıyaman (Kahta - 85 km), 3) Via Şanlıurfa. Il nostro hotel si trova sul percorso Malatya, nel punto più vicino alla vetta (2 km)."
+        },
+        {
+          "q": "Come arrivare all'hotel da Malatya?",
+          "a": "Dal centro di Malatya, prendi l'autostrada D300 verso Pütürge (circa 120 km). Dopo Pütürge, segui i segnali del Monte Nemrut per raggiungere il nostro hotel (25 km). La durata totale è di circa 2-2,5 ore."
+        },
+        {
+          "q": "Si può arrivare con i mezzi pubblici?",
+          "a": "Ci sono autobus da Malatya a Pütürge. Tuttavia, non c'è trasporto pubblico diretto da Pütürge al nostro hotel. Puoi utilizzare il nostro servizio di trasferimento o noleggiare un taxi."
+        }
+      ],
+      "general": [
+        {
+          "q": "Accettate animali domestici?",
+          "a": "Sì, accettiamo animali domestici di piccola e media taglia. Tuttavia, è richiesta una notifica preventiva. Si applica un costo aggiuntivo per il tuo animale domestico (100 TL a notte)."
+        },
+        {
+          "q": "C'è uno sconto per i bambini?",
+          "a": "I bambini sotto i 6 anni (nella stessa camera con i genitori, senza letto extra) sono gratuiti. Si applica uno sconto del 50% per i bambini dai 6 ai 12 anni. Il prezzo per adulti si applica ai bambini oltre i 12 anni."
+        },
+        {
+          "q": "Ci sono altri posti da visitare nelle vicinanze?",
+          "a": "Sì! Oltre a Nemrut, ci sono siti storici nella zona come il Tumulo di Karakuş (15 km), il Ponte di Cendere (20 km), il Sito Archeologico di Arsemia (25 km), il Castello di Kahta (30 km), la Città Antica di Perre (50 km). Possiamo fornire informazioni sui pacchetti turistici."
+        },
+        {
+          "q": "Accettate carte di credito?",
+          "a": "Sì, accettiamo tutte le carte di credito (Visa, MasterCard, Troy). È possibile anche il pagamento in contanti."
+        },
+        {
+          "q": "Quante stelle ha l'hotel?",
+          "a": "Il nostro hotel è un hotel boutique a conduzione familiare con un livello di comfort a 4 stelle. Diamo priorità alla soddisfazione degli ospiti rispetto alla classificazione ufficiale a stelle."
+        },
+        {
+          "q": "Quanto tempo dovrei stare?",
+          "a": "1 notte è sufficiente solo per vedere l'alba a Nemrut. Tuttavia, se vuoi visitare altri siti storici nella zona, ti consigliamo di soggiornare 2-3 notti. In questo modo puoi guardare sia l'alba che il tramonto e visitare le rovine di Commagene."
+        }
+      ]
+    },
+    "contactCta": {
+      "title": "Altre domande?",
+      "description": "Siamo felici di aiutarti! Mettiti in contatto con noi.",
+      "phoneLabel": "Telefono",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp"
+    }
+  },
+  "seoPages": {
+    "nemrutOteli": {
+      "title": "Hotel Monte Nemrut - Güneş Hotel | 2 km di Distanza | Malatya",
+      "description": "L'hotel più vicino al Monte Nemrut: Güneş Hotel. A soli 2 km dal Patrimonio Mondiale UNESCO! Tour all'alba, oltre 30 anni di esperienza, camere confortevoli.",
+      "keywords": "hotel monte nemrut, hotel nemrut, hotel più vicino monte nemrut, hotel unesco, malatya nemrut hotel, tour alba",
+      "hero": {
+        "title": "Hotel Monte Nemrut",
+        "titleHighlight": "A Soli 2 km",
+        "description": "La struttura più vicina al Patrimonio Mondiale UNESCO Monte Nemrut. Servizio affidabile dal 1980, atmosfera calorosa, vista magnifica.",
+        "features": ["2 km a Nemrut", "Oltre 30 Anni di Esperienza", "4.7/5 Valutazione"],
+        "cta": {
+          "reservation": "Prenota Ora",
+          "viewRooms": "Vedi le Nostre Camere"
+        }
+      },
+      "whyChoose": {
+        "heading": "Perché Güneş Hotel?",
+        "subtitle": "La scelta migliore per la tua esperienza al Monte Nemrut",
+        "features": [
+          {
+            "title": "Hotel Più Vicino",
+            "description": "A soli 2 km dalla cima del Monte Nemrut. Posizione ideale per l'alba."
+          },
+          {
+            "title": "Oltre 30 Anni di Esperienza",
+            "description": "Azienda a conduzione familiare che serve migliaia di ospiti dal 1980."
+          },
+          {
+            "title": "Servizio Transfer",
+            "description": "Transfer gratuito dagli aeroporti di Malatya e Adıyaman."
+          },
+          {
+            "title": "Atmosfera Calorosa",
+            "description": "Calore familiare e ospital ità, sentiti a casa."
+          }
+        ]
+      },
+      "aboutSection": {
+        "heading": "Nel Cuore del Monte Nemrut",
+        "description": "Güneş Hotel a Pütürge, Malatya, è la struttura più vicina al Patrimonio Mondiale UNESCO Monte Nemrut. Con le nostre 10 camere confortevoli, capacità di 25 posti letto e ristorante da 30 persone, offriamo ai nostri ospiti un'esperienza indimenticabile.",
+        "infoList": [
+          "Acqua Calda 24 Ore: Comfort ininterrotto",
+          "WiFi Gratuito: Internet ad alta velocità in tutte le camere",
+          "Vista Montagna: In tutte le nostre camere",
+          "Colazione Inclusa: Colazione tradizionale turca",
+          "Parcheggio Privato: Parcheggio gratuito"
+        ],
+        "cta": "Maggiori Informazioni"
+      },
+      "roomsPreview": {
+        "heading": "Le Nostre Camere",
+        "subtitle": "Alloggio confortevole nelle nostre camere spaziose",
+        "rooms": [
+          {"title": "Camera Doppia", "description": "Camera doppia confortevole con vista sulle montagne", "price": "€85 / notte"},
+          {"title": "Camera Tripla", "description": "Alloggio confortevole per 3 persone", "price": "€115 / notte"},
+          {"title": "Camera Familiare", "description": "Spaziosa camera familiare per 5 persone", "price": "€145 / notte"}
+        ],
+        "cta": "Vedi Tutte le Camere"
+      },
+      "faqSection": {
+        "heading": "Domande Frequenti",
+        "questions": [
+          {
+            "q": "Quanto dista il Monte Nemrut?",
+            "a": "Il nostro hotel è a soli 2 km dalla cima del Monte Nemrut. Puoi raggiungere la vetta in auto in circa 10 minuti."
+          },
+          {
+            "q": "A che ora si parte per il tour dell'alba?",
+            "a": "La partenza è tra le 04:00-04:30 nei mesi estivi e tra le 05:00-05:30 nei mesi invernali. Gli orari possono variare a seconda della stagione."
+          },
+          {
+            "q": "Avete un servizio di transfer?",
+            "a": "Sì, abbiamo un servizio di transfer dagli aeroporti di Malatya e Adıyaman. Basta menzionarlo durante la prenotazione."
+          }
+        ],
+        "cta": "Contattaci per Maggiori Informazioni"
+      }
+    },
+    "nemrutKonaklama": {
+      "title": "Alloggio Monte Nemrut - Opzioni di Pensione e Hotel | Güneş Hotel",
+      "description": "Guida all'alloggio del Monte Nemrut. Informazioni complete su hotel vicini, pensioni, prezzi e tour all'alba.",
+      "keywords": "alloggio monte nemrut, pensione nemrut, prezzi hotel nemrut, dove alloggiare nemrut",
+      "hero": {
+        "title": "Guida all'Alloggio al Monte Nemrut",
+        "subtitle": "Dove alloggiare quando si visita il Patrimonio Mondiale UNESCO Monte Nemrut? Migliori opzioni di alloggio, prezzi e informazioni pratiche."
+      },
+      "toc": {
+        "title": "📋 Contenuti",
+        "items": [
+          "Dove Alloggiare al Monte Nemrut?",
+          "Güneş Hotel - Opzione Più Vicina",
+          "Altre Opzioni di Alloggio",
+          "Prezzi Alloggio",
+          "Consigli per la Prenotazione",
+          "Domande Frequenti"
+        ]
+      },
+      "headings": {
+        "whereToStay": "Dove Alloggiare al Monte Nemrut?",
+        "gunesHotel": "Güneş Hotel - Hotel Più Vicino al Monte Nemrut",
+        "otherOptions": "Altre Opzioni di Alloggio",
+        "pricing": "Prezzi Alloggio Monte Nemrut (2026)",
+        "tips": "Consigli per l'Alloggio a Nemrut",
+        "faq": "Domande Frequenti"
+      },
+      "cta": {
+        "bookNow": "Prenota Ora",
+        "callNow": "Chiama Ora: +90 543 876 7271",
+        "viewRooms": "Vedi Le Nostre Camere"
+      }
+    },
+    "nemrutGunDogumuTuru": {
+      "title": "Tour Alba Monte Nemrut - Guida, Orari e Consigli 2026",
+      "description": "Guida al tour dell'alba del Monte Nemrut: Migliori mesi, orari tour, prezzi, cosa indossare, consigli fotografici.",
+      "keywords": "alba monte nemrut, tour alba nemrut, orari tour nemrut, aurora monte nemrut",
+      "hero": {
+        "title": "Tour Alba Monte Nemrut",
+        "subtitle": "Un'esperienza unica al Patrimonio Mondiale UNESCO: Guarda l'alba tra statue colossali"
+      },
+      "quickInfo": "Info Rapida: I migliori mesi per i tour dell'alba del Monte Nemrut sono da maggio a settembre. Solo 10 minuti dal Güneş Hotel alla vetta!",
+      "headings": {
+        "whatIs": "Cos'è il Tour dell'Alba del Monte Nemrut?",
+        "whySpecial": "Perché è Così Speciale?",
+        "tourTimes": "Orari del Tour dell'Alba di Nemrut",
+        "bestMonths": "Migliori Mesi per l'Alba",
+        "whatToWear": "Cosa Indossare per il Tour dell'Alba di Nemrut?",
+        "photoTips": "Consigli Fotografici per l'Alba di Nemrut",
+        "pricing": "Prezzi Tour Alba Nemrut (2026)",
+        "faq": "Domande Frequenti"
+      },
+      "tableHeaders": {
+        "period": "Periodo",
+        "sunriseTime": "Ora dell'Alba",
+        "departureTime": "Partenza dall'Hotel",
+        "arrivalTime": "Arrivo in Vetta"
+      },
+      "seasons": {
+        "best": "PERIODO MIGLIORE",
+        "good": "BUON PERIODO",
+        "winter": "PERIODO INVERNALE"
+      },
+      "clothing": {
+        "summer": "Abbigliamento Estivo (Giugno-Settembre)",
+        "winter": "Abbigliamento Invernale (Novembre-Marzo)"
+      },
+      "alert": {
+        "gunesHotel": "Vantaggio Güneş Hotel: Poiché siamo a soli 2 km dalla vetta di Nemrut, la partenza dall'hotel richiede solo 10 minuti! I tour che arrivano da Kahta devono viaggiare 1,5-2 ore.",
+        "important": "Importante: Anche nei mesi estivi, la temperatura sulla vetta di Nemrut nelle prime ore del mattino è intorno ai 5-10°C e può essere ventoso. Porta assolutamente abiti caldi!"
+      },
+      "cta": {
+        "bookExperience": "Prenota la Tua Esperienza dell'Alba a Nemrut",
+        "stayWithUs": "Soggiorna al Güneş Hotel e partecipa gratuitamente al tour dell'alba! Vantaggio dell'hotel più vicino, a soli 2 km.",
+        "reservation": "Prenotazione: +90 543 876 7271",
+        "viewRooms": "Vedi Camere"
+      }
+    }
   }
 }
