@@ -124,7 +124,6 @@ const Hero = () => {
                   alt={`${t(slide.titleKey)} - ${t(slide.subtitleKey)}`}
                   className="slide-bg-img"
                   loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={isActive ? 'high' : 'low'}
                   decoding={isActive ? 'sync' : 'async'}
                   width="1920"
                   height="1080"

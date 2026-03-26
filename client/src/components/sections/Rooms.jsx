@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Badge } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import { useRooms, useImageError } from '@hooks'
+import { useRooms } from '@hooks'
+import LazyImage from '@components/common/LazyImage'
 import './Rooms.scss'
 
 const Rooms = () => {
   const { t } = useTranslation()
   const rooms = useRooms()
-  const { imageErrors, handleImageError } = useImageError('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400"%3E%3Crect fill="%23f0f0f0" width="600" height="400"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18"%3EOda Görseli%3C/text%3E%3C/svg%3E')
 
   return (
     <section id="rooms" className="section rooms-section" aria-labelledby="rooms-heading">
@@ -38,22 +38,15 @@ const Rooms = () => {
                 )}
 
                 <div className="room-image">
-                  <img 
+                  <LazyImage 
                     src={room.image}
                     alt={`${room.name} - ${room.description}`}
                     className="img-fluid"
-                    loading="lazy"
+                    loading={index < 2 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
                     width="600"
                     height="400"
-                    decoding="async"
-                    importance="low"
-                    onError={(e) => handleImageError(room.id, e)}
                   />
-                  {imageErrors[room.id] && (
-                    <div className="image-error-overlay">
-                      <p>Oda görseli yüklenemedi</p>
-                    </div>
-                  )}
                   <div className="room-overlay">
                     <Link 
                       to="/rooms" 

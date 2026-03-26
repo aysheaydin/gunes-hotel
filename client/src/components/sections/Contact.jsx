@@ -10,7 +10,7 @@ import './Contact.scss'
 
 const Contact = () => {
   const { t } = useTranslation()
-  const { handleSuccess, withErrorHandling } = useErrorHandler()
+  const { handleSuccess, withErrorHandling, loading } = useErrorHandler()
   const {
     register,
     handleSubmit,
@@ -22,16 +22,23 @@ const Contact = () => {
       fullName: '',
       email: '',
       phone: '',
+      subject: '',
       message: ''
     }
   })
 
   const onSubmit = async (data) => {
+    if (import.meta.env.MODE === 'development') {
+      console.log('Contact - Form submitted with data:', data)
+    }
     const { success } = await withErrorHandling(
       () => contactAPI.send(data),
-      t('contact.quickContact.error')
+      t('contact.form.error')
     )
 
+    if (import.meta.env.MODE === 'development') {
+      console.log('Contact - withErrorHandling result:', success)
+    }
     if (success) {
       handleSuccess(t('contact.quickContact.success'))
       reset()
@@ -92,22 +99,6 @@ const Contact = () => {
               <p className="text-muted mb-4">
                 {t('contact.quickContact.description')}
               </p>
-
-              {/* Temporary Unavailable Alert */}
-              <div className="alert alert-warning d-flex align-items-center mb-4" role="alert">
-                <i className="fas fa-exclamation-triangle me-3" style={{ fontSize: '1.5rem' }}></i>
-                <div>
-                  <strong>{t('contact.quickContact.tempUnavailable')}</strong>{' '}
-                  <a href="mailto:gunesmotel@hotmail.com" className="alert-link">
-                    {t('contact.quickContact.email')}
-                  </a>{' '}
-                  {t('contact.quickContact.contactVia')}{' '}
-                  <a href="https://wa.me/905362870639" target="_blank" rel="noopener noreferrer" className="alert-link">
-                    {t('contact.quickContact.whatsapp')}
-                  </a>{' '}
-                  {t('contact.quickContact.viaText')}
-                </div>
-              </div>
 
               <Form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Row>
@@ -171,6 +162,22 @@ const Contact = () => {
                   </Form.Control.Feedback>
                 </Form.Group>
 
+                <Form.Group className="mb-3">
+                  <Form.Label htmlFor="contact-subject" className="visually-hidden">
+                    {t('contact.quickContact.subjectPlaceholder')}
+                  </Form.Label>
+                  <Form.Control
+                    id="contact-subject"
+                    type="text"
+                    {...register('subject')}
+                    placeholder={t('contact.quickContact.subjectPlaceholder')}
+                    aria-describedby="subject-optional"
+                  />
+                  <Form.Text id="subject-optional" className="text-muted">
+                    {t('contact.quickContact.optional')}
+                  </Form.Text>
+                </Form.Group>
+
                 <Form.Group className="mb-4">
                   <Form.Label htmlFor="contact-message" className="visually-hidden">
                     {t('contact.quickContact.messagePlaceholder')}
@@ -194,11 +201,19 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="btn-submit"
-                    disabled={true}
-                    title={t('contact.quickContact.tempUnavailable')}
+                    disabled={loading}
                   >
-                    <i className="fas fa-ban me-2"></i>
-                    {t('contact.quickContact.send')}
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        {t('contact.quickContact.sending')}
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-paper-plane me-2"></i>
+                        {t('contact.quickContact.send')}
+                      </>
+                    )}
                   </Button>
 
                   <Link to="/contact" className="btn btn-outline ms-3">
