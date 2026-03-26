@@ -2,9 +2,18 @@ import express from 'express';
 import { sendContactMessage } from '../controllers/contactController.js';
 import { validateContact } from '../middleware/validator.js';
 import { contactLimiter } from '../middleware/rateLimiter.js';
+import { emailRateLimiter, honeypotValidator } from '../middleware/enhancedSecurity.js';
 
 const router = express.Router();
 
-router.post('/', contactLimiter, validateContact, sendContactMessage);
+// Contact form - sends email to hotel
+// Security layers: IP rate limit → Email rate limit → Honeypot → Validation
+router.post('/', 
+  contactLimiter, 
+  emailRateLimiter,
+  honeypotValidator,
+  validateContact, 
+  sendContactMessage
+);
 
 export default router;

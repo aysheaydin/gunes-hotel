@@ -10,22 +10,8 @@ export const sendContactMessage = async (req, res, next) => {
   try {
     const { fullName, email, phone, subject, message } = req.body;
 
-    // Basic validation
-    if (!fullName || !email || !message) {
-      return res.status(400).json({
-        success: false,
-        message: 'İsim, email ve mesaj alanları zorunludur'
-      });
-    }
-
-    // Email format validation
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Geçerli bir email adresi giriniz'
-      });
-    }
+    // Validation is already handled by validateContact middleware
+    // No need for duplicate validation here
 
     // Send email to hotel
     await sendContactEmail({

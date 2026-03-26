@@ -2,15 +2,17 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import { logger } from '../utils/logger.js';
 
-// Load environment variables
+// Load environment variables (needed because this file is imported early)
 dotenv.config();
 
-// Debug: Check environment variables
-console.log('📧 EMAIL CONFIG DEBUG:');
-console.log('HOST:', process.env.EMAIL_HOST);
-console.log('PORT:', process.env.EMAIL_PORT);
-console.log('USER:', process.env.EMAIL_USER);
-console.log('PASSWORD:', process.env.EMAIL_PASSWORD ? '***SET***' : '***NOT SET***');
+// Debug: Check environment variables (Development only)
+if (process.env.NODE_ENV !== 'production') {
+  console.log('📧 EMAIL CONFIG DEBUG:');
+  console.log('HOST:', process.env.EMAIL_HOST);
+  console.log('PORT:', process.env.EMAIL_PORT);
+  console.log('USER:', process.env.EMAIL_USER);
+  console.log('PASSWORD:', process.env.EMAIL_PASSWORD ? '***SET***' : '***NOT SET***');
+}
 
 // SMTP Transporter configuration
 const transporter = nodemailer.createTransport({
@@ -25,17 +27,18 @@ const transporter = nodemailer.createTransport({
     ciphers: 'SSLv3',
     rejectUnauthorized: false
   },
-  debug: true, // Enable debug logs
-  logger: true // Enable logger
+  debug: process.env.NODE_ENV !== 'production', // Enable debug logs in development only
+  logger: process.env.NODE_ENV !== 'production' // Enable logger in development only
 });
 
 // Verify connection with detailed error handling
 transporter.verify((error, success) => {
   if (error) {
-    console.log('\n❌ ==================== SMTP CONNECTION ERROR ====================');
-    console.log('Error Message:', error.message);
-    console.log('Error Code:', error.code);
-    console.log('Error Command:', error.command);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('\n❌ ==================== SMTP CONNECTION ERROR ====================');
+      console.log('Error Message:', error.message);
+      console.log('Error Code:', error.code);
+      console.log('Error Command:', error.command);
     
     // Check specific error types
     if (error.responseCode) {
@@ -85,17 +88,20 @@ transporter.verify((error, success) => {
     console.log('  3. Try generating a new app password');
     console.log('  4. Consider switching to Gmail for easier setup');
     console.log('===============================================================\n');
+    }
     
     logger.error('❌ SMTP connection failed:', error.message);
   } else {
-    console.log('\n✅ ==================== SMTP CONNECTION SUCCESS ====================');
-    console.log('🎉 SMTP server is ready to send emails!');
-    console.log('📧 Configuration:');
-    console.log('  Host:', process.env.EMAIL_HOST);
-    console.log('  Port:', process.env.EMAIL_PORT);
-    console.log('  User:', process.env.EMAIL_USER);
-    console.log('  From:', process.env.EMAIL_FROM);
-    console.log('===================================================================\n');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('\n✅ ==================== SMTP CONNECTION SUCCESS ====================');
+      console.log('🎉 SMTP server is ready to send emails!');
+      console.log('📧 Configuration:');
+      console.log('  Host:', process.env.EMAIL_HOST);
+      console.log('  Port:', process.env.EMAIL_PORT);
+      console.log('  User:', process.env.EMAIL_USER);
+      console.log('  From:', process.env.EMAIL_FROM);
+      console.log('===================================================================\n');
+    }
     
     logger.info('✅ SMTP server ready to send emails');
   }

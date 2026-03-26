@@ -8,6 +8,18 @@ import dotenv from 'dotenv';
 // Load environment variables FIRST
 dotenv.config();
 
+// Validate environment variables
+import { validateEnvironmentOrExit } from './utils/envValidator.js';
+validateEnvironmentOrExit();
+
+// Validate NODE_ENV is set correctly
+const validEnvironments = ['development', 'production', 'test'];
+if (!process.env.NODE_ENV || !validEnvironments.includes(process.env.NODE_ENV)) {
+  console.warn('⚠️  NODE_ENV not set or invalid. Defaulting to "development"');
+  console.warn('   Valid values: development, production, test');
+  process.env.NODE_ENV = 'development';
+}
+
 import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import reservationRoutes from './routes/reservation.js';
@@ -26,12 +38,12 @@ import {
   originValidation,
   csrfTokenRoute
 } from './middleware/security.js';
-
-// Load environment variables
-dotenv.config();
-
-// Initialize email configuration (must be after dotenv.config())
-import('./config/email.js');
+import { 
+  emailRateLimiter, 
+  phoneRateLimiter, 
+  honeypotValidator, 
+  suspiciousActivityLogger 
+} from './middleware/enhancedSecurity.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -57,12 +69,41 @@ app.use(headerValidation);
 
 // 6. CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Production: Strict origin checking ONLY
+    const allowedOrigins = process.env.CORS_ORIGIN 
+      ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+      : ['https://www.nemrutgunesmotel.com'];
+    
+    // Development: Allow localhost origins  
+    if (process.env.NODE_ENV === 'development') {
+      const devOrigins = ['http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:5173'];
+      if (!origin || devOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+    }
+    
+    // Security: Reject requests with no origin (null) in production
+    // This prevents CORS bypass via data: URIs, file: protocol, etc.
+    if (!origin && process.env.NODE_ENV === 'production') {
+      logger.warn('CORS rejected: No origin header in production');
+      return callback(new Error('Origin header required'));
+    }
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      logger.warn(`CORS rejected origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
   exposedHeaders: ['X-CSRF-Token'],
-  maxAge: 600 // 10 minutes
+  maxAge: process.env.NODE_ENV === 'production' ? 86400 : 600,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
 
 // 7. Body parsers with size limits (DoS prevention)
