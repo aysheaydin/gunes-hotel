@@ -1,6 +1,5 @@
-import React, { useEffect, lazy, Suspense, memo } from 'react'
+import React, { useEffect, lazy, Suspense, memo, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import AOS from 'aos'
 import { Toaster } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import Layout from '@components/layout/Layout'
@@ -65,30 +64,40 @@ PageLoader.displayName = 'PageLoader'
 function App() {
   const location = useLocation()
   const { i18n } = useTranslation()
+  const AOSRef = useRef(null)
 
   // Update HTML lang attribute when language changes
   useEffect(() => {
     document.documentElement.lang = i18n.language
   }, [i18n.language])
 
+  // Initialize AOS only on desktop (>=768px) - saves ~30KB on mobile
   useEffect(() => {
-    import('aos/dist/aos.css')
-
-    // Initialize AOS - Performans odaklı ayarlar
-    const isMobile = window.innerWidth < 768
+    const isDesktop = window.innerWidth >= 768
     
-    AOS.init({
-      duration: isMobile ? 600 : 800,
-      easing: 'ease-out',
-      once: true,
-      offset: isMobile ? 50 : 80,
-      delay: 0,
-      disable: 'mobile', // Mobilde animasyonları tamamen kapat
-      startEvent: 'load',
-      throttleDelay: 99,
-      debounceDelay: 50,
-      anchorPlacement: 'top-bottom'
-    })
+    if (isDesktop) {
+      // Dynamic import - only loads AOS on desktop
+      Promise.all([
+        import('aos'),
+        import('aos/dist/aos.css')
+      ]).then(([AOS]) => {
+        AOSRef.current = AOS.default
+        
+        AOSRef.current.init({
+          duration: 800,
+          easing: 'ease-out',
+          once: true,
+          offset: 80,
+          delay: 0,
+          startEvent: 'load',
+          throttleDelay: 99,
+          debounceDelay: 50,
+          anchorPlacement: 'top-bottom'
+        })
+      }).catch(err => {
+        console.warn('AOS failed to load:', err)
+      })
+    }
 
     return undefined
   }, [])
@@ -97,16 +106,16 @@ function App() {
     // Scroll to top on route change - native scrollTo for better performance
     window.scrollTo(0, 0)
 
-    // AOS only refreshes when animated elements exist on page
-    if (!document.querySelector('[data-aos]')) {
+    // AOS refresh only if loaded and animated elements exist on page
+    if (!AOSRef.current || !document.querySelector('[data-aos]')) {
       return undefined
     }
 
     let timeoutId
     if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(() => AOS.refreshHard())
+      window.requestIdleCallback(() => AOSRef.current?.refreshHard())
     } else {
-      timeoutId = window.setTimeout(() => AOS.refreshHard(), 100)
+      timeoutId = window.setTimeout(() => AOSRef.current?.refreshHard(), 100)
     }
 
     return () => {
