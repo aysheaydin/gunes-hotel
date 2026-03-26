@@ -77,7 +77,14 @@ app.use(cors({
     
     // Development: Allow localhost origins  
     if (process.env.NODE_ENV === 'development') {
-      const devOrigins = ['http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:5173'];
+      const devOrigins = [
+        'http://localhost:5173',  // Vite dev server
+        'http://localhost:5174',  // Alternative dev port
+        'http://localhost:4173',  // Vite preview server
+        'http://localhost:4174',  // Alternative preview port
+        'http://127.0.0.1:5173',
+        'http://127.0.0.1:4173'
+      ];
       if (!origin || devOrigins.includes(origin)) {
         return callback(null, true);
       }
