@@ -24,7 +24,7 @@ import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import reservationRoutes from './routes/reservation.js';
 import contactRoutes from './routes/contact.js';
-import './config/email.js';
+import { verifyEmailConfig } from './config/email.js';
 
 // Security imports
 import { helmetConfig, additionalSecurityHeaders, enforceHTTPS, disableCache } from './config/helmet.js';
@@ -204,9 +204,16 @@ app.use(errorHandler);
 // ============================================
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   logger.info(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
   logger.info(`📧 Email configured for: ${process.env.EMAIL_FROM}`);
+  
+  // Verify email configuration
+  const emailReady = await verifyEmailConfig();
+  if (!emailReady) {
+    logger.warn('⚠️  Email service not available - contact/reservation emails will fail');
+  }
+  
   logger.info(`🔒 Security features enabled: Helmet, CORS, Rate Limiting, HPP, Input Sanitization`);
   logger.info(`🛡️ Protection against: XSS, CSRF, DDoS, Injection, Clickjacking, MIME Sniffing`);
 });
