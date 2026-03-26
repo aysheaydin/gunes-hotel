@@ -2,7 +2,7 @@
 # Production .htaccess for optimal performance and security
 
 # Enable mod_rewrite for React Router SPA routing
-<IfModule mod_rerewrite.c>
+<IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
