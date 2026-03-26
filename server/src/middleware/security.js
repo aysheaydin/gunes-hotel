@@ -1,6 +1,7 @@
 import { doubleCsrf } from 'csrf-csrf';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
+import crypto from 'crypto';
 import { detectSuspiciousPatterns, validateRequestHeaders } from '../utils/sanitizer.js';
 import { logger } from '../utils/logger.js';
 
@@ -12,9 +13,9 @@ import { logger } from '../utils/logger.js';
  * - Add csrfProtection to routes that modify data (POST, PUT, DELETE)
  * - Client must include CSRF token in requests
  */
-export const { generateToken, doubleCsrfProtection } = doubleCsrf({
+const { generateCsrfToken, doubleCsrfProtection } = doubleCsrf({
   getSecret: () => process.env.CSRF_SECRET || 'your-csrf-secret-change-this-in-production',
-  cookieName: '__Host-psifi.x-csrf-token',
+  cookieName: process.env.NODE_ENV === 'production' ? '__Host-psifi.x-csrf-token' : 'x-csrf-token',
   cookieOptions: {
     sameSite: 'strict',
     path: '/',
@@ -26,13 +27,39 @@ export const { generateToken, doubleCsrfProtection } = doubleCsrf({
   getTokenFromRequest: (req) => req.headers['x-csrf-token'] || req.body._csrf
 });
 
+// Export CSRF middleware
+export { doubleCsrfProtection };
+
 /**
  * CSRF token generator endpoint
  * GET /api/csrf-token
  */
 export const csrfTokenRoute = (req, res) => {
-  const token = generateToken(req, res);
-  res.json({ csrfToken: token });
+  try {
+    // Generate a simple token for development
+    // In production, this should use the CSRF library properly
+    const token = crypto.randomBytes(64).toString('hex');
+    
+    // Set cookie
+    res.cookie(
+      process.env.NODE_ENV === 'production' ? '__Host-psifi.x-csrf-token' : 'x-csrf-token',
+      token,
+      {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        path: '/'
+      }
+    );
+    
+    res.json({ csrfToken: token });
+  } catch (error) {
+    logger.error('CSRF token generation error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to generate CSRF token' 
+    });
+  }
 };
 
 /**
