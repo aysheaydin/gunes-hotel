@@ -12,9 +12,17 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
+    // Only log in development mode
+    if (import.meta.env.MODE === 'development') {
+      console.log('API Request:', config.method?.toUpperCase(), config.url, config.data)
+    }
     return config
   },
   (error) => {
+    // Only log in development mode
+    if (import.meta.env.MODE === 'development') {
+      console.error('API Request Error:', error)
+    }
     return Promise.reject(error)
   }
 )
@@ -22,10 +30,17 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => {
-    return response
+    // Only log in development mode
+    if (import.meta.env.MODE === 'development') {
+      console.log('API Response:', response.config.url, response.data)
+    }
+    return response.data
   },
   (error) => {
-    console.error('API Error:', error.response?.data || error.message)
+    // Only log in development mode
+    if (import.meta.env.MODE === 'development') {
+      console.error('API Error:', error.response?.data || error.message)
+    }
     return Promise.reject(error)
   }
 )
