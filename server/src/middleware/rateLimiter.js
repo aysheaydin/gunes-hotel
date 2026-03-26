@@ -18,11 +18,12 @@ export const reservationLimiter = rateLimit({
   
   // Skip rate limiting for certain IPs in development
   skip: (req) => {
-    // Example: skip for localhost in development
-    if (process.env.NODE_ENV === 'development' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1')) {
-      return true;
-    }
-    return false;
+    // PRODUCTION: NEVER skip rate limits
+    if (process.env.NODE_ENV === 'production') return false;
+    
+    // Development: Only exact localhost IPs
+    const isLocalhost = req.ip === '127.0.0.1' || req.ip === '::1';
+    return process.env.NODE_ENV === 'development' && isLocalhost;
   },
   
   // Custom handler with logging
@@ -57,10 +58,12 @@ export const contactLimiter = rateLimit({
   
   // Skip rate limiting in development for localhost
   skip: (req) => {
-    if (process.env.NODE_ENV === 'development' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1')) {
-      return true;
-    }
-    return false;
+    // PRODUCTION: NEVER skip
+    if (process.env.NODE_ENV === 'production') return false;
+    
+    // Development: Only exact localhost
+    const isLocalhost = req.ip === '127.0.0.1' || req.ip === '::1';
+    return process.env.NODE_ENV === 'development' && isLocalhost;
   },
   
   handler: (req, res) => {

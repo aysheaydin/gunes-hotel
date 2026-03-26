@@ -17,15 +17,16 @@ export const helmetConfig = {
       defaultSrc: ["'self'"],
       scriptSrc: [
         "'self'",
-        "'unsafe-inline'", // Allow inline scripts (needed for some frameworks)
-        "'unsafe-eval'", // Allow eval (needed for some frameworks, remove if possible)
+        // In production, remove unsafe-inline and unsafe-eval for better security
+        ...(process.env.NODE_ENV === 'production' ? [] : ["'unsafe-inline'", "'unsafe-eval'"]),
         "https://unpkg.com", // CDN for libraries
         "https://cdn.jsdelivr.net",
         "https://cdnjs.cloudflare.com"
       ],
       styleSrc: [
         "'self'",
-        "'unsafe-inline'", // Allow inline styles
+        // Allow unsafe-inline for styles (commonly needed for React, Vue, etc.)
+        "'unsafe-inline'",
         "https://fonts.googleapis.com",
         "https://unpkg.com",
         "https://cdn.jsdelivr.net"
@@ -45,9 +46,12 @@ export const helmetConfig = {
       ],
       connectSrc: [
         "'self'",
+        "https://www.nemrutgunesmotel.com",
         "https://gunes-otel.com",
-        "http://localhost:5000",
-        "http://localhost:5173"
+        ...(process.env.NODE_ENV !== 'production' 
+          ? ["http://localhost:3000", "http://localhost:3001", "http://localhost:5000", "http://localhost:5173"]
+          : []
+        )
       ],
       frameSrc: ["'none'"], // Prevent embedding in iframes
       objectSrc: ["'none'"], // Block plugins (Flash, etc.)
@@ -57,8 +61,8 @@ export const helmetConfig = {
       formAction: ["'self'"], // Only allow form submissions to same origin
       frameAncestors: ["'none'"], // Prevent clickjacking
       baseUri: ["'self'"],
-      manifestSrc: ["'self'"],
-      upgradeInsecureRequests: process.env.NODE_ENV === 'production' ? [] : null // Force HTTPS in production
+      manifestSrc: ["'self'"]
+      // upgradeInsecureRequests handled separately below
     }
   },
 

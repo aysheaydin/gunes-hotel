@@ -57,13 +57,16 @@ export const globalRateLimiter = rateLimit({
   },
   standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
   legacyHeaders: false, // Disable `X-RateLimit-*` headers
-  // Skip rate limiting for health check and localhost in development
+  // Skip rate limiting for health check and localhost in development ONLY
   skip: (req) => {
     if (req.path === '/health') return true;
-    if (process.env.NODE_ENV === 'development' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.1')) {
-      return true;
-    }
-    return false;
+    
+    // PRODUCTION: NEVER skip rate limiting
+    if (process.env.NODE_ENV === 'production') return false;
+    
+    // Development: Only exact localhost IPs
+    const isLocalhost = req.ip === '127.0.0.1' || req.ip === '::1';
+    return process.env.NODE_ENV === 'development' && isLocalhost;
   },
   handler: (req, res) => {
     logger.warn(`Rate limit exceeded for IP: ${req.ip}`);
@@ -178,12 +181,16 @@ export const bruteForceProtection = rateLimit({
  * Ensures requests have proper origin and referer
  */
 export const originValidation = (req, res, next) => {
+  // Skip validation in development mode
+  if (process.env.NODE_ENV !== 'production') {
+    return next();
+  }
+  
   const allowedOrigins = [
     process.env.CORS_ORIGIN,
-    'http://localhost:5173',
-    'http://localhost:5174',
     'https://gunes-otel.com',
-    'https://www.gunes-otel.com'
+    'https://www.gunes-otel.com',
+    'https://www.nemrutgunesmotel.com'
   ].filter(Boolean);
   
   const origin = req.headers.origin;
