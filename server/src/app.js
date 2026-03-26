@@ -24,7 +24,7 @@ import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import reservationRoutes from './routes/reservation.js';
 import contactRoutes from './routes/contact.js';
-import emailTransporter from './config/email.js';  // Import email config
+import './config/email.js';
 
 // Security imports
 import { helmetConfig, additionalSecurityHeaders, enforceHTTPS, disableCache } from './config/helmet.js';
@@ -38,12 +38,6 @@ import {
   originValidation,
   csrfTokenRoute
 } from './middleware/security.js';
-import { 
-  emailRateLimiter, 
-  phoneRateLimiter, 
-  honeypotValidator, 
-  suspiciousActivityLogger 
-} from './middleware/enhancedSecurity.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -69,7 +63,7 @@ app.use(headerValidation);
 
 // 6. CORS configuration
 app.use(cors({
-  origin: function (origin, callback) {
+  origin(origin, callback) {
     // Production: Strict origin checking ONLY
     const allowedOrigins = process.env.CORS_ORIGIN 
       ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
@@ -116,6 +110,30 @@ app.use(cors({
 // 7. Body parsers with size limits (DoS prevention)
 app.use(express.json(requestSizeLimiter.json));
 app.use(express.urlencoded(requestSizeLimiter.urlencoded));
+
+// 7.1 Minimal cookie parsing (required for csrf-csrf)
+app.use((req, res, next) => {
+  if (req.cookies) {
+    next();
+    return;
+  }
+
+  req.cookies = {};
+  const cookieHeader = req.headers.cookie;
+  if (!cookieHeader) {
+    next();
+    return;
+  }
+
+  cookieHeader.split(';').forEach((cookiePair) => {
+    const [key, ...rest] = cookiePair.trim().split('=');
+    if (!key) return;
+    const value = rest.join('=');
+    req.cookies[key] = decodeURIComponent(value || '');
+  });
+
+  next();
+});
 
 // 8. HTTP Parameter Pollution protection
 app.use(hppProtection);

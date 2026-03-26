@@ -42,7 +42,7 @@ export const sanitizeForEmail = (input) => {
   if (!input || typeof input !== 'string') return '';
   
   // First, remove any HTML tags
-  let sanitized = input.replace(/<[^>]*>/g, '');
+  const sanitized = input.replace(/<[^>]*>/g, '');
   
   // Escape HTML entities to prevent XSS in email
   return validator.escape(sanitized.trim());
@@ -56,20 +56,18 @@ export const sanitizeEmail = (email) => {
   if (!email || typeof email !== 'string') return '';
   
   // Remove whitespace
-  let sanitized = email.trim().toLowerCase();
+  const sanitized = email.trim().toLowerCase();
   
   // Remove any newline/carriage return characters (email header injection)
-  sanitized = sanitized.replace(/[\r\n\t]/g, '');
+  const noCtlChars = sanitized.replace(/[\r\n\t]/g, '');
   
   // Validate email format
-  if (!validator.isEmail(sanitized)) {
+  if (!validator.isEmail(noCtlChars)) {
     throw new Error('Invalid email format');
   }
   
   // Normalize email
-  sanitized = validator.normalizeEmail(sanitized);
-  
-  return sanitized;
+  return validator.normalizeEmail(noCtlChars);
 };
 
 /**
@@ -80,7 +78,7 @@ export const sanitizePhone = (phone) => {
   
   // Keep only digits and leading +
   // This ensures validation regex will pass
-  let sanitized = phone.replace(/[^\d\+]/g, '');
+  let sanitized = phone.replace(/[^\d+]/g, '');
   
   // Ensure + is only at the beginning
   const hasPlus = sanitized.startsWith('+');
@@ -186,7 +184,7 @@ export const detectSuspiciousPatterns = (input) => {
 export const validateRequestHeaders = (headers) => {
   const dangerousChars = /[\r\n]/;
   
-  for (const [key, value] of Object.entries(headers)) {
+  for (const [, value] of Object.entries(headers)) {
     if (typeof value === 'string' && dangerousChars.test(value)) {
       throw new Error('Invalid header detected');
     }

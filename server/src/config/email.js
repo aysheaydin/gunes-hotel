@@ -24,15 +24,15 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,
   },
   tls: {
-    ciphers: 'SSLv3',
-    rejectUnauthorized: false
+    minVersion: 'TLSv1.2',
+    rejectUnauthorized: true
   },
   debug: process.env.NODE_ENV !== 'production', // Enable debug logs in development only
   logger: process.env.NODE_ENV !== 'production' // Enable logger in development only
 });
 
 // Verify connection with detailed error handling
-transporter.verify((error, success) => {
+transporter.verify((error, _success) => {
   if (error) {
     if (process.env.NODE_ENV !== 'production') {
       console.log('\n❌ ==================== SMTP CONNECTION ERROR ====================');
@@ -80,7 +80,7 @@ transporter.verify((error, success) => {
     console.log('  Port:', process.env.EMAIL_PORT);
     console.log('  Secure:', process.env.EMAIL_SECURE);
     console.log('  User:', process.env.EMAIL_USER);
-    console.log('  Password:', process.env.EMAIL_PASSWORD ? '***' + process.env.EMAIL_PASSWORD.slice(-4) + ' (last 4 chars)' : 'NOT SET');
+    console.log('  Password:', process.env.EMAIL_PASSWORD ? `***${process.env.EMAIL_PASSWORD.slice(-4)} (last 4 chars)` : 'NOT SET');
     
     console.log('\n🔧 TROUBLESHOOTING STEPS:');
     console.log('  1. Check .env file has correct credentials');

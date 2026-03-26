@@ -46,10 +46,8 @@ const validationRules = {
   CSRF_SECRET: {
     required: true,
     minLength: 32,
-    validator: (val) => {
-      // Should be base64 or hex encoded secret
-      return /^[A-Za-z0-9+/=]{32,}$/.test(val) || /^[A-Fa-f0-9]{32,}$/.test(val);
-    }
+    // Should be base64 or hex encoded secret
+    validator: (val) => /^[A-Za-z0-9+/=]{32,}$/.test(val) || /^[A-Fa-f0-9]{32,}$/.test(val)
   },
   CORS_ORIGIN: {
     required: false,

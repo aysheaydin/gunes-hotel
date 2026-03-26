@@ -6,7 +6,7 @@ import { logger } from '../utils/logger.js';
  * @route   POST /api/contact
  * @access  Public
  */
-export const sendContactMessage = async (req, res, next) => {
+export const sendContactMessage = async (req, res, _next) => {
   try {
     const { fullName, email, phone, subject, message } = req.body;
 

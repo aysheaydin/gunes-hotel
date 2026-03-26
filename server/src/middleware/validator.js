@@ -1,5 +1,5 @@
 import { body, validationResult } from 'express-validator';
-import { sanitizeName, sanitizeEmail, sanitizePhone, sanitizeHtml } from '../utils/sanitizer.js';
+import { sanitizeName, sanitizePhone, sanitizeHtml } from '../utils/sanitizer.js';
 
 /**
  * Validation middleware for reservation
@@ -22,7 +22,7 @@ export const validateReservation = [
   body('phone')
     .trim()
     .notEmpty().withMessage('Telefon numarası gereklidir')
-    .matches(/^[\d\s\+\-\(\)]+$/).withMessage('Geçerli bir telefon numarası giriniz')
+    .matches(/^[\d\s+()-]+$/).withMessage('Geçerli bir telefon numarası giriniz')
     .isLength({ min: 10, max: 20 }).withMessage('Telefon numarası 10-20 karakter arasında olmalıdır')
     .customSanitizer(value => sanitizePhone(value))
     .custom(value => {
@@ -140,7 +140,7 @@ export const validateContact = [
   body('phone')
     .optional()
     .trim()
-    .matches(/^[\d\s\+\-\(\)]+$/).withMessage('Geçerli bir telefon numarası giriniz')
+    .matches(/^[\d\s+()-]+$/).withMessage('Geçerli bir telefon numarası giriniz')
     .isLength({ min: 10, max: 20 }).withMessage('Telefon numarası 10-20 karakter arasında olmalıdır')
     .customSanitizer(value => sanitizePhone(value))
     .custom(value => {
