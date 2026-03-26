@@ -671,9 +671,9 @@
         "heading": "Odalarımız",
         "subtitle": "Konforlu ve ferah odalarımızda rahat bir konaklama",
         "rooms": [
-          {"title": "Çift Kişilik Oda", "description": "Dağ manzaralı, konforlu çift kişilik oda", "price": "1.500 TL / gece"},
-          {"title": "Üçlü Oda", "description": "3 kişilik konforlu konaklama", "price": "2.000 TL / gece"},
-          {"title": "Aile Odası", "description": "5 kişilik geniş aile odası", "price": "3.000 TL / gece"}
+          {"title": "Çift Kişilik Oda", "description": "Dağ manzaralı, konforlu çift kişilik oda", "price": "€85 / gece"},
+          {"title": "Üçlü Oda", "description": "3 kişilik konforlu konaklama", "price": "€115 / gece"},
+          {"title": "Aile Odası", "description": "5 kişilik geniş aile odası", "price": "€145 / gece"}
         ],
         "cta": "Tüm Odaları Görüntüle"
       },

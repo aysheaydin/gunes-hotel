@@ -133,8 +133,8 @@ const EnhancedStructuredData = ({ page = 'home' }) => {
         },
         "priceSpecification": {
           "@type": "PriceSpecification",
-          "price": "1500",
-          "priceCurrency": "TRY",
+          "price": "85",
+          "priceCurrency": "EUR",
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "value": 2,
@@ -153,8 +153,8 @@ const EnhancedStructuredData = ({ page = 'home' }) => {
         },
         "priceSpecification": {
           "@type": "PriceSpecification",
-          "price": "3000",
-          "priceCurrency": "TRY",
+          "price": "145",
+          "priceCurrency": "EUR",
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "value": 5,
