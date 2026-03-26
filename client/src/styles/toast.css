@@ -1,0 +1,97 @@
+/* Toast Notification Styles - Clean & Professional */
+
+/* Toast container positioning */
+.Toaster__toast-container {
+  z-index: 9999 !important;
+}
+
+/* Base toast styling */
+[data-sonner-toast] {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  animation: slideDown 0.3s ease-out;
+  background: #fff !important;
+}
+
+/* Success toast */
+[data-sonner-toast][data-type="success"] {
+  border-left: 4px solid #10b981 !important;
+}
+
+/* Error toast */
+[data-sonner-toast][data-type="error"] {
+  border-left: 4px solid #ef4444 !important;
+}
+
+/* Warning toast (for rate limit) */
+[data-sonner-toast][data-type="warning"] {
+  border-left: 4px solid #f59e0b !important;
+}
+
+/* Toast icon styling - simple */
+[data-sonner-toast] [data-icon] {
+  font-size: 20px !important;
+  margin-right: 10px !important;
+}
+
+/* Toast text */
+[data-sonner-toast] [data-content] {
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: #374151 !important;
+}
+
+/* Toast close button */
+[data-sonner-toast] [data-close-button] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+}
+
+[data-sonner-toast] [data-close-button]:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Simple animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide out animation */
+[data-sonner-toast][data-removed="true"] {
+  animation: slideUp 0.2s ease-in forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  [data-sonner-toast] {
+    max-width: calc(100vw - 32px) !important;
+    margin: 0 auto !important;
+  }
+  
+  [data-sonner-toast] [data-content] {
+    font-size: 13px !important;
+  }
+}
+
+/* Multiple toasts stacking */
+[data-sonner-toast]:not(:last-child) {
+  margin-bottom: 8px !important;
+}
