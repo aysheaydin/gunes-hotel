@@ -26,7 +26,7 @@ const EnhancedStructuredData = ({ page = 'home' }) => {
       "height": 250
     },
     "telephone": "+905438767271",
-    "email": "info@nemrutgunesmotel.com",
+    "email": "gunesmotel@hotmail.com",
     "priceRange": "₺₺",
     "currenciesAccepted": "TRY, EUR, USD",
     "paymentAccepted": "Nakit, Kredi Kartı, Havale",

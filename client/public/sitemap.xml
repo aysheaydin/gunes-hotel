@@ -2,92 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Ana Sayfa -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/" />
   </url>
-  
-  <!-- Nemrut Dağı Oteli (SEO Landing Page) -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-oteli</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-  
-  <!-- Nemrut Dağı Konaklama -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-konaklama</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-  
-  <!-- Nemrut Dağı Gün Doğumu Turu -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/nemrut-dagi-gun-dogumu-turu</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-  
-  <!-- Odalar Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/rooms</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/rooms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/rooms"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/rooms"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/rooms" />
   </url>
-  
-  <!-- Galeri Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/gallery</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/gallery"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/gallery"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/gallery"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/gallery" />
   </url>
-  
-  <!-- Hakkımızda Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/about</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/about"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/about" />
   </url>
-  
-  <!-- İletişim Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/contact</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nemrutgunesmotel.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nemrutgunesmotel.com/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.nemrutgunesmotel.com/contact" />
   </url>
-  
-  <!-- SSS Sayfası -->
   <url>
     <loc>https://www.nemrutgunesmotel.com/sss</loc>
     <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-
 </urlset>
