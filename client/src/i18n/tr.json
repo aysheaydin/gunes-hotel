@@ -213,6 +213,13 @@
         "4": "4 Kişi",
         "5": "5 Kişi",
         "6plus": "6+ Kişi"
+      },
+      "roomTypes": {
+        "single": "Standart Tek Kişilik Oda",
+        "double": "Standart 2 Kişilik Oda",
+        "twin": "Çift Kişilik Oda",
+        "triple": "3 Kişilik Oda",
+        "family": "5 Kişilik Aile Odası"
       }
     }
   },

@@ -208,6 +208,13 @@
         "5": "5 Guests",
         "6plus": "6+ Guests"
       },
+      "roomTypes": {
+        "single": "Standard Single Room",
+        "double": "Standard Double Room",
+        "twin": "Twin Room",
+        "triple": "Triple Room",
+        "family": "Family Room (5 Persons)"
+      },
       "kvkkConsent": "I agree to the processing of my personal data",
       "kvkkConsentLink": "Privacy Policy",
       "kvkkConsentRequired": "You must agree to the privacy policy to continue"
@@ -288,18 +295,174 @@
     "pageLoading": "Page loading"
   },
   "privacy": {
-    "title": "Privacy Policy",
-    "heading": "Privacy Policy",
-    "intro": "This page provides information about the personal data processed and data security processes when using our website.",
-    "usage": "Data transmitted through contact forms is used solely to respond to your request and is not shared with third parties.",
-    "contact": "For inquiries:"
+    "title": "Privacy Policy and Data Protection Notice",
+    "heading": "Personal Data Protection and Privacy Policy",
+    "lastUpdated": "Last Updated: March 26, 2026",
+    "intro": "As Güneş Hotel, we are committed to ensuring the security of your personal data and protecting your privacy in accordance with Turkish Personal Data Protection Law No. 6698 (KVKK) and the European Union General Data Protection Regulation (GDPR).",
+    
+    "dataController": {
+      "title": "1. Data Controller",
+      "content": "Your personal data is processed by Güneş Motel (Address: Karadut Village, Pötürge/Malatya) as the data controller.",
+      "contact": "Contact: gunesmotel@hotmail.com | +90 543 876 7271"
+    },
+    
+    "dataCollected": {
+      "title": "2. Personal Data Collected",
+      "content": "Information collected through reservation and contact forms:",
+      "items": [
+        "Full Name",
+        "Email address",
+        "Phone number",
+        "Check-in and check-out dates",
+        "Room preference and number of guests",
+        "Special requests and notes (optional)"
+      ]
+    },
+    
+    "purpose": {
+      "title": "3. Data Processing Purposes",
+      "content": "Your personal data is processed for the following purposes:",
+      "items": [
+        "Processing and responding to your reservation request",
+        "Providing accommodation services",
+        "Fulfilling legal obligations",
+        "Improving customer satisfaction and service quality",
+        "Communication and information provision"
+      ]
+    },
+    
+    "legalBasis": {
+      "title": "4. Legal Basis",
+      "content": "Your data is processed under KVKK Art. 5 and 6:",
+      "items": [
+        "Your explicit consent (reservation form approval)",
+        "Establishment and performance of contract",
+        "Fulfillment of legal obligations"
+      ]
+    },
+    
+    "retention": {
+      "title": "5. Data Retention Period",
+      "content": "Your personal data:",
+      "items": [
+        "Reservation data: 10 years after accommodation (pursuant to Tax Procedure Law)",
+        "Contact records: 2 years after request completion",
+        "Retained until the end of legal proceedings if ongoing"
+      ]
+    },
+    
+    "rights": {
+      "title": "6. Your Rights as Data Subject",
+      "content": "Your rights under KVKK Art. 11:",
+      "items": [
+        "To learn whether your personal data is being processed",
+        "To request information if processed",
+        "To learn the purpose of processing and whether used appropriately",
+        "To know third parties to whom data is transferred domestically/abroad",
+        "To request correction if incomplete or inaccurate",
+        "To request deletion/destruction under conditions set forth in KVKK Art. 7",
+        "To request notification of correction/deletion to third parties",
+        "To object to analysis exclusively through automated systems",
+        "To claim compensation for damages arising from unlawful processing"
+      ]
+    },
+    
+    "dataRequest": {
+      "title": "7. Right to Data Deletion, Correction or Objection",
+      "content": "Application method to exercise your rights:",
+      "method": "Email: gunesmotel@hotmail.com (with copy of ID attached)",
+      "response": "Your application will be answered free of charge within 30 days. If the process requires cost, KVKK Tariff will be applied."
+    },
+    
+    "security": {
+      "title": "8. Data Security",
+      "content": "Your personal data is protected with SSL encryption, secure servers and access control. Technical and administrative measures have been taken against unauthorized access, loss or disclosure."
+    },
+    
+    "sharing": {
+      "title": "9. Data Sharing",
+      "content": "Your data is not shared with third parties except for legal obligations (court order, tax office, etc.). No sale/rental/sharing for marketing purposes."
+    },
+    
+    "cookies": {
+      "title": "10. Cookies",
+      "content": "Our website uses technical cookies. Analytics cookies (Google Analytics) are not currently active. Separate notification will be provided if used in the future."
+    },
+    
+    "contact": {
+      "title": "11. Contact",
+      "email": "gunesmotel@hotmail.com",
+      "phone": "+90 543 876 7271",
+      "address": "Karadut Village, Pötürge/Malatya"
+    }
   },
   "terms": {
-    "title": "Terms of Use",
-    "heading": "Terms of Use",
-    "intro": "All visitors using this website are deemed to have accepted the following terms.",
-    "disclaimer": "Content is for informational purposes only. Prices, availability and promotions should be verified before booking.",
-    "contact": "About terms:"
+    "title": "Terms of Use and Legal Notices",
+    "heading": "Website Terms of Use",
+    "lastUpdated": "Last Updated: March 26, 2026",
+    "intro": "By visiting and using www.nemrutgunesmotel.com, you are deemed to have accepted the following terms. If you do not accept the terms, please do not use the site.",
+    
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "content": "By using this website, you declare that you have read and accepted all terms, policies and notices stated herein."
+    },
+    
+    "services": {
+      "title": "2. Scope of Service",
+      "content": "This website is provided for information and reservation request purposes. Room availability, prices and campaigns may change. Please contact the hotel for confirmation."
+    },
+    
+    "reservation": {
+      "title": "3. Reservation Terms",
+      "items": [
+        "Reservation requests made through the website are preliminary requests",
+        "Confirmation from the hotel is required for your reservation to be finalized",
+        "Prices and availability information may change instantly",
+        "Providing false or incomplete information may result in reservation cancellation"
+      ]
+    },
+    
+    "payment": {
+      "title": "4. Payment and Cancellation Policy",
+      "items": [
+        "Payment terms are communicated during reservation confirmation",
+        "Cancellation terms may vary depending on the reservation period",
+        "Refund may be provided in case of early cancellation notice",
+        "Please contact the hotel for detailed cancellation terms"
+      ]
+    },
+    
+    "intellectual": {
+      "title": "5. Intellectual Property Rights",
+      "content": "All content, design, logos, photographs and texts on this website belong to Güneş Hotel. Unauthorized copying, reproduction or commercial use is prohibited."
+    },
+    
+    "liability": {
+      "title": "6. Limitation of Liability",
+      "content": "Maximum care is taken for the accuracy of information on the website. However, Güneş Hotel cannot be held responsible for technical errors, typos or outdated information."
+    },
+    
+    "links": {
+      "title": "7. Third Party Links",
+      "content": "External links on our website are for informational purposes. Güneş Hotel is not responsible for the content of linked sites."
+    },
+    
+    "changes": {
+      "title": "8. Right to Change",
+      "content": "Güneş Hotel reserves the right to change the terms of use without prior notice. Changes take effect immediately upon publication."
+    },
+    
+    "law": {
+      "title": "9. Applicable Law and Jurisdiction",
+      "content": "These terms of use are subject to the laws of the Republic of Turkey. Malatya Courts and Enforcement Offices have jurisdiction in disputes."
+    },
+    
+    "contact": {
+      "title": "10. Contact",
+      "content": "For your questions and requests:",
+      "email": "gunesmotel@hotmail.com",
+      "phone": "+90 543 876 7271"
+    }
   },
   "faq": {
     "title": "Mount Nemrut Hotel FAQ | Frequently Asked Questions - Güneş Hotel",

@@ -296,11 +296,11 @@ const ContactPage = () => {
                         aria-required="true"
                       >
                         <option value="">{t('contact.form.selectRoom')}</option>
-                        <option value="single">Standart Tek Kişilik Oda</option>
-                        <option value="double">Standart 2 Kişilik Oda</option>
-                        <option value="twin">Çift Kişilik Oda</option>
-                        <option value="triple">3 Kişilik Oda</option>
-                        <option value="family">5 Kişilik Aile Odası</option>
+                        <option value="single">{t('contact.form.roomTypes.single')}</option>
+                        <option value="double">{t('contact.form.roomTypes.double')}</option>
+                        <option value="twin">{t('contact.form.roomTypes.twin')}</option>
+                        <option value="triple">{t('contact.form.roomTypes.triple')}</option>
+                        <option value="family">{t('contact.form.roomTypes.family')}</option>
                       </Form.Select>
                       <Form.Control.Feedback type="invalid" id="reservation-roomType-error">
                         {errors.roomType?.message}
