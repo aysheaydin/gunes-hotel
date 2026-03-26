@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { reservationAPI } from '@services/api'
 import { useErrorHandler } from '@hooks'
 import { getValidationRules } from '@utils/formValidation'
+import { HOTEL_CONFIG, getPhoneLink, getEmailLink } from '@/config/hotel'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './ContactPage.scss'
 
@@ -115,8 +116,8 @@ const ContactPage = () => {
                     </div>
                     <h4>{t('contact.phone')}</h4>
                     <p>
-                      <a href="tel:+905438767271">+90 543 876 7271</a><br/>
-                      <a href="tel:+905362870639">+90 536 287 0639</a>
+                      <a href={getPhoneLink(HOTEL_CONFIG.phone1)}>{HOTEL_CONFIG.phone1Display}</a><br/>
+                      <a href={getPhoneLink(HOTEL_CONFIG.phone2)}>{HOTEL_CONFIG.phone2Display}</a>
                     </p>
                   </div>
 
@@ -126,7 +127,7 @@ const ContactPage = () => {
                     </div>
                     <h4>{t('contact.email')}</h4>
                     <p>
-                      <a href="mailto:gunesmotel@hotmail.com">gunesmotel@hotmail.com</a>
+                      <a href={getEmailLink()}>{HOTEL_CONFIG.email}</a>
                     </p>
                   </div>
 

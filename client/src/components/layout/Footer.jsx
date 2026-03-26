@@ -100,18 +100,18 @@ const Footer = () => {
               <div className="contact-item">
                 <i className="fas fa-phone" aria-hidden="true"></i>
                 <div>
-                  <a href="tel:+905438767271" aria-label="Telefon numarası: +90 543 876 7271">
-                    +90 543 876 7271
+                  <a href={getPhoneLink(HOTEL_CONFIG.phone1)} aria-label={`Telefon numarası: ${HOTEL_CONFIG.phone1Display}`}>
+                    {HOTEL_CONFIG.phone1Display}
                   </a><br/>
-                  <a href="tel:+905362870639" aria-label="Telefon numarası: +90 536 287 0639">
-                    +90 536 287 0639
+                  <a href={getPhoneLink(HOTEL_CONFIG.phone2)} aria-label={`Telefon numarası: ${HOTEL_CONFIG.phone2Display}`}>
+                    {HOTEL_CONFIG.phone2Display}
                   </a>
                 </div>
               </div>
               <div className="contact-item">
                 <i className="fas fa-envelope" aria-hidden="true"></i>
-                <a href="mailto:gunesmotel@hotmail.com" aria-label="E-posta: gunesmotel@hotmail.com">
-                  gunesmotel@hotmail.com
+                <a href={getEmailLink()} aria-label={`E-posta: ${HOTEL_CONFIG.email}`}>
+                  {HOTEL_CONFIG.email}
                 </a>
               </div>
             </address>

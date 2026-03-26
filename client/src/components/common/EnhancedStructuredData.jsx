@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet-async'
+import { HOTEL_CONFIG } from '@/config/hotel'
 
 const EnhancedStructuredData = ({ page = 'home' }) => {
   
@@ -25,8 +26,8 @@ const EnhancedStructuredData = ({ page = 'home' }) => {
       "width": 250,
       "height": 250
     },
-    "telephone": "+905438767271",
-    "email": "gunesmotel@hotmail.com",
+    "telephone": HOTEL_CONFIG.phone1,
+    "email": HOTEL_CONFIG.email,
     "priceRange": "₺₺",
     "currenciesAccepted": "TRY, EUR, USD",
     "paymentAccepted": "Nakit, Kredi Kartı, Havale",
@@ -188,7 +189,7 @@ const EnhancedStructuredData = ({ page = 'home' }) => {
       "longitude": 38.7429
     },
     "url": "https://www.nemrutgunesmotel.com",
-    "telephone": "+905438767271",
+    "telephone": HOTEL_CONFIG.phone1,
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

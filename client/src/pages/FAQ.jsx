@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Accordion } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import { HOTEL_CONFIG, getPhoneLink, getEmailLink, getWhatsAppLink } from '@/config/hotel'
 import './FAQ.scss'
 
 const FAQ = () => {
@@ -126,21 +127,21 @@ const FAQ = () => {
                 </p>
                 <div className="cta-buttons">
                   <a 
-                    href="tel:+905438767271" 
+                    href={getPhoneLink(HOTEL_CONFIG.phone1)} 
                     className="btn btn-primary btn-lg me-3 mb-2"
                   >
                     <i className="fas fa-phone me-2"></i>
-                    +90 543 876 7271
+                    {HOTEL_CONFIG.phone1Display}
                   </a>
                   <a 
-                    href="mailto:gunesmotel@hotmail.com" 
+                    href={getEmailLink()} 
                     className="btn btn-outline-primary btn-lg me-3 mb-2"
                   >
                     <i className="fas fa-envelope me-2"></i>
                     {t('faq.contactCta.emailLabel')}
                   </a>
                   <a 
-                    href="https://wa.me/905438767271" 
+                    href={getWhatsAppLink()} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-success btn-lg mb-2"

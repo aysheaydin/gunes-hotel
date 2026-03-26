@@ -1,10 +1,10 @@
 import React from 'react'
+import { getWhatsAppLink } from '@/config/hotel'
 import './WhatsAppButton.scss'
 
 const WhatsAppButton = () => {
-  const phoneNumber = '905362870639' // +90 536 287 0639
   const message = 'Merhaba, Güneş Hotel hakkında bilgi almak istiyorum.'
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  const whatsappUrl = getWhatsAppLink(message)
 
   return (
     <a
