@@ -23,7 +23,38 @@ const logColors = {
 
 winston.addColors(logColors);
 
+/**
+ * Sensitive data filter for logs
+ * Removes passwords, tokens, and sensitive information
+ */
+const sanitizeLogs = winston.format((info) => {
+  // Sensitive field patterns to redact
+  const sensitiveFields = [
+    'password', 'token', 'secret', 'apikey', 'authorization',
+    'csrf', 'cookie', 'session', 'creditcard', 'ssn', 'api_key'
+  ];
+  
+  // Convert log message to string for searching
+  const messageStr = typeof info.message === 'string' 
+    ? info.message 
+    : JSON.stringify(info.message);
+  
+  // Check if message contains sensitive data
+  let sanitized = messageStr;
+  sensitiveFields.forEach(field => {
+    // Redact email passwords (common pattern: EMAIL_PASSWORD=...)
+    sanitized = sanitized.replace(
+      new RegExp(`${field}[=:]\\s*[^\\s,}]+`, 'gi'),
+      `${field}=[REDACTED]`
+    );
+  });
+  
+  info.message = sanitized;
+  return info;
+});
+
 const format = winston.format.combine(
+  sanitizeLogs(), // Add sensitive data filter FIRST
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.colorize({ all: true }),
   winston.format.printf(

@@ -10,15 +10,7 @@ export const validateReservation = [
     .trim()
     .notEmpty().withMessage('İsim soyisim gereklidir')
     .isLength({ min: 2, max: 100 }).withMessage('İsim 2-100 karakter arasında olmalıdır')
-    .matches(/^[a-zA-ZğüşöçİĞÜŞÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
-    .custom(value => {
-      // Block SQL injection patterns
-      const sqlPatterns = /('|(--|;)|(\/\*|\*\/)|(\bOR\b|\bAND\b|\bUNION\b|\bSELECT\b|\bDROP\b|\bINSERT\b|\bDELETE\b|\bUPDATE\b))/i;
-      if (sqlPatterns.test(value)) {
-        throw new Error('Geçersiz karakter içeriyor');
-      }
-      return true;
-    })
+    .matches(/^[a-zA-ZğüşıöçİĞÜŞIÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
     .customSanitizer(value => sanitizeName(value)),
   
   body('email')
@@ -32,7 +24,14 @@ export const validateReservation = [
     .notEmpty().withMessage('Telefon numarası gereklidir')
     .matches(/^[\d\s\+\-\(\)]+$/).withMessage('Geçerli bir telefon numarası giriniz')
     .isLength({ min: 10, max: 20 }).withMessage('Telefon numarası 10-20 karakter arasında olmalıdır')
-    .customSanitizer(value => sanitizePhone(value)),
+    .customSanitizer(value => sanitizePhone(value))
+    .custom(value => {
+      // After sanitization, check strict format
+      if (!/^\+?[1-9]\d{9,18}$/.test(value)) {
+        throw new Error('Telefon numarası geçerli formatta değil');
+      }
+      return true;
+    }),
   
   body('checkIn')
     .notEmpty().withMessage('Giriş tarihi gereklidir')
@@ -129,15 +128,7 @@ export const validateContact = [
     .trim()
     .notEmpty().withMessage('İsim soyisim gereklidir')
     .isLength({ min: 2, max: 100 }).withMessage('İsim 2-100 karakter arasında olmalıdır')
-    .matches(/^[a-zA-ZğüşöçİĞÜŞÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
-    .custom(value => {
-      // Block SQL injection patterns
-      const sqlPatterns = /('|(--|;)|(\/\*|\*\/)|(\bOR\b|\bAND\b|\bUNION\b|\bSELECT\b|\bDROP\b|\bINSERT\b|\bDELETE\b|\bUPDATE\b))/i;
-      if (sqlPatterns.test(value)) {
-        throw new Error('Geçersiz karakter içeriyor');
-      }
-      return true;
-    })
+    .matches(/^[a-zA-ZğüşıöçİĞÜŞIÖÇ\s]+$/).withMessage('İsim sadece harflerden oluşmalıdır')
     .customSanitizer(value => sanitizeName(value)),
   
   body('email')
@@ -151,7 +142,15 @@ export const validateContact = [
     .trim()
     .matches(/^[\d\s\+\-\(\)]+$/).withMessage('Geçerli bir telefon numarası giriniz')
     .isLength({ min: 10, max: 20 }).withMessage('Telefon numarası 10-20 karakter arasında olmalıdır')
-    .customSanitizer(value => sanitizePhone(value)),
+    .customSanitizer(value => sanitizePhone(value))
+    .custom(value => {
+      if (!value) return true; // Optional field
+      // After sanitization, check strict format
+      if (!/^\+?[1-9]\d{9,18}$/.test(value)) {
+        throw new Error('Telefon numarası geçerli formatta değil');
+      }
+      return true;
+    }),
   
   body('subject')
     .optional()

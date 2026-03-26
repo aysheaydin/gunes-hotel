@@ -78,8 +78,15 @@ export const sanitizeEmail = (email) => {
 export const sanitizePhone = (phone) => {
   if (!phone || typeof phone !== 'string') return '';
   
-  // Remove all characters except digits, spaces, +, -, (, )
-  return phone.replace(/[^\d\s\+\-\(\)]/g, '').trim();
+  // Keep only digits and leading +
+  // This ensures validation regex will pass
+  let sanitized = phone.replace(/[^\d\+]/g, '');
+  
+  // Ensure + is only at the beginning
+  const hasPlus = sanitized.startsWith('+');
+  sanitized = sanitized.replace(/\+/g, '');
+  
+  return (hasPlus ? '+' : '') + sanitized;
 };
 
 /**

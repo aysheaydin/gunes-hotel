@@ -54,7 +54,10 @@ export const errorHandler = (err, req, res, next) => {
   res.status(error.statusCode).json({
     success: false,
     message: error.message,
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    // Only include stack trace in development and sanitize it
+    ...(process.env.NODE_ENV === 'development' && { 
+      stack: err.stack?.split('\n').slice(0, 5).join('\n') // Limit stack trace lines
+    })
   });
 };
 
