@@ -2,21 +2,24 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Row, Col, Card, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import EnhancedStructuredData from '@components/common/EnhancedStructuredData'
 import './NemrutDagiOteli.scss'
 
 const NemrutDagiGunDogumuTuru = () => {
+  const { t } = useTranslation()
+  
   return (
     <>
       <Helmet>
-        <title>Nemrut Dağı Gün Doğumu Turu - Rehber, Saatler ve İpuçları 2026</title>
+        <title>{t('seoPages.nemrutGunDogumuTuru.title')}</title>
         <meta
           name="description"
-          content="Nemrut Dağı gün doğumu turu rehberi: En iyi aylar, tur saatleri, fiyatlar, ne giyilmeli, fotoğraf ipuçları. Güneş Hotel'den profesyonel tur organizasyonu."
+          content={t('seoPages.nemrutGunDogumuTuru.description')}
         />
         <meta
           name="keywords"
-          content="nemrut dağı gün doğumu, nemrut gün doğumu turu, nemrut sunrise tour, nemrut tur saatleri, nemrut en iyi ay"
+          content={t('seoPages.nemrutGunDogumuTuru.keywords')}
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/nemrut-dagi-gun-dogumu-turu" />
         <meta property="og:type" content="article" />
@@ -32,10 +35,10 @@ const NemrutDagiGunDogumuTuru = () => {
           <div className="page-header-overlay"></div>
           <Container>
             <h1 className="display-4 text-white fw-bold mb-3">
-              Nemrut Dağı Gün Doğumu Turu
+              {t('seoPages.nemrutGunDogumuTuru.hero.title')}
             </h1>
             <p className="lead text-white-50">
-              UNESCO Dünya Mirası'nda eşsiz bir deneyim: Dev heykeller arasında gün doğumunu izleyin
+              {t('seoPages.nemrutGunDogumuTuru.hero.subtitle')}
             </p>
           </Container>
         </section>
@@ -48,11 +51,10 @@ const NemrutDagiGunDogumuTuru = () => {
                   
                   <div className="alert alert-primary" role="alert">
                     <i className="fas fa-info-circle me-2"></i>
-                    <strong>Hızlı Bilgi:</strong> Nemrut Dağı gün doğumu turları için en uygun aylar 
-                    <strong> Mayıs-Eylül</strong> arasıdır. Güneş Hotel'den zirveye sadece 10 dakika mesafe!
+                    {t('seoPages.nemrutGunDogumuTuru.quickInfo')}
                   </div>
 
-                  <h2>Nemrut Dağı Gün Doğumu Turu Nedir?</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.whatIs')}</h2>
                   <p className="lead">
                     Nemrut Dağı gün doğumu turu, UNESCO Dünya Mirası Listesi'ndeki bu eşsiz antik 
                     yapıda, 2.134 metre yükseklikte, Kommagene Kralı I. Antiochos'un yaptırdığı 
@@ -70,7 +72,7 @@ const NemrutDagiGunDogumuTuru = () => {
                       />
                     </Col>
                     <Col md={6}>
-                      <h3 className="h5">Neden Bu Kadar Özel?</h3>
+                      <h3 className="h5">{t('seoPages.nemrutGunDogumuTuru.headings.whySpecial')}</h3>
                       <ul className="fa-ul">
                         <li><span className="fa-li"><i className="fas fa-star text-warning"></i></span>
                           MÖ 62'den kalma <strong>9 metre yüksekliğinde</strong> dev heykeller
@@ -91,7 +93,7 @@ const NemrutDagiGunDogumuTuru = () => {
                     </Col>
                   </Row>
 
-                  <h2>Nemrut Gün Doğumu Tur Saatleri</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.tourTimes')}</h2>
                   
                   <p>
                     Gün doğumu saati mevsime göre değişir. Aşağıdaki tablo size planlama yapmada yardımcı olacaktır:
@@ -100,10 +102,10 @@ const NemrutDagiGunDogumuTuru = () => {
                   <Table striped bordered hover responsive className="mt-3">
                     <thead className="table-primary">
                       <tr>
-                        <th>Dönem</th>
-                        <th>Gün Doğumu Saati</th>
-                        <th>Otelden Kalkış</th>
-                        <th>Zirveye Varış</th>
+                        <th>{t('seoPages.nemrutGunDogumuTuru.tableHeaders.period')}</th>
+                        <th>{t('seoPages.nemrutGunDogumuTuru.tableHeaders.sunriseTime')}</th>
+                        <th>{t('seoPages.nemrutGunDogumuTuru.tableHeaders.departureTime')}</th>
+                        <th>{t('seoPages.nemrutGunDogumuTuru.tableHeaders.arrivalTime')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -136,12 +138,10 @@ const NemrutDagiGunDogumuTuru = () => {
 
                   <div className="alert alert-success mt-3">
                     <i className="fas fa-check-circle me-2"></i>
-                    <strong>Güneş Hotel Avantajı:</strong> Nemrut zirvesine sadece 2 km mesafede olduğumuz 
-                    için otelden çıkış sadece 10 dakika sürüyor! Kahta'dan gelen turlar 1.5-2 saat yol 
-                    yapmak zorundadır.
+                    {t('seoPages.nemrutGunDogumuTuru.alert.gunesHotel')}
                   </div>
 
-                  <h2>En İyi Gün Doğumu Ayları</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.bestMonths')}</h2>
                   
                   <Row className="my-4">
                     <Col md={4}>
@@ -150,7 +150,7 @@ const NemrutDagiGunDogumuTuru = () => {
                           <i className="fas fa-check-circle fa-3x text-success mb-3"></i>
                           <h4 className="h5">Haziran - Eylül</h4>
                           <p className="small mb-0">
-                            <strong>EN İYİ DÖNEM</strong><br />
+                            <strong>{t('seoPages.nemrutGunDogumuTuru.seasons.best')}</strong><br />
                             Açık hava, ılık sıcaklık, temiz görüş
                           </p>
                         </Card.Body>
@@ -162,7 +162,7 @@ const NemrutDagiGunDogumuTuru = () => {
                           <i className="fas fa-sun fa-3x text-warning mb-3"></i>
                           <h4 className="h5">Nisan - Mayıs</h4>
                           <p className="small mb-0">
-                            <strong>İYİ DÖNEM</strong><br />
+                            <strong>{t('seoPages.nemrutGunDogumuTuru.seasons.good')}</strong><br />
                             Yağmur ihtimali, serin hava, yeşil doğa
                           </p>
                         </Card.Body>
@@ -174,7 +174,7 @@ const NemrutDagiGunDogumuTuru = () => {
                           <i className="fas fa-snowflake fa-3x text-info mb-3"></i>
                           <h4 className="h5">Kasım - Mart</h4>
                           <p className="small mb-0">
-                            <strong>KIŞ DÖNEMİ</strong><br />
+                            <strong>{t('seoPages.nemrutGunDogumuTuru.seasons.winter')}</strong><br />
                             Karlı manzara, soğuk, yol kapanma riski
                           </p>
                         </Card.Body>
@@ -182,7 +182,7 @@ const NemrutDagiGunDogumuTuru = () => {
                     </Col>
                   </Row>
 
-                  <h2>Nemrut Gün Doğumu Turu İçin Ne Giyilmeli?</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.whatToWear')}</h2>
                   
                   <Card className="mb-4 border-warning">
                     <Card.Header className="bg-warning text-dark fw-bold">
@@ -191,7 +191,7 @@ const NemrutDagiGunDogumuTuru = () => {
                     <Card.Body>
                       <Row>
                         <Col md={6}>
-                          <h5 className="h6 text-success">Yaz Ayları (Haziran-Eylül)</h5>
+                          <h5 className="h6 text-success">{t('seoPages.nemrutGunDogumuTuru.clothing.summer')}</h5>
                           <ul className="small">
                             <li>Hafif mont veya sweatshirt (sabah serin olur)</li>
                             <li>Rahat pantolon veya şort</li>
@@ -201,7 +201,7 @@ const NemrutDagiGunDogumuTuru = () => {
                           </ul>
                         </Col>
                         <Col md={6}>
-                          <h5 className="h6 text-info">Kış Ayları (Kasım-Mart)</h5>
+                          <h5 className="h6 text-info">{t('seoPages.nemrutGunDogumuTuru.clothing.winter')}</h5>
                           <ul className="small">
                             <li>Kalın mont (2.100m'de -10°C olabilir)</li>
                             <li>Termal iç çamaşır</li>
@@ -216,11 +216,10 @@ const NemrutDagiGunDogumuTuru = () => {
 
                   <div className="alert alert-danger">
                     <i className="fas fa-exclamation-triangle me-2"></i>
-                    <strong>Önemli:</strong> Yaz aylarında bile sabah erken saatlerde Nemrut zirvesinde 
-                    sıcaklık 5-10°C civarındadır ve rüzgar eser. Mutlaka üzerinize bir şeyler alın!
+                    {t('seoPages.nemrutGunDogumuTuru.alert.important')}
                   </div>
 
-                  <h2>Nemrut Gün Doğumu Fotoğraf İpuçları</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.photoTips')}</h2>
                   
                   <Card className="mb-4">
                     <Card.Body>
@@ -250,7 +249,7 @@ const NemrutDagiGunDogumuTuru = () => {
                     </Card.Body>
                   </Card>
 
-                  <h2>Nemrut Gün Doğumu Turu Fiyatları (2026)</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.pricing')}</h2>
                   
                   <Row className="my-4">
                     <Col md={6}>
@@ -311,7 +310,7 @@ const NemrutDagiGunDogumuTuru = () => {
                     </Col>
                   </Row>
 
-                  <h2>Sıkça Sorulan Sorular</h2>
+                  <h2>{t('seoPages.nemrutGunDogumuTuru.headings.faq')}</h2>
                   
                   <Card className="mb-3">
                     <Card.Body>
@@ -373,18 +372,17 @@ const NemrutDagiGunDogumuTuru = () => {
                   <div className="cta-box mt-5 p-5 bg-gradient text-white rounded text-center"
                        style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
                     <i className="fas fa-mountain fa-3x mb-3"></i>
-                    <h3 className="mb-3">Nemrut Gün Doğumu Deneyiminizi Rezerve Edin</h3>
+                    <h3 className="mb-3">{t('seoPages.nemrutGunDogumuTuru.cta.bookExperience')}</h3>
                     <p className="mb-4">
-                      Güneş Hotel'de konaklayın, gün doğumu turuna ücretsiz katılın!<br />
-                      Sadece 2 km mesafede, en yakın otel avantajı.
+                      {t('seoPages.nemrutGunDogumuTuru.cta.stayWithUs')}
                     </p>
                     <Link to="/contact" className="btn btn-warning btn-lg me-3">
                       <i className="fas fa-phone-alt me-2"></i>
-                      Rezervasyon: +90 543 876 7271
+                      {t('seoPages.nemrutGunDogumuTuru.cta.reservation')}
                     </Link>
                     <Link to="/rooms" className="btn btn-light btn-lg">
                       <i className="fas fa-bed me-2"></i>
-                      Odaları İncele
+                      {t('seoPages.nemrutGunDogumuTuru.cta.viewRooms')}
                     </Link>
                   </div>
 
