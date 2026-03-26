@@ -2,6 +2,7 @@ import React, { useEffect, lazy, Suspense, memo } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import AOS from 'aos'
 import { Toaster } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 import Layout from '@components/layout/Layout'
 import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary'
 
@@ -20,40 +21,44 @@ const TermsPage = lazy(() => import(/* webpackChunkName: "terms" */ '@pages/Term
 const NotFound = lazy(() => import(/* webpackChunkName: "notfound" */ '@pages/NotFound'))
 
 // Loading Component - Memoized for performance
-const PageLoader = memo(() => (
-  <div 
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '60vh',
-      flexDirection: 'column',
-      gap: '1rem'
-    }}
-    role="status"
-    aria-live="polite"
-    aria-label={i18n.t('loading.pageLoading')}
-  >
+const PageLoader = memo(() => {
+  const { t } = useTranslation()
+  
+  return (
     <div 
       style={{
-        width: '50px',
-        height: '50px',
-        border: '4px solid #f3f3f3',
-        borderTop: '4px solid #c18c30',
-        borderRadius: '50%',
-        animation: 'spin 1s linear infinite'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '60vh',
+        flexDirection: 'column',
+        gap: '1rem'
       }}
-      aria-hidden="true"
-    />
-    <p style={{ color: '#666', fontSize: '14px' }}>{i18n.t('loading.text')}</p>
-    <style>{`
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    `}</style>
-  </div>
-))
+      role="status"
+      aria-live="polite"
+      aria-label={t('loading.pageLoading')}
+    >
+      <div 
+        style={{
+          width: '50px',
+          height: '50px',
+          border: '4px solid #f3f3f3',
+          borderTop: '4px solid #c18c30',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite'
+        }}
+        aria-hidden="true"
+      />
+      <p style={{ color: '#666', fontSize: '14px' }}>{t('loading.text')}</p>
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  )
+})
 
 PageLoader.displayName = 'PageLoader'
 
