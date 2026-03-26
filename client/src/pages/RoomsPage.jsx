@@ -56,7 +56,7 @@ const RoomsPage = () => {
                         alt={room.name} 
                         className="img-fluid room-image"
                         loading={index < 2 ? 'eager' : 'lazy'}
-                        fetchPriority={index === 0 ? 'high' : 'auto'}
+                        fetchpriority={index === 0 ? 'high' : 'auto'}
                         width="600"
                         height="400"
                       />

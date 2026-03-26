@@ -20,7 +20,7 @@ const LazyImage = memo(({
   placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3C/svg%3E',
   fallback = '/img/logo.webp',
   loading = 'lazy',
-  fetchPriority = 'auto',
+  fetchpriority = 'auto',
   sizes,
   srcSet,
   onClick,
@@ -85,7 +85,7 @@ const LazyImage = memo(({
       width={width}
       height={height}
       loading={loading}
-      fetchPriority={fetchPriority}
+      fetchpriority={fetchpriority}
       decoding="async"
       sizes={sizes}
       srcSet={srcSet}
@@ -114,7 +114,7 @@ LazyImage.propTypes = {
   placeholder: PropTypes.string,
   fallback: PropTypes.string,
   loading: PropTypes.oneOf(['lazy', 'eager']),
-  fetchPriority: PropTypes.oneOf(['high', 'low', 'auto']),
+  fetchpriority: PropTypes.oneOf(['high', 'low', 'auto']),
   sizes: PropTypes.string,
   srcSet: PropTypes.string,
   onClick: PropTypes.func,

@@ -18,7 +18,7 @@ export const useImagePreload = (imageSrcs = [], options = {}) => {
       const img = new Image()
       
       if (priority) {
-        img.fetchPriority = 'high'
+        img.fetchpriority = 'high'
       }
       
       img.onload = () => {

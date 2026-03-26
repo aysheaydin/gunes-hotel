@@ -43,7 +43,7 @@ const Rooms = () => {
                     alt={`${room.name} - ${room.description}`}
                     className="img-fluid"
                     loading={index < 2 ? 'eager' : 'lazy'}
-                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
                     width="600"
                     height="400"
                   />
