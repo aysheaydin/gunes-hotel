@@ -43,7 +43,7 @@ export default defineConfig({
     // PWA Support
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['img/logo.webp'],
+      includeAssets: ['img/logo.png', 'img/logo.webp'],
       manifest: {
         name: 'Güneş Hotel - Nemrut Dağı',
         short_name: 'Güneş Hotel',
@@ -52,6 +52,20 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
+          // PNG icons for iOS Safari compatibility
+          {
+            src: '/img/logo.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any maskable'
+          },
+          {
+            src: '/img/logo.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
+          },
+          // WebP icons for modern browsers (better compression)
           {
             src: '/img/logo.webp',
             sizes: '192x192',
