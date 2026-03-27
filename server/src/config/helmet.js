@@ -197,7 +197,7 @@ export const enforceHTTPS = (req, res, next) => {
 export const disableCache = (req, res, next) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
   res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '-1');
+  res.setHeader('Expires', '0'); // RFC 7231 compliant (immediate expiry)
   next();
 };
 
