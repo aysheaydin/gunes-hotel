@@ -87,14 +87,14 @@ api.interceptors.request.use(
     }
 
     // Only log in development mode
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('API Request:', config.method?.toUpperCase(), config.url, config.data)
     }
     return config
   },
   (error) => {
     // Only log in development mode
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.error('API Request Error:', error)
     }
     return Promise.reject(error)
@@ -105,7 +105,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     // Only log in development mode
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('API Response:', response.config.url, response.data)
     }
     return response.data
@@ -130,7 +130,7 @@ api.interceptors.response.use(
           originalRequest.headers['X-CSRF-Token'] = newToken
           
           // Retry original request
-          if (import.meta.env.MODE === 'development') {
+          if (isDev) {
             console.log('CSRF token refreshed, retrying request:', originalRequest.url)
           }
           
@@ -140,7 +140,7 @@ api.interceptors.response.use(
         // If refresh fails, clear token and reject
         csrfTokenData = { token: null, expiresAt: null }
         
-        if (import.meta.env.MODE === 'development') {
+        if (isDev) {
           console.error('CSRF token refresh failed:', refreshError)
         }
         
@@ -149,7 +149,7 @@ api.interceptors.response.use(
     }
 
     // Only log in development mode
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.error('API Error:', error.response?.data || error.message)
     }
     return Promise.reject(error)

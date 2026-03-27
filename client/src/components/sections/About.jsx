@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import { isDev } from '@utils/env'
 import './About.scss'
 
 const About = () => {
@@ -27,7 +28,7 @@ const About = () => {
   ]
 
   const handleImageError = (e) => {
-    if (import.meta.env.DEV) {
+    if (isDev) {
       console.error('About section image failed to load:', e.target.src)
     }
     setImageError(true)

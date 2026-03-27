@@ -39,7 +39,7 @@ const ContactPage = () => {
   const checkInDate = watch('checkIn')
 
   const onSubmit = async (data) => {
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('ContactPage - Form submitted with data:', data)
     }
     
@@ -57,7 +57,7 @@ const ContactPage = () => {
       t('contact.form.error')
     )
 
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('ContactPage - withErrorHandling result:', success)
     }
     

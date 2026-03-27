@@ -7,6 +7,7 @@ import { useErrorHandler } from '@hooks'
 import { contactAPI } from '@services/api'
 import { getValidationRules } from '@utils/formValidation'
 import { HOTEL_CONFIG, getPhoneLink, getEmailLink } from '@/config/hotel'
+import { isDev } from '@utils/env'
 import './Contact.scss'
 
 const Contact = () => {
@@ -31,7 +32,7 @@ const Contact = () => {
   })
 
   const onSubmit = async (data) => {
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('Contact - Form submitted with data:', data)
     }
     const { success } = await withErrorHandling(
@@ -39,7 +40,7 @@ const Contact = () => {
       t('contact.form.error')
     )
 
-    if (import.meta.env.MODE === 'development') {
+    if (isDev) {
       console.log('Contact - withErrorHandling result:', success)
     }
     if (success) {

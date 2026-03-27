@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'react-bootstrap'
+import { isDev } from '@utils/env'
 import './ErrorBoundary.scss'
 
 class ErrorBoundary extends React.Component {
@@ -58,7 +59,7 @@ class ErrorBoundary extends React.Component {
               <h2>Bir şeyler yanlış gitti</h2>
               <p>Üzgünüz, bir hata oluştu. Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin.</p>
               
-              {import.meta.env.DEV && this.state.error && (
+              {isDev && this.state.error && (
                 <details className="error-details">
                   <summary>Hata Detayları (Sadece geliştirme ortamında görünür)</summary>
                   <pre>
