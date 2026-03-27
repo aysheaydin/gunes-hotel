@@ -24,6 +24,7 @@ import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import reservationRoutes from './routes/reservation.js';
 import contactRoutes from './routes/contact.js';
+import sitemapRoutes from './routes/sitemap.js';
 import { verifyEmailConfig } from './config/email.js';
 
 // Security imports
@@ -175,6 +176,9 @@ app.get('/health', (req, res) => {
 
 // CSRF token endpoint (for client to get token)
 app.get('/api/csrf-token', csrfTokenRoute);
+
+// Dynamic sitemap.xml (SEO)
+app.use('/sitemap.xml', sitemapRoutes);
 
 // ============================================
 // API ROUTES
