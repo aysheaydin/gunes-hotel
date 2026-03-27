@@ -43,6 +43,10 @@ const validationRules = {
     required: true,
     validator: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
   },
+  CONTACT_EMAIL: {
+    required: true,
+    validator: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+  },
   CSRF_SECRET: {
     required: true,
     minLength: 32,

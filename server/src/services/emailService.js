@@ -116,8 +116,8 @@ const getCustomerEmailTemplate = (data) => {
 const sendHotelNotification = async (reservationData) => {
   const sendEmail = async () => {
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
-      to: process.env.CONTACT_EMAIL || 'gunesmotel@hotmail.com',
+      from: process.env.EMAIL_FROM,
+      to: process.env.CONTACT_EMAIL,
       replyTo: reservationData.email,
       subject: `Yeni Rezervasyon Talebi - ${sanitizeForEmail(reservationData.fullName)}`,
       html: getHotelEmailTemplate(reservationData),
@@ -179,8 +179,8 @@ export const sendContactEmail = async (contactData) => {
     const message = sanitizeForEmail(rawMessage);
 
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@guneshotel.com',
-      to: process.env.CONTACT_EMAIL || 'gunesmotel@hotmail.com',
+      from: process.env.EMAIL_FROM,
+      to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `Web Sitesi İletişim Formu: ${subject}`,
       html: `
