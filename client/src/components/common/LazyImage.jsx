@@ -62,8 +62,15 @@ const LazyImage = memo(({
     }
 
     return () => {
-      if (observerRef.current && imgRef.current) {
-        observerRef.current.unobserve(imgRef.current)
+      // Capture refs in closure to avoid null reference during cleanup
+      const img = imgRef.current
+      const observer = observerRef.current
+      
+      if (observer) {
+        if (img) {
+          observer.unobserve(img)
+        }
+        observer.disconnect() // Clean up observer completely
       }
     }
   }, [src, loading])
