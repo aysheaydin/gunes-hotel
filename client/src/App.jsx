@@ -126,7 +126,7 @@ function App() {
   }, [location.pathname])
 
   return (
-    <ErrorBoundary>
+    <>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -163,25 +163,27 @@ function App() {
           }
         }}
       />
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/rooms" element={<RoomsPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/nemrut-dagi-oteli" element={<NemrutDagiOteli />} />
-            <Route path="/nemrut-dagi-konaklama" element={<NemrutDagiKonaklama />} />
-            <Route path="/nemrut-dagi-gun-dogumu-turu" element={<NemrutDagiGunDogumuTuru />} />
-            <Route path="/sss" element={<FAQ />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </Layout>
-    </ErrorBoundary>
+      <ErrorBoundary>
+        <Layout>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/rooms" element={<RoomsPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/nemrut-dagi-oteli" element={<NemrutDagiOteli />} />
+              <Route path="/nemrut-dagi-konaklama" element={<NemrutDagiKonaklama />} />
+              <Route path="/nemrut-dagi-gun-dogumu-turu" element={<NemrutDagiGunDogumuTuru />} />
+              <Route path="/sss" element={<FAQ />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </Layout>
+      </ErrorBoundary>
+    </>
   )
 }
 
