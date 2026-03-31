@@ -4,7 +4,7 @@
  * @see https://schema.org/
  */
 
-import { HOTEL_CONFIG } from '@/config/hotel'
+import { HOTEL_CONFIG, getMapLink } from '@/config/hotel'
 
 const BASE_URL = 'https://www.nemrutgunesmotel.com'
 
@@ -59,10 +59,10 @@ export const getHotelSchema = () => ({
     },
     "geo": {
         "@type": "GeoCoordinates",
-        "latitude": HOTEL_CONFIG.coordinates.lat,
-        "longitude": HOTEL_CONFIG.coordinates.lng
+        "latitude": HOTEL_CONFIG.coordinates.latitude,
+        "longitude": HOTEL_CONFIG.coordinates.longitude
     },
-    "hasMap": HOTEL_CONFIG.mapLink,
+    "hasMap": getMapLink(),
     "checkinTime": "14:00",
     "checkoutTime": "12:00",
     "petsAllowed": "True",
@@ -171,8 +171,8 @@ export const getLocalBusinessSchema = () => ({
     },
     "geo": {
         "@type": "GeoCoordinates",
-        "latitude": HOTEL_CONFIG.coordinates.lat,
-        "longitude": HOTEL_CONFIG.coordinates.lng
+        "latitude": HOTEL_CONFIG.coordinates.latitude,
+        "longitude": HOTEL_CONFIG.coordinates.longitude
     },
     "url": BASE_URL,
     "priceRange": "€€",
@@ -193,7 +193,7 @@ export const getLocalBusinessSchema = () => ({
         }
     ],
     "sameAs": [
-        HOTEL_CONFIG.instagramLink
+        HOTEL_CONFIG.instagram
     ]
 })
 
@@ -281,7 +281,7 @@ export const getOrganizationSchema = () => ({
         "availableLanguage": ["Turkish", "English", "Italian"]
     },
     "sameAs": [
-        HOTEL_CONFIG.instagramLink
+        HOTEL_CONFIG.instagram
     ]
 })
 
