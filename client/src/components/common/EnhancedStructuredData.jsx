@@ -33,6 +33,9 @@ EnhancedStructuredData.propTypes = {
     'contact', 
     'faq', 
     'nemrut', 
+    'nemrut-hotel',
+    'nemrut-konaklama',
+    'nemrut-gundogumu',
     'gallery'
   ])
 }

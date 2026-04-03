@@ -334,6 +334,9 @@ export const getSchemasByPage = (page) => {
         contact: commonSchemas,
         faq: [...commonSchemas, getFAQSchema()],
         nemrut: [...commonSchemas, getTouristAttractionSchema()],
+        'nemrut-hotel': [...commonSchemas, getTouristAttractionSchema()],
+        'nemrut-konaklama': [...commonSchemas, getTouristAttractionSchema()],
+        'nemrut-gundogumu': [...commonSchemas, getTouristAttractionSchema()],
         gallery: commonSchemas
     }
 
