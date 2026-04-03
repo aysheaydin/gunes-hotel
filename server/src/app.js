@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
@@ -112,29 +113,9 @@ app.use(cors({
 app.use(express.json(requestSizeLimiter.json));
 app.use(express.urlencoded(requestSizeLimiter.urlencoded));
 
-// 7.1 Minimal cookie parsing (required for csrf-csrf)
-app.use((req, res, next) => {
-  if (req.cookies) {
-    next();
-    return;
-  }
-
-  req.cookies = {};
-  const cookieHeader = req.headers.cookie;
-  if (!cookieHeader) {
-    next();
-    return;
-  }
-
-  cookieHeader.split(';').forEach((cookiePair) => {
-    const [key, ...rest] = cookiePair.trim().split('=');
-    if (!key) return;
-    const value = rest.join('=');
-    req.cookies[key] = decodeURIComponent(value || '');
-  });
-
-  next();
-});
+// 7.1 Standard cookie parser (RFC 6265 compliant)
+// Handles __Host- prefixed cookies correctly for csrf-csrf integration
+app.use(cookieParser());
 
 // 8. HTTP Parameter Pollution protection
 app.use(hppProtection);
