@@ -29,6 +29,15 @@ const NemrutDagiOteli = () => {
         <meta property="og:description" content="UNESCO Dünya Mirası Nemrut Dağı'na en yakın otel. 30+ yıl deneyim." />
         <meta property="og:url" content="https://www.nemrutgunesmotel.com/nemrut-dagi-oteli" />
         <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nemrut Dağı Oteli - Güneş Hotel | 2 km Mesafede" />
+        <meta name="twitter:description" content="UNESCO Dünya Mirası Nemrut Dağı'na en yakın otel. 30+ yıl deneyim." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
       </Helmet>
       <EnhancedStructuredData page="nemrut-hotel" />
 

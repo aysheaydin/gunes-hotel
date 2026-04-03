@@ -25,6 +25,23 @@ const RoomsPage = () => {
           content="Nemrut otel odaları, dağ manzaralı oda, çift kişilik oda Nemrut, aile odası Malatya, otel fiyatları Nemrut"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/rooms" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Nemrut Dağı Otel Odaları - Güneş Hotel" />
+        <meta property="og:description" content="Dağ manzaralı konforlu odalar. Çift kişilik, üçlü ve aile odası seçenekleri. 24 saat sıcak su, WiFi." />
+        <meta property="og:url" content="https://www.nemrutgunesmotel.com/rooms" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/double-room-1.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nemrut Dağı Otel Odaları - Güneş Hotel" />
+        <meta name="twitter:description" content="Dağ manzaralı konforlu odalar. Çift kişilik, üçlü ve aile odası seçenekleri." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/double-room-1.webp" />
       </Helmet>
       <EnhancedStructuredData page="rooms" />
 

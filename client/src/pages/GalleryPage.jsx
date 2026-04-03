@@ -149,6 +149,23 @@ const GalleryPage = () => {
           content="Nemrut Dağı fotoğrafları, Nemrut gün doğumu, otel odası görselleri, Kommagene fotoğrafları, Nemrut manzara"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/gallery" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Nemrut Dağı Fotoğraf Galerisi - Güneş Hotel" />
+        <meta property="og:description" content="Nemrut Dağı gün doğumu, otel odaları ve manzara fotoğrafları. 100+ güzel kareler." />
+        <meta property="og:url" content="https://www.nemrutgunesmotel.com/gallery" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/gallery-1.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nemrut Dağı Fotoğraf Galerisi - Güneş Hotel" />
+        <meta name="twitter:description" content="Nemrut Dağı gün doğumu, otel odaları ve manzara fotoğrafları." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/gallery-1.webp" />
       </Helmet>
       <EnhancedStructuredData page="gallery" />
 

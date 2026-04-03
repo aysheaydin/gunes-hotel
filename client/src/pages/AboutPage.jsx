@@ -21,6 +21,22 @@ const AboutPage = () => {
           content="Güneş Hotel tarihçe, Nemrut Dağı aile oteli, Malatya Pütürge konaklama, Kommagene Krallığı turu, Nemrut yakın otel"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/about" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Hakkımızda - Güneş Hotel" />
+        <meta property="og:description" content="1980'den beri Nemrut Dağı'nda aile oteli. 30+ yıl deneyim, samimi ortam, UNESCO bölgesine en yakın." />
+        <meta property="og:url" content="https://www.nemrutgunesmotel.com/about" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hakkımızda - Güneş Hotel" />
+        <meta name="twitter:description" content="1980'den beri Nemrut Dağı'nda aile oteli. 30+ yıl deneyim." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
       </Helmet>
       <EnhancedStructuredData page="about" />
 

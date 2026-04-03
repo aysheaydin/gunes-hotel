@@ -62,6 +62,20 @@ const FAQ = () => {
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/sss" />
         
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Sık Sorulan Sorular - Nemrut Dağı Güneş Hotel" />
+        <meta property="og:description" content="Nemrut Dağı oteli hakkında sık sorulan sorular ve cevaplar." />
+        <meta property="og:url" content="https://www.nemrutgunesmotel.com/sss" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/logo.webp" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Sık Sorulan Sorular - Nemrut Dağı Güneş Hotel" />
+        <meta name="twitter:description" content="Nemrut Dağı oteli hakkında sık sorulan sorular ve cevaplar." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/logo.webp" />
+        
         {/* FAQPage Schema */}
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}

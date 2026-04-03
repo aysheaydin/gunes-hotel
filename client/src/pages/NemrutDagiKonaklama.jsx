@@ -26,6 +26,16 @@ const NemrutDagiKonaklama = () => {
         <meta property="og:description" content="Nemrut Dağı'nda nerede kalınır? En yakın oteller, fiyatlar ve ipuçları." />
         <meta property="og:url" content="https://www.nemrutgunesmotel.com/nemrut-dagi-konaklama" />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/slide-1.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nemrut Dağı Konaklama Rehberi - Güneş Hotel" />
+        <meta name="twitter:description" content="Nemrut Dağı'nda nerede kalınır? En yakın oteller, fiyatlar ve ipuçları." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/slide-1.webp" />
       </Helmet>
       <EnhancedStructuredData page="nemrut-konaklama" />
 

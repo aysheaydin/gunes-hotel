@@ -81,6 +81,22 @@ const ContactPage = () => {
           content="Nemrut otel rezervasyon, Nemrut Dağı online rezervasyon, Güneş Hotel iletişim, Nemrut konaklama rezervasyon, Malatya otel"
         />
         <link rel="canonical" href="https://www.nemrutgunesmotel.com/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Nemrut Dağı Otel Rezervasyon - Güneş Hotel" />
+        <meta property="og:description" content="Çevrimiçi rezervasyon yapın. Tel: +90 543 876 7271, WhatsApp. Erken rezervasyon indirimi." />
+        <meta property="og:url" content="https://www.nemrutgunesmotel.com/contact" />
+        <meta property="og:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Güneş Hotel" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nemrut Dağı Otel Rezervasyon - Güneş Hotel" />
+        <meta name="twitter:description" content="Çevrimiçi rezervasyon yapın. Erken rezervasyon indirimi." />
+        <meta name="twitter:image" content="https://www.nemrutgunesmotel.com/img/motel.webp" />
       </Helmet>
       <EnhancedStructuredData page="contact" />
 
